@@ -1,1 +1,32 @@
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Registrazione</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+    <div class="box">
+
+        <h1>Registrati</h1>
+        <h2>Compila i seguenti campi e inizia subito ad acquistare!</h2>
+        <!-- creare file per signin.php-->
+
+        <form action="signin.php" method="POST">
+
+            <input type="text" name="nome_web" maxlength="100" placeholder="Nome">
+            <input type="text" name="cognome_web" maxlength="100" placeholder="Cognome">
+            <input type="text" name="codfiscale_web" minlength="16" maxlength="16" placeholder="Codice Fiscale">
+            <input type="text" name="email_web" maxlength="70" placeholder="E-mail">
+            <input type="text" name="cellulare_web" maxlength="10" placeholder="Cellulare">
+            <input type="password" name="password_web" maxlength="32" placeholder="Password">
+
+            <input type="submit" name="conferma" value="Conferma" style="margin-right: 10px; margin-left: 98px">
+            <input type="reset" name="canella" value="Cancella">
+        </form>
+
+    </div>
+
+</body>
+
+</html>
