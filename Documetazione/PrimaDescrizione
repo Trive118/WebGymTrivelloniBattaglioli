@@ -1,0 +1,20 @@
+Progetto Palestra
+
+Si vuole sviluppare il gestionale di una palestra.
+
+Il personale viene diviso in due categorie: personal trainer oppure operatore commerciale. Ogni lavoratore è identificato da un numero di matricola, nome, cognome, data di nascita, sesso, recapito telefonico ed indirizzo email.
+
+Ogni cliente è caratterizzato da codice identificativo, nome, cognome, data di nascita, email, telefono, sesso ed età. Ogni cliente sottoscrive un contratto di abbonamento con la struttura.
+
+Vi sono 4 tipologie base di contratto: mensile, trimestrale, quadrimestrale o annuale. Ulteriori forme contrattuali vengono introdotte sottoforma di offerta a tempo. Per ogni sottoscrizione di contratto si vogliono registrare data, ora, importo pagato, matricola dell'operatore commerciale che ha portato a termine l'operazione e motivo (obiettivo) della sottoscrizione (es: benessere personale, ipertrofia, tonificazione ecc..). Quest'ultimo parametro è memorizzato a solo scopo statistico.
+
+Una volta entrato in vigore il contratto, ogni cliente può accedere alla propria area riservata nella quale può prendere visione della propria scheda di allenamento. Ogni cliente ha quindi una scheda di allenamento: inizialmente ne viene assegnata una di default sulla base di fattori come sesso, età ed obiettivo. Il personal trainer procede quindi alla preparazione di una scheda di allenamento personalizzata e la assegna al cliente.
+
+Ogni scheda di allenamento riporta: identificativo, descrizione (qui ci metti tutti gli esercizi), data di scadenza. Alla scadenza della scheda di allenamento viene assegnata al cliente la scheda di default iniziale.
+
+Ulteriori idee da approvare:
+
+il cliente può estendere la durata del contratto pagando tramite sito web;
+il cliente può vedere una sezione in cui sono riportati tutti i suoi dati. Gli è consentito solamente di modificare numero di telefono ed e-mail;
+il sito web deve essere articolato in sezione per i personal trainer e sezione per i clienti;
+l'azienda vuole tenere traccia di quanti contratti concludono gli operatori commerciali;
