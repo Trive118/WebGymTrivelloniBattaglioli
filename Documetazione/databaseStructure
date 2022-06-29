@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-06-29T16:08:06.966Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="ht06x-o2ZsbsdlgQFadm" version="20.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-06-29T16:23:38.937Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="_ZlKmpUwW_3V_H6tzgcO" version="20.0.4" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1008" dy="515" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1835" dy="462" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -84,7 +84,7 @@
             <mxPoint x="80" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="bB9ajmOb4vgm9XFP09hl-22" value="DATA_INIZIO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="bB9ajmOb4vgm9XFP09hl-22" value="DATA_ORA_INIZIO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="40" y="80" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="bB9ajmOb4vgm9XFP09hl-27" value="" style="endArrow=oval;html=1;rounded=0;curved=1;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
@@ -122,6 +122,15 @@
         </mxCell>
         <mxCell id="bB9ajmOb4vgm9XFP09hl-37" value="TELEFONO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="370" y="160" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bB9ajmOb4vgm9XFP09hl-41" value="" style="endArrow=oval;html=1;rounded=0;curved=1;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="WIyWlLk6GJQsqaUBKTNV-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="10" y="205" as="sourcePoint" />
+            <mxPoint x="50" y="155" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bB9ajmOb4vgm9XFP09hl-43" value="MOTIVO_ISCRIZIONE&lt;br&gt;(il campo sarà testuale e nel form html verranno date varie opzioni di default + un&#39;opzione altro che permetterà all&#39;utente di inserire un motivo diverso rispetto a quelli di default già disponibili)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-80" y="190" width="110" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
