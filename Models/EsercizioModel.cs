@@ -5,13 +5,13 @@ using System.Web;
 
 namespace WebGymTrivelloniBattaglioli.Models
 {
-    public class Esercizio
+    public class EsercizioModel
     {
         int id;
         string descrizione;
         string immagine;
 
-        public Esercizio(int id, string descrizione, string immagine)
+        public EsercizioModel(int id, string descrizione, string immagine)
         {
             this.id = id;
             this.descrizione = descrizione;

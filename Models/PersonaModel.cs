@@ -6,7 +6,7 @@ using System.Web;
 namespace WebGymTrivelloniBattaglioli.Models
 {
     public enum definizioneSesso {M,F};
-    public abstract class Persona
+    public abstract class PersonaModel
     {
         int id;
         string nome;
@@ -16,7 +16,7 @@ namespace WebGymTrivelloniBattaglioli.Models
         string telefono;
         definizioneSesso sesso;
 
-        protected Persona(int id, string nome, string cognome, string email, DateTime data_nascita, string telefono, definizioneSesso sesso)
+        protected PersonaModel(int id, string nome, string cognome, string email, DateTime data_nascita, string telefono, definizioneSesso sesso)
         {
             this.id = id;
             this.nome = nome;
