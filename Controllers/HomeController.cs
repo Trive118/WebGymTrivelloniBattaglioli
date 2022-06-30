@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebApplicationPrimoMVCInserimentUjtente.Models;
+using WebGymTrivelloniBattaglioli.Models;
 
 namespace WebApplicationPrimoMVCInserimentUjtente.Controllers
 {
@@ -33,12 +33,13 @@ namespace WebApplicationPrimoMVCInserimentUjtente.Controllers
             return View();
         }
 
+       /**
         [HttpPost]
         public ActionResult UtenteView(UtenteModel u)
         {
             if(ModelState.IsValid)
                 return View("Index");
             return null;
-        }
+        }**/
     }
 }
