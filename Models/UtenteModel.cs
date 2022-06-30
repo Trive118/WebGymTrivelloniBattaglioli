@@ -9,7 +9,6 @@ namespace WebApplicationPrimoMVCInserimentUjtente.Models
 {
     [Serializable]
     [DataContract()]
-    ///ciaooooo
     public class UtenteModel
     {
         [DataMember]

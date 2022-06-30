@@ -8,7 +8,6 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WCFWebGymService", "..\WCFWebGymService\", "{8ACCBE33-991A-4EA6-9028-4CEFE9523B72}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
-		ProjectReferences = ""
 		Debug.AspNetCompiler.VirtualPath = "/localhost_51697"
 		Debug.AspNetCompiler.PhysicalPath = "..\WCFWebGymService\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51697\"
@@ -24,7 +23,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WCFWebGymService", "..\WCFW
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "51697"
-		SlnRelativePath = "..\WCFWebGymService\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
