@@ -10,6 +10,8 @@ namespace WebApplicationPrimoMVCInserimentUjtente.Models
     [Serializable]
     [DataContract()]
     //mAIRO ASGFSDFGDFG
+
+    //CACCA BUDINO
     public class UtenteModel
     {
         [DataMember]
