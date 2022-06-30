@@ -126,7 +126,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CaratteristicaEsercizioModel.cs" />
+    <Compile Include="Models\ContrattoModel.cs" />
     <Compile Include="Models\EsercizioModel.cs" />
+    <Compile Include="Models\IscrizioneModel.cs" />
     <Compile Include="Models\SchedaModel.cs" />
     <Compile Include="Models\TrainerModel.cs" />
     <Compile Include="Models\ClienteModel.cs" />
