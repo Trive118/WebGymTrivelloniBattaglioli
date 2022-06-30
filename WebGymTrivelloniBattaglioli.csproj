@@ -133,7 +133,6 @@
     <Compile Include="Models\TrainerModel.cs" />
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\PersonaModel.cs" />
-    <Compile Include="Models\UtenteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Img_esercizi\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
