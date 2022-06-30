@@ -9,6 +9,11 @@ namespace WebApplicationPrimoMVCInserimentUjtente.Models
 {
     [Serializable]
     [DataContract()]
+    //mAIRO ASGFSDFGDFG
+
+    //CACCA BUDINO
+
+    //fRAPPè AL LIMONE
     public class UtenteModel
     {
         [DataMember]
