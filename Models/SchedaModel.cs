@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebGymTrivelloniBattaglioli.Models
 {
@@ -27,7 +29,15 @@ namespace WebGymTrivelloniBattaglioli.Models
         }
 
         public int Id { get => id; set => id = value; }
+
+        [DataMember]
+        [Required(ErrorMessage = "Devi inserire il titolo alla scheda!")]
+        [Display(Name = "Titolo scheda")]
         public string Titolo { get => titolo; set => titolo = value; }
+
+        [DataMember]
+        [Required(ErrorMessage = "Devi inserire la durata della scheda!")]
+        [Display(Name = "Durata (in mesi) della scheda")]
         public int Durata { get => durata; set => durata = value; }
         public TrainerModel Trainer { get => trainer; set => trainer = value; }
         public ClienteModel Cliente { get => cliente; set => cliente = value; }

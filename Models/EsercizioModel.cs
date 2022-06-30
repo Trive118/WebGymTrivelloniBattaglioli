@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebGymTrivelloniBattaglioli.Models
 {
@@ -19,7 +21,15 @@ namespace WebGymTrivelloniBattaglioli.Models
         }
 
         public int Id { get => id; set => id = value; }
+
+        [DataMember]
+        [Required(ErrorMessage = "Devi inserire una descrizione!")]
+        [Display(Name = "Descrizione esercizio")]
         public string Descrizione { get => descrizione; set => descrizione = value; }
+
+        [DataMember]
+        [Required(ErrorMessage = "Devi inserire il link all'immagine che vuoi inserire!")]
+        [Display(Name = "Link all'immagine da inserire")]
         public string Immagine { get => immagine; set => immagine = value; }
     }
 }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// LA CLASSE CaratteristicaEsercizioModel VIENE USATA COME SOSTITUTO DELLA TABELLA 'relazione' DEL DATABASE,
@@ -24,8 +25,19 @@ namespace WebGymTrivelloniBattaglioli.Models
             this.commento = commento;
         }
 
+        [DataMember]
+        [Required(ErrorMessage = "Devi inserire il numero di ripetizioni!")]
+        [Display(Name = "Numero ripetizioni")]
         public int Numero_ripetizioni { get => numero_ripetizioni; set => numero_ripetizioni = value; }
+
+        [DataMember]
+        [Required(ErrorMessage = "Devi inserire un tempo di recupero!")]
+        [Display(Name = "Tempo di recupero")]
+        [DataType(DataType.Duration)]
         public TimeSpan Recupero { get => recupero; set => recupero = value; }
+
+        [DataMember]
+        [Display(Name = "Note sull'esercizio")]
         public string Commento { get => commento; set => commento = value; }
     }
 }

@@ -58,6 +58,7 @@ namespace WebGymTrivelloniBattaglioli.Models
 
         [DataMember]
         [Display(Name = "Numero di telefono")]
+        [DataType(DataType.PhoneNumber)]
         public string Telefono { get => telefono; set => telefono = value; }
 
         [DataMember]
