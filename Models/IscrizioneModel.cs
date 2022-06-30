@@ -17,7 +17,7 @@ namespace WebGymTrivelloniBattaglioli.Models
             this.data_inizio = data_inizio;
             this.motivo = motivo;
             this.data_fine = data_fine;
-            ContrattoModel this.contratto = contratto;
+            this.contratto = contratto;
         }
 
         public DateTime Data_inizio { get => data_inizio; set => data_inizio = value; }
