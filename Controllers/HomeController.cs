@@ -14,11 +14,9 @@ namespace WebApplicationPrimoMVCInserimentUjtente.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Registrati()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View("prova");
+            return View();
         }
 
         public ActionResult Contact()
