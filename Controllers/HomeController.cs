@@ -9,6 +9,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
 {
     public class HomeController : Controller
     {
+        static ClienteModel loggedClient;
         public ActionResult Index()
         {
             return View();
@@ -31,13 +32,23 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             return View();
         }
 
-       /**
         [HttpPost]
-        public ActionResult UtenteView(UtenteModel u)
+        public ActionResult HandleConfirmClick()
         {
-            if(ModelState.IsValid)
-                return View("Index");
+            if (ModelState.IsValid)  ///controllo se il format è stato compilato correttamente
+            { 
+                string nome = Request["Nome"];
+                string cognome = Request["Cognome"];
+                string mail = Request["Email"];
+                string password = Request["Password"];
+                DateTime data_nascita = Convert.ToDateTime(Request["Data_nascita"]);
+                string sesso = Request["Sesso"];
+                string telefono = Request["Telefono"];
+                loggedClient = new ClienteModel(nome, cognome, mail, data_nascita, telefono, password, sesso);
+                return View("ConfirmUserDataView",loggedClient);  ///Lancio la vista ConfirmUserDataView, passando come oggetto model
+                                                                  ///da visulizzare i dati contenuti nell'oggetto loggedClient
+            }
             return null;
-        }**/
+        }
     }
 }
