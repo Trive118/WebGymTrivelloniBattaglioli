@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace WebApplicationPrimoMVCInserimentUjtente
+namespace WebGymTrivelloniBattaglioli
 {
     public class FilterConfig
     {

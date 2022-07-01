@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebGymTrivelloniBattaglioli.Models;
 
-namespace WebApplicationPrimoMVCInserimentUjtente.Controllers
+namespace WebGymTrivelloniBattaglioli.Controllers
 {
     public class HomeController : Controller
     {
