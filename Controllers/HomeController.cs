@@ -50,5 +50,11 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             }
             return null;
         }
+
+        public ActionResult InserisciCliente()
+        {
+
+            return null;
+        }
     }
 }
