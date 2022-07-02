@@ -164,11 +164,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\ServiceReferenceWCF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IServiceWCFdb.cs" />
     <Compile Include="Models\CaratteristicaEsercizioModel.cs" />
     <Compile Include="Models\ContrattoModel.cs" />
     <Compile Include="Models\EsercizioModel.cs" />
@@ -183,12 +187,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ServiceWCFdb.svc.cs">
-      <DependentUpon>ServiceWCFdb.svc</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceWCF\Service.disco" />
+    <None Include="Connected Services\ServiceReferenceWCF\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceReferenceWCF\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceReferenceWCF\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -218,6 +226,22 @@
     <Content Include="Images\training-image-04.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Connected Services\ServiceReferenceWCF\Service.wsdl" />
+    <None Include="Connected Services\ServiceReferenceWCF\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceWCF\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceWCF\Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceWCF\Service3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -233,7 +257,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="ServiceWCFdb.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -267,6 +290,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceReferenceWCF\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
