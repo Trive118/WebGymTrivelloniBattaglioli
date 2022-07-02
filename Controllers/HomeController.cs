@@ -51,9 +51,21 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             return null;
         }
 
-        public ActionResult InserisciCliente()
+        private string generateStringByDateForMySql(DateTime date)
         {
-
+            string datasql;
+            datasql = date.Year.ToString()+"-"+ date.Month.ToString() + "-" + date.Day.ToString();
+            return datasql;
+        }
+        public ActionResult InserisciClientedb()
+        {
+            string sesso;
+            if (loggedClient.Sesso == definizioneSesso.M)
+                sesso = "M";
+            else
+                sesso = "F";
+            var wcfClient = new ServiceReferenceWCF.ServiceClient();
+            wcfClient.InserisciCliente(loggedClient.Nome, loggedClient.Cognome, loggedClient.Email,generateStringByDateForMySql(loggedClient.Data_nascita) , loggedClient.Telefono, loggedClient.Password, sesso);
             return null;
         }
     }

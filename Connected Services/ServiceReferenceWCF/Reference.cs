@@ -74,166 +74,6 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PersonaModel", Namespace="http://schemas.datacontract.org/2004/07/WebGymTrivelloniBattaglioli.Models")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ClienteModel))]
-    public partial class PersonaModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CognomeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime Data_nascitaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NomeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WebGymTrivelloniBattaglioli.ServiceReferenceWCF.definizioneSesso SessoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TelefonoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Cognome {
-            get {
-                return this.CognomeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CognomeField, value) != true)) {
-                    this.CognomeField = value;
-                    this.RaisePropertyChanged("Cognome");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Data_nascita {
-            get {
-                return this.Data_nascitaField;
-            }
-            set {
-                if ((this.Data_nascitaField.Equals(value) != true)) {
-                    this.Data_nascitaField = value;
-                    this.RaisePropertyChanged("Data_nascita");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nome {
-            get {
-                return this.NomeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NomeField, value) != true)) {
-                    this.NomeField = value;
-                    this.RaisePropertyChanged("Nome");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.definizioneSesso Sesso {
-            get {
-                return this.SessoField;
-            }
-            set {
-                if ((this.SessoField.Equals(value) != true)) {
-                    this.SessoField = value;
-                    this.RaisePropertyChanged("Sesso");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Telefono {
-            get {
-                return this.TelefonoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
-                    this.TelefonoField = value;
-                    this.RaisePropertyChanged("Telefono");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ClienteModel", Namespace="http://schemas.datacontract.org/2004/07/WebGymTrivelloniBattaglioli.Models")]
-    [System.SerializableAttribute()]
-    public partial class ClienteModel : WebGymTrivelloniBattaglioli.ServiceReferenceWCF.PersonaModel {
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="definizioneSesso", Namespace="http://schemas.datacontract.org/2004/07/WebGymTrivelloniBattaglioli.Models")]
-    public enum definizioneSesso : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        M = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        F = 1,
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceWCF.IService")]
     public interface IService {
@@ -251,10 +91,10 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType> GetDataUsingDataContractAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InserisciCliente", ReplyAction="http://tempuri.org/IService/InserisciClienteResponse")]
-        bool InserisciCliente(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ClienteModel cliente);
+        bool InserisciCliente(string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InserisciCliente", ReplyAction="http://tempuri.org/IService/InserisciClienteResponse")]
-        System.Threading.Tasks.Task<bool> InserisciClienteAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ClienteModel cliente);
+        System.Threading.Tasks.Task<bool> InserisciClienteAsync(string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -300,12 +140,12 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public bool InserisciCliente(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ClienteModel cliente) {
-            return base.Channel.InserisciCliente(cliente);
+        public bool InserisciCliente(string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso) {
+            return base.Channel.InserisciCliente(nome, cognome, mail, data_nascita, telefono, password, sesso);
         }
         
-        public System.Threading.Tasks.Task<bool> InserisciClienteAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ClienteModel cliente) {
-            return base.Channel.InserisciClienteAsync(cliente);
+        public System.Threading.Tasks.Task<bool> InserisciClienteAsync(string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso) {
+            return base.Channel.InserisciClienteAsync(nome, cognome, mail, data_nascita, telefono, password, sesso);
         }
     }
 }
