@@ -13,19 +13,14 @@ namespace WebGymTrivelloniBattaglioli.Models
     {
         List<IscrizioneModel> iscrizioni;
 
-        public ClienteModel(int idCliente, string nome, string cognome, string email, DateTime data_nascita, string telefono, string password, string sesso,List<IscrizioneModel> iscrizioni) : base(idCliente, nome, cognome, email, data_nascita, telefono,password, sesso)
+        public ClienteModel(string codice_fiscale, string nome, string cognome, string email, DateTime data_nascita, string telefono, string password, string sesso,List<IscrizioneModel> iscrizioni) : base(codice_fiscale, nome, cognome, email, data_nascita, telefono,password, sesso)
         {
             this.iscrizioni = iscrizioni;
         }
 
         ///Lista delle iscrizioni effettuate dal cliente presso la nostra struttura
 
-        public ClienteModel(int idCliente, string nome, string cognome, string email, DateTime data_nascita, string telefono,string password, string sesso) : base(idCliente, nome, cognome, email, data_nascita, telefono,password, sesso)
-        {
-
-        }
-
-        public ClienteModel(string nome, string cognome, string email, DateTime data_nascita, string telefono, string password, string sesso) : base(nome, cognome, email, data_nascita, telefono, password, sesso)
+        public ClienteModel(string codice_fiscale, string nome, string cognome, string email, DateTime data_nascita, string telefono,string password, string sesso) : base(codice_fiscale, nome, cognome, email, data_nascita, telefono,password, sesso)
         {
 
         }

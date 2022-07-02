@@ -13,7 +13,7 @@ namespace WebGymTrivelloniBattaglioli.Models
     [DataContract()]
     public abstract class PersonaModel
     {
-        int id;
+        string codice_fiscale;
         string nome;
         string cognome;
         string email;
@@ -22,9 +22,9 @@ namespace WebGymTrivelloniBattaglioli.Models
         string password;
         definizioneSesso sesso;
 
-        protected PersonaModel(int id, string nome, string cognome, string email, DateTime data_nascita, string telefono, string password, string sesso)
+        protected PersonaModel(string codice_fiscale, string nome, string cognome, string email, DateTime data_nascita, string telefono, string password, string sesso)
         {
-            this.id = id;
+            this.codice_fiscale = codice_fiscale;
             this.nome = nome;
             this.cognome = cognome;
             this.email = email;
@@ -37,21 +37,6 @@ namespace WebGymTrivelloniBattaglioli.Models
                 this.sesso = definizioneSesso.F;
         }
 
-        protected PersonaModel( string nome, string cognome, string email, DateTime data_nascita, string telefono, string password, string sesso)
-        {
-            this.nome = nome;
-            this.cognome = cognome;
-            this.email = email;
-            this.data_nascita = data_nascita;
-            this.telefono = telefono;
-            this.password = password;
-            if (sesso == "M")
-                this.sesso = definizioneSesso.M;
-            else
-                this.sesso = definizioneSesso.F;
-        }
-
-        public int Id { get => id; set => id = value; }
 
         [DataMember]
         [Required(ErrorMessage = "Devi inserire il nome")]
@@ -95,9 +80,10 @@ namespace WebGymTrivelloniBattaglioli.Models
         ///string must contain at least one lowercase letter.
         public string Password { get => password; set => password = value; }
 
-        ///Nell'html della pagina per l'inserimento:<div class="col-md-10">  
-        //  @Html.EnumDropDownListFor(model => model.Sex)  
-        //@Html.ValidationMessageFor(model => model.Sex)  
-        //</div>
+        [DataMember]
+        [Required(ErrorMessage = "Devi immettere il tuo codice fiscale!")]
+        //[RegularExpression(@"/^(?:[B-DF-HJ-NP-TV-Z](?:[AEIOU]{2}|[AEIOU]X)|[AEIOU]{2}X|[B-DF-HJ-NP-TV-Z]{2}[A-Z]){2}[\dLMNP-V]{2}(?:[A-EHLMPR-T](?:[04LQ][1-9MNP-V]|[1256LMRS][\dLMNP-V])|[DHPS][37PT][0L]|[ACELMRT][37PT][01LM])(?:[A-MZ][1-9MNP-V][\dLMNP-V]{2}|[A-M][0L](?:[\dLMNP-V][1-9MNP-V]|[1-9MNP-V][0L]))[A-Z]$/i", ErrorMessage = "Formato codice fiscale non valido!!")]
+        [Display(Name = "Codice fiscale")]
+        public string Codice_fiscale { get => codice_fiscale; set => codice_fiscale = value; }
     }
 }

@@ -7,9 +7,17 @@
 <h2>ConfirmUserData</h2>
 
 <div>
-    <h4>ClienteModel</h4>
+    <h4>DATI INSERITI</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codice_fiscale) <!--LABEL CON SCRITTO 'CODICE FISCALE'-->
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codice_fiscale)<!--CAMPO CON SCRITTO IL VALORE DEL CODICE FISCALE-->
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
@@ -54,5 +62,5 @@
 </div>
 <p>
     @Html.ActionLink("Confirm", "InserisciClientedb", "Home") |
-    @Html.ActionLink("Back to List", "Registrazione","Home")
+    @Html.ActionLink("Back to List", "Registrati","Home")
 </p>

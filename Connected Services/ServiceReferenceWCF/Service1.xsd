@@ -32,6 +32,7 @@
   <xs:element name="InserisciCliente">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="codice_fiscale" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="nome" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="cognome" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />

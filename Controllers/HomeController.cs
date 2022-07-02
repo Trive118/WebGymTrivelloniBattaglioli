@@ -37,6 +37,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
         {
             if (ModelState.IsValid)  ///controllo se il format è stato compilato correttamente
             { 
+                string codice_fiscale = Request["Codice_fiscale"];
                 string nome = Request["Nome"];
                 string cognome = Request["Cognome"];
                 string mail = Request["Email"];
@@ -44,7 +45,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 DateTime data_nascita = Convert.ToDateTime(Request["Data_nascita"]);
                 string sesso = Request["Sesso"];
                 string telefono = Request["Telefono"];
-                loggedClient = new ClienteModel(nome, cognome, mail, data_nascita, telefono, password, sesso);
+                loggedClient = new ClienteModel(codice_fiscale, nome, cognome, mail, data_nascita, telefono, password, sesso);
                 return View("ConfirmUserDataView",loggedClient);  ///Lancio la vista ConfirmUserDataView, passando come oggetto model
                                                                   ///da visulizzare i dati contenuti nell'oggetto loggedClient
             }
@@ -65,7 +66,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             else
                 sesso = "F";
             var wcfClient = new ServiceReferenceWCF.ServiceClient();
-            wcfClient.InserisciCliente(loggedClient.Nome, loggedClient.Cognome, loggedClient.Email,generateStringByDateForMySql(loggedClient.Data_nascita) , loggedClient.Telefono, loggedClient.Password, sesso);
+            wcfClient.InserisciCliente(loggedClient.Codice_fiscale,loggedClient.Nome, loggedClient.Cognome, loggedClient.Email,generateStringByDateForMySql(loggedClient.Data_nascita) , loggedClient.Telefono, loggedClient.Password, sesso);
             return null;
         }
     }

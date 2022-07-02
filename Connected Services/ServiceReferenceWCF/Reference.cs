@@ -91,10 +91,10 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType> GetDataUsingDataContractAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InserisciCliente", ReplyAction="http://tempuri.org/IService/InserisciClienteResponse")]
-        bool InserisciCliente(string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso);
+        bool InserisciCliente(string codice_fiscale, string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InserisciCliente", ReplyAction="http://tempuri.org/IService/InserisciClienteResponse")]
-        System.Threading.Tasks.Task<bool> InserisciClienteAsync(string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso);
+        System.Threading.Tasks.Task<bool> InserisciClienteAsync(string codice_fiscale, string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -140,12 +140,12 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public bool InserisciCliente(string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso) {
-            return base.Channel.InserisciCliente(nome, cognome, mail, data_nascita, telefono, password, sesso);
+        public bool InserisciCliente(string codice_fiscale, string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso) {
+            return base.Channel.InserisciCliente(codice_fiscale, nome, cognome, mail, data_nascita, telefono, password, sesso);
         }
         
-        public System.Threading.Tasks.Task<bool> InserisciClienteAsync(string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso) {
-            return base.Channel.InserisciClienteAsync(nome, cognome, mail, data_nascita, telefono, password, sesso);
+        public System.Threading.Tasks.Task<bool> InserisciClienteAsync(string codice_fiscale, string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso) {
+            return base.Channel.InserisciClienteAsync(codice_fiscale, nome, cognome, mail, data_nascita, telefono, password, sesso);
         }
     }
 }
