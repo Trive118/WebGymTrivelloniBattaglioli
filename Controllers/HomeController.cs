@@ -71,7 +71,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                     return View("ErrorPage");
                 }
             }
-            return View("ErrorPage");
+            return View("ErrorPage"); //TRIVE SEI SICURO CHE VADA BENE QUI QUEL RETURN?? :/
         }
 
         private string generateStringByDateForMySql(DateTime date)
