@@ -7,7 +7,7 @@
 <h2>ChooseContract</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("back", "Registrati","Home")
 </p>
 <table class="table">
     <tr>
@@ -20,26 +20,32 @@
         <th>
             @Html.DisplayNameFor(model => model.Durata)
         </th>
-        <th></th>
+        <th>Scelata</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descrizione)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prezzo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Durata)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        using (Html.BeginForm("SceltaContrattoUtente", "Home"))
+        {
+            @Html.AntiForgeryToken()
+            <tr>
+                <td>
+                    <!--INPUT NASCOTI PER PRELEVARI I VALORI NECESSARI CHE POI VERRANNO MANDATI AL CLICK DELL'IMMAGINE AL CONTROLLER'-->
+                    <input value="@item.Id" name="Id" style="display:none" />
+                    @Html.DisplayFor(modelItem => item.Descrizione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezzo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Durata)
+                </td>
+                <!--METTERE MAGARI UNA PICCOLA IMMAGINE CON LA SPUNTA O CHECK BUTTON PER EFFETTUARE LA SCELTA-->
+                <td>
+                    <button type="submit"><img src="\Images\confirm.png" style="height:20px;width:20px;" /></button>
+                </td>
+            </tr>
+        }
+    }
 
 </table>

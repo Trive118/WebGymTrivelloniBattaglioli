@@ -171,12 +171,6 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceWCF.IService")]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        string GetData(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
         WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType GetDataUsingDataContract(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType composite);
         
@@ -194,6 +188,12 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAvailableContracts", ReplyAction="http://tempuri.org/IService/GetAvailableContractsResponse")]
         System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO[]> GetAvailableContractsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddContractToClient", ReplyAction="http://tempuri.org/IService/AddContractToClientResponse")]
+        bool AddContractToClient(int id, string codice_fiscale, string startDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddContractToClient", ReplyAction="http://tempuri.org/IService/AddContractToClientResponse")]
+        System.Threading.Tasks.Task<bool> AddContractToClientAsync(int id, string codice_fiscale, string startDate);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -223,14 +223,6 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
-        }
-        
         public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType GetDataUsingDataContract(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
@@ -253,6 +245,14 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO[]> GetAvailableContractsAsync() {
             return base.Channel.GetAvailableContractsAsync();
+        }
+        
+        public bool AddContractToClient(int id, string codice_fiscale, string startDate) {
+            return base.Channel.AddContractToClient(id, codice_fiscale, startDate);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddContractToClientAsync(int id, string codice_fiscale, string startDate) {
+            return base.Channel.AddContractToClientAsync(id, codice_fiscale, startDate);
         }
     }
 }

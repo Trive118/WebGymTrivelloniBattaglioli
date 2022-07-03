@@ -22,6 +22,7 @@ namespace WebGymTrivelloniBattaglioli.Models
             this.durata = durata; ///in mesi
         }
 
+        [DataMember]
         public int Id { get => id; set => id = value; }
 
         [DataMember]
