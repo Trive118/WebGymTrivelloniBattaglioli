@@ -40,31 +40,38 @@ namespace WebGymTrivelloniBattaglioli.Controllers
         public ActionResult HandleConfirmClick()
         {
             if (ModelState.IsValid)  ///controllo se il format è stato compilato correttamente
-            { 
-                string codice_fiscale = Request["Codice_fiscale"];
-                string nome = Request["Nome"];
-                string cognome = Request["Cognome"];
-                string mail = Request["Email"];
-                string password = Request["Password"];
-                DateTime data_nascita = Convert.ToDateTime(Request["Data_nascita"]);
-                ///VALE 0 SE ABBIAMO SCLETO IL PRIMO CAMPO DEL MENU' A TENDINA, CIOE' 'M', OPPURE VALE
-                ///1 SE ABBIAMO SCELTO IL SECONDO ELEMENTO DEL MENU' A TENDINA CIOE' 'F'.
-                string sesso = Request["Sesso"];
-                if (sesso == "0")
-                    sesso = "M";
-                else
-                    sesso = "F";
-                ///MessageBox.Show(sesso); DEBUG, MOSTRA FINESTRA DI WINDOWS CON OUTPUT
-                string telefono = Request["Telefono"];
-                if(!wcfClient.AlreadyRegistered(codice_fiscale))
+            {
+                try
                 {
-                    loggedClient = new ClienteModel(codice_fiscale, nome, cognome, mail, data_nascita, telefono, password, sesso);
-                    return View("ConfirmUserDataView", loggedClient);  ///Lancio la vista ConfirmUserDataView, passando come oggetto model
-                                                                       ///da visulizzare i dati contenuti nell'oggetto loggedClient
+                    string codice_fiscale = Request["Codice_fiscale"];
+                    string nome = Request["Nome"];
+                    string cognome = Request["Cognome"];
+                    string mail = Request["Email"];
+                    string password = Request["Password"];
+                    DateTime data_nascita = Convert.ToDateTime(Request["Data_nascita"]);
+                    ///VALE 0 SE ABBIAMO SCLETO IL PRIMO CAMPO DEL MENU' A TENDINA, CIOE' 'M', OPPURE VALE
+                    ///1 SE ABBIAMO SCELTO IL SECONDO ELEMENTO DEL MENU' A TENDINA CIOE' 'F'.
+                    string sesso = Request["Sesso"];
+                    if (sesso == "0")
+                        sesso = "M";
+                    else
+                        sesso = "F";
+                    ///MessageBox.Show(sesso); DEBUG, MOSTRA FINESTRA DI WINDOWS CON OUTPUT
+                    string telefono = Request["Telefono"];
+                    if (!wcfClient.AlreadyRegistered(codice_fiscale))
+                    {
+                        loggedClient = new ClienteModel(codice_fiscale, nome, cognome, mail, data_nascita, telefono, password, sesso);
+                        return View("ConfirmUserDataView", loggedClient);  ///Lancio la vista ConfirmUserDataView, passando come oggetto model
+                                                                           ///da visulizzare i dati contenuti nell'oggetto loggedClient
+                    }
+                    return View("GiaRegistrato");
                 }
-                return View("GiaRegistrato");
+                catch (Exception ex)
+                {
+                    return View("ErrorPage");
+                }
             }
-            return null;
+            return View("ErrorPage");
         }
 
         private string generateStringByDateForMySql(DateTime date)
@@ -83,15 +90,22 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 sesso = "M";
             else
                 sesso = "F";
-            wcfClient.InserisciCliente(loggedClient.Codice_fiscale,loggedClient.Nome, loggedClient.Cognome, loggedClient.Email,generateStringByDateForMySql(loggedClient.Data_nascita) , loggedClient.Telefono, loggedClient.Password, sesso);
-            ///FINE DELL'INSERIMENTO DEI DATI DELL'UTENTE NEL DATABSE
-            ///------------------------------------------------------
-            ///DOWLOAD DI TUTTI I CONTRATTI DISPONIBILI DA MOSTRARE ALL'UTENTE NELLA SEZIONE SUCCESSIVA
-            List<ContractDTO> contracts_generics = wcfClient.GetAvailableContracts().ToList();
-            List<ContrattoModel> contracts = new List<ContrattoModel>();
-            foreach(ContractDTO contract in contracts_generics)
-                contracts.Add(new ContrattoModel(contract.id, contract.descrizione, contract.prezzo, contract.durata));
-            return View("ChooseContract",contracts);
+            try
+            {
+                wcfClient.InserisciCliente(loggedClient.Codice_fiscale, loggedClient.Nome, loggedClient.Cognome, loggedClient.Email, generateStringByDateForMySql(loggedClient.Data_nascita), loggedClient.Telefono, loggedClient.Password, sesso);
+                ///FINE DELL'INSERIMENTO DEI DATI DELL'UTENTE NEL DATABSE
+                ///------------------------------------------------------
+                ///DOWLOAD DI TUTTI I CONTRATTI DISPONIBILI DA MOSTRARE ALL'UTENTE NELLA SEZIONE SUCCESSIVA
+                List<ContractDTO> contracts_generics = wcfClient.GetAvailableContracts().ToList();
+                List<ContrattoModel> contracts = new List<ContrattoModel>();
+                foreach (ContractDTO contract in contracts_generics)
+                    contracts.Add(new ContrattoModel(contract.id, contract.descrizione, contract.prezzo, contract.durata));
+                return View("ChooseContract", contracts);
+            }
+            catch (Exception ex)
+            {
+                return View("ErrorPage");
+            }
         }
 
         //VIENE LANCIATO QUANDO L'UTENTE HA SCELTO UNO TRA I POSSIBILI CONTRATTI PER ISCRIVERSI, E 
@@ -100,10 +114,17 @@ namespace WebGymTrivelloniBattaglioli.Controllers
         [HttpPost]
         public ActionResult SceltaContrattoUtente()
         {
-            int id = Convert.ToInt32(Request["Id"]);
-            string data_iscrizione = generateStringByDateForMySql(DateTime.Now);
-            wcfClient.AddContractToClient(id, loggedClient.Codice_fiscale, data_iscrizione);
-            return View();
+            try
+            {
+                int id = Convert.ToInt32(Request["Id"]);
+                string data_iscrizione = generateStringByDateForMySql(DateTime.Now);
+                wcfClient.AddContractToClient(id, loggedClient.Codice_fiscale, data_iscrizione);
+                return View();
+            }
+            catch(Exception ex)
+            {
+                return View("ErrorPage");
+            }
         }
 
         /// VIENE RICHIAMATO QUANDO L'UTENTE IMMETTE LE SUE CREDENZIALI NEL FORM DI LOGIN.
@@ -112,11 +133,18 @@ namespace WebGymTrivelloniBattaglioli.Controllers
         [HttpPost]
         public ActionResult EffettuaLogin()
         {
-            string mail = Request["Email"];
-            string password = Request["Password"];
-            if (wcfClient.ConvalidLogIn(mail, password))
-                return View("MainPageClient"); ///PAGINA DA CREARE!!
-            return View("DatiErratiLogin");
+            try
+            {
+                string mail = Request["Email"];
+                string password = Request["Password"];
+                if (wcfClient.ConvalidLogIn(mail, password))
+                    return View("MainPageClient"); ///PAGINA DA CREARE!!
+                return View("DatiErratiLogin");
+            }
+            catch(Exception ex)
+            {
+                return View("ErrorPage");
+            }
         }
     }
 }

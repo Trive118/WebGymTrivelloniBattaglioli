@@ -213,6 +213,7 @@
     <Content Include="Images\confirm.png" />
     <Content Include="Images\contact-bg.jpg" />
     <Content Include="Images\cta-bg.jpg" />
+    <Content Include="Images\error.png" />
     <Content Include="Images\features-first-icon.png" />
     <Content Include="Images\first-trainer.jpg" />
     <Content Include="Images\gym-video.mp4" />
@@ -280,6 +281,7 @@
     <Content Include="Views\Home\GiaRegistrato.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Home\DatiErratiLogin.cshtml" />
+    <Content Include="Views\Home\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
