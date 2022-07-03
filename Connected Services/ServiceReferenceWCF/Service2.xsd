@@ -7,4 +7,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:complexType name="ArrayOfContractDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContractDTO" nillable="true" type="tns:ContractDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContractDTO" nillable="true" type="tns:ArrayOfContractDTO" />
+  <xs:complexType name="ContractDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="durata" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="prezzo" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContractDTO" nillable="true" type="tns:ContractDTO" />
 </xs:schema>

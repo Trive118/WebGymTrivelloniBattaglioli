@@ -36,7 +36,7 @@ namespace WebGymTrivelloniBattaglioli.Models
 
         [DataMember]
         [Required(ErrorMessage = "Devi inserire una durata del contratto!")]
-        [Display(Name = "Durata contratto")]
+        [Display(Name = "Durata contratto (mesi)")]
         [DataType(DataType.Duration)]
         public int Durata { get => durata; set => durata = value; }
 

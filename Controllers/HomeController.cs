@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebGymTrivelloniBattaglioli.Models;
+using WebGymTrivelloniBattaglioli.ServiceReferenceWCF;
 
 namespace WebGymTrivelloniBattaglioli.Controllers
 {
@@ -67,7 +68,14 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 sesso = "F";
             var wcfClient = new ServiceReferenceWCF.ServiceClient();
             wcfClient.InserisciCliente(loggedClient.Codice_fiscale,loggedClient.Nome, loggedClient.Cognome, loggedClient.Email,generateStringByDateForMySql(loggedClient.Data_nascita) , loggedClient.Telefono, loggedClient.Password, sesso);
-            return null;
+            ///FINE DELL'INSERIMENTO DEI DATI DELL'UTENTE NEL DATABSE
+            ///------------------------------------------------------
+            ///DOWLOAD DI TUTTI I CONTRATTI DISPONIBILI DA MOSTRARE ALL'UTENTE NELLA SEZIONE SUCCESSIVA
+            List<ContractDTO> contracts_generics = wcfClient.GetAvailableContracts().ToList();
+            List<ContrattoModel> contracts = new List<ContrattoModel>();
+            foreach(ContractDTO contract in contracts_generics)
+                contracts.Add(new ContrattoModel(contract.id, contract.descrizione, contract.prezzo, contract.durata));
+            return View("ChooseContract",contracts);
         }
     }
 }

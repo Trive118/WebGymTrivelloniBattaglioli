@@ -74,6 +74,99 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ContractDTO", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class ContractDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descrizioneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int durataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double prezzoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descrizione {
+            get {
+                return this.descrizioneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descrizioneField, value) != true)) {
+                    this.descrizioneField = value;
+                    this.RaisePropertyChanged("descrizione");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int durata {
+            get {
+                return this.durataField;
+            }
+            set {
+                if ((this.durataField.Equals(value) != true)) {
+                    this.durataField = value;
+                    this.RaisePropertyChanged("durata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double prezzo {
+            get {
+                return this.prezzoField;
+            }
+            set {
+                if ((this.prezzoField.Equals(value) != true)) {
+                    this.prezzoField = value;
+                    this.RaisePropertyChanged("prezzo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceWCF.IService")]
     public interface IService {
@@ -95,6 +188,12 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InserisciCliente", ReplyAction="http://tempuri.org/IService/InserisciClienteResponse")]
         System.Threading.Tasks.Task<bool> InserisciClienteAsync(string codice_fiscale, string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAvailableContracts", ReplyAction="http://tempuri.org/IService/GetAvailableContractsResponse")]
+        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO[] GetAvailableContracts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAvailableContracts", ReplyAction="http://tempuri.org/IService/GetAvailableContractsResponse")]
+        System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO[]> GetAvailableContractsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -146,6 +245,14 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public System.Threading.Tasks.Task<bool> InserisciClienteAsync(string codice_fiscale, string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso) {
             return base.Channel.InserisciClienteAsync(codice_fiscale, nome, cognome, mail, data_nascita, telefono, password, sesso);
+        }
+        
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO[] GetAvailableContracts() {
+            return base.Channel.GetAvailableContracts();
+        }
+        
+        public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO[]> GetAvailableContractsAsync() {
+            return base.Channel.GetAvailableContractsAsync();
         }
     }
 }

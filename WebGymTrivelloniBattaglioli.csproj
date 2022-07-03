@@ -239,6 +239,9 @@
     <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -270,6 +273,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Registrati.cshtml" />
     <Content Include="Views\Home\ConfirmUserDataView.cshtml" />
+    <Content Include="Views\Home\ChooseContract.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
