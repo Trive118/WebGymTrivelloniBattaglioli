@@ -31,6 +31,18 @@
   <wsdl:message name="IService_AddContractToClient_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddContractToClientResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_AlreadyRegistered_InputMessage">
+    <wsdl:part name="parameters" element="tns:AlreadyRegistered" />
+  </wsdl:message>
+  <wsdl:message name="IService_AlreadyRegistered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AlreadyRegisteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_ConvalidLogIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConvalidLogIn" />
+  </wsdl:message>
+  <wsdl:message name="IService_ConvalidLogIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConvalidLogInResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetDataUsingDataContract">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContract" message="tns:IService_GetDataUsingDataContract_InputMessage" />
@@ -47,6 +59,14 @@
     <wsdl:operation name="AddContractToClient">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AddContractToClient" message="tns:IService_AddContractToClient_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/AddContractToClientResponse" message="tns:IService_AddContractToClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AlreadyRegistered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AlreadyRegistered" message="tns:IService_AlreadyRegistered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AlreadyRegisteredResponse" message="tns:IService_AlreadyRegistered_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvalidLogIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/ConvalidLogIn" message="tns:IService_ConvalidLogIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ConvalidLogInResponse" message="tns:IService_ConvalidLogIn_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -80,6 +100,24 @@
     </wsdl:operation>
     <wsdl:operation name="AddContractToClient">
       <soap:operation soapAction="http://tempuri.org/IService/AddContractToClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlreadyRegistered">
+      <soap:operation soapAction="http://tempuri.org/IService/AlreadyRegistered" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvalidLogIn">
+      <soap:operation soapAction="http://tempuri.org/IService/ConvalidLogIn" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

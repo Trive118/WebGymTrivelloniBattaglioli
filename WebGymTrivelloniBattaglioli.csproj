@@ -277,6 +277,9 @@
     <Content Include="Views\Home\ConfirmUserDataView.cshtml" />
     <Content Include="Views\Home\ChooseContract.cshtml" />
     <Content Include="Views\Home\SceltaContrattoUtente.cshtml" />
+    <Content Include="Views\Home\GiaRegistrato.cshtml" />
+    <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Home\DatiErratiLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

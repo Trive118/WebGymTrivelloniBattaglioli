@@ -30,7 +30,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             return View();
         }
 
-        public ActionResult UtenteView()
+        public ActionResult LogIn()
         {
             return View();
         }
@@ -56,9 +56,13 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                     sesso = "F";
                 ///MessageBox.Show(sesso); DEBUG, MOSTRA FINESTRA DI WINDOWS CON OUTPUT
                 string telefono = Request["Telefono"];
-                loggedClient = new ClienteModel(codice_fiscale, nome, cognome, mail, data_nascita, telefono, password, sesso);
-                return View("ConfirmUserDataView",loggedClient);  ///Lancio la vista ConfirmUserDataView, passando come oggetto model
-                                                                  ///da visulizzare i dati contenuti nell'oggetto loggedClient
+                if(!wcfClient.AlreadyRegistered(codice_fiscale))
+                {
+                    loggedClient = new ClienteModel(codice_fiscale, nome, cognome, mail, data_nascita, telefono, password, sesso);
+                    return View("ConfirmUserDataView", loggedClient);  ///Lancio la vista ConfirmUserDataView, passando come oggetto model
+                                                                       ///da visulizzare i dati contenuti nell'oggetto loggedClient
+                }
+                return View("GiaRegistrato");
             }
             return null;
         }
@@ -100,6 +104,19 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             string data_iscrizione = generateStringByDateForMySql(DateTime.Now);
             wcfClient.AddContractToClient(id, loggedClient.Codice_fiscale, data_iscrizione);
             return View();
+        }
+
+        /// VIENE RICHIAMATO QUANDO L'UTENTE IMMETTE LE SUE CREDENZIALI NEL FORM DI LOGIN.
+        /// INTERROGA IL DATABASE TRAMITE WCF E SE L'UTENTE SI è LOGGATO CORRETTAMENTE GLI PERMETTE
+        /// DI ENTRARE NELLA SUA AREA PERSONALE, ALTRIMENTI VISUALIZZA UNA PAGINA DI ERRORE
+        [HttpPost]
+        public ActionResult EffettuaLogin()
+        {
+            string mail = Request["Email"];
+            string password = Request["Password"];
+            if (wcfClient.ConvalidLogIn(mail, password))
+                return View("MainPageClient"); ///PAGINA DA CREARE!!
+            return View("DatiErratiLogin");
         }
     }
 }

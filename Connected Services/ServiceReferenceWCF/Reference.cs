@@ -194,6 +194,18 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddContractToClient", ReplyAction="http://tempuri.org/IService/AddContractToClientResponse")]
         System.Threading.Tasks.Task<bool> AddContractToClientAsync(int id, string codice_fiscale, string startDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AlreadyRegistered", ReplyAction="http://tempuri.org/IService/AlreadyRegisteredResponse")]
+        bool AlreadyRegistered(string codice_fiscale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AlreadyRegistered", ReplyAction="http://tempuri.org/IService/AlreadyRegisteredResponse")]
+        System.Threading.Tasks.Task<bool> AlreadyRegisteredAsync(string codice_fiscale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ConvalidLogIn", ReplyAction="http://tempuri.org/IService/ConvalidLogInResponse")]
+        bool ConvalidLogIn(string mail, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ConvalidLogIn", ReplyAction="http://tempuri.org/IService/ConvalidLogInResponse")]
+        System.Threading.Tasks.Task<bool> ConvalidLogInAsync(string mail, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -253,6 +265,22 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public System.Threading.Tasks.Task<bool> AddContractToClientAsync(int id, string codice_fiscale, string startDate) {
             return base.Channel.AddContractToClientAsync(id, codice_fiscale, startDate);
+        }
+        
+        public bool AlreadyRegistered(string codice_fiscale) {
+            return base.Channel.AlreadyRegistered(codice_fiscale);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AlreadyRegisteredAsync(string codice_fiscale) {
+            return base.Channel.AlreadyRegisteredAsync(codice_fiscale);
+        }
+        
+        public bool ConvalidLogIn(string mail, string password) {
+            return base.Channel.ConvalidLogIn(mail, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ConvalidLogInAsync(string mail, string password) {
+            return base.Channel.ConvalidLogInAsync(mail, password);
         }
     }
 }

@@ -64,4 +64,33 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AlreadyRegistered">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codice_fiscale" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlreadyRegisteredResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AlreadyRegisteredResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConvalidLogIn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConvalidLogInResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConvalidLogInResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
