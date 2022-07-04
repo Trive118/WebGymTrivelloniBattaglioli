@@ -172,6 +172,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 {
                     string email = Request["Email"];
                     string password = Request["Password"];
+                    //MessageBox.Show(email+","+password);
                     if (wcfClient.CercaPersonalTrainerNelDB(email, password))
                     {
                         return View("Index"); //PER ORA LO REINDIRIZZO IN HOME PAGE
@@ -185,5 +186,8 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 }
             return View("ErrorPage");
         }
+
+        ///cxoisdfowi
+        ///iblcdciubve
     }
 }
