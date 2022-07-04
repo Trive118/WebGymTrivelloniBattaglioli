@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,10 +10,10 @@ using WebGymTrivelloniBattaglioli.ServiceReferenceWCF;
 
 namespace WebGymTrivelloniBattaglioli.Controllers
 {
-    //Commento 04/07/2022 dani
     public class HomeController : Controller
     {
         static ClienteModel loggedClient;
+        static TrainerModel loggedTrainer;
         ServiceClient wcfClient = new ServiceReferenceWCF.ServiceClient();
         public ActionResult Index()
         {
@@ -106,7 +107,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 List<ContractDTO> contracts_generics = wcfClient.GetAvailableContracts().ToList();
                 List<ContrattoModel> contracts = new List<ContrattoModel>();
                 foreach (ContractDTO contract in contracts_generics)
-                    contracts.Add(new ContrattoModel(contract.id, contract.descrizione, contract.prezzo, contract.durata));
+                    contracts.Add(new ContrattoModel(contract.Id, contract.Descrizione, contract.Prezzo, contract.Durata));
                 return View("ChooseContract", contracts);
             }
             catch (Exception ex)
@@ -152,10 +153,42 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 string mail = Request["Email"];
                 string password = Request["Password"];
                 if (wcfClient.ConvalidLogIn(mail, password))
-                    return View("MainPageClient"); ///PAGINA DA CREARE!! MainPageClient
+                {
+                    UserDTO user = wcfClient.GetUserByEmail(mail); //trova la persona con la mail passata per argomento
+                    loggedClient = new ClienteModel(user.codice_fiscale,user.nome,user.cognome,user.mail,user.data_nascita,user.telefono,user.password,user.sesso); //istanziato oggetto
+                    ContractDTO c = wcfClient.GetUserActiveContract(loggedClient.Codice_fiscale);
+                    ContrattoModel activeContract = new ContrattoModel(c.Id, c.Descrizione, c.Prezzo, c.Durata);
+                    int giorni_scadenza = (c.Data_inizio.AddMonths(activeContract.Durata) - DateTime.Now).Days;
+                    dynamic mymodel = new ExpandoObject();
+                    mymodel.Cliente = loggedClient;
+                    mymodel.Contratto = activeContract;
+                    mymodel.GiorniScadenza = giorni_scadenza;
+                    mymodel.DataInizio = c.Data_inizio;
+                    mymodel.DataScadenza = c.Data_inizio.AddMonths(c.Durata);
+                    return View("MainPageClient", mymodel);
+                }
                 return View("DatiErratiLogin");
             }
             catch(Exception ex)
+            {
+                ViewData["ErrorMessage"] = ex.Message;
+                return View("ErrorPage");
+            }
+        }
+
+        /// VIENE RICHIAMATO QUANDO L'UTENTE DALLA SUA AREA PERSONALE VUOLE VISUALIZZARE LA PROPRIA ATTUALE
+        /// SCHEDA DI ALLENAMENTO
+        [HttpPost]
+        public ActionResult ShowScheda()
+        {
+            try
+            {
+                SchedaDTO schedaAttivaDTO = wcfClient.GetSchedeUtente(loggedClient.Codice_fiscale).ToList().FirstOrDefault(scheda => scheda.In_uso == true); ///torna la prima scheda che viene trovata come attiva
+                //SchedaModel scheda_attiva = new SchedaModel(schedaAttivaDTO.Id,schedaAttivaDTO.Titolo,schedaAttivaDTO.Durata,schedaAttivaDTO.In_uso,)
+                EsercizioModel esercizio;
+                return null;
+            }
+            catch (Exception ex)
             {
                 ViewData["ErrorMessage"] = ex.Message;
                 return View("ErrorPage");
@@ -175,7 +208,9 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                     string password = Request["Password"];
                     if (wcfClient.CercaPersonalTrainerNelDB(email, password))
                     {
-                        return View("Index"); //PER ORA LO REINDIRIZZO IN HOME PAGE
+                        UserDTO tmpTrainer = wcfClient.GetUserByEmail(email);
+                        loggedTrainer = new TrainerModel(tmpTrainer.codice_fiscale, tmpTrainer.nome, tmpTrainer.cognome, tmpTrainer.mail, tmpTrainer.data_nascita, tmpTrainer.telefono, tmpTrainer.password, tmpTrainer.sesso);
+                        return View("MainPageTrainer", loggedTrainer); //PER ORA LO REINDIRIZZO IN HOME PAGE
                     }
                     else return View("DatiErratiLogin");
                 }
@@ -184,6 +219,32 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                     ViewData["ErrorMessage"] = ex.Message;
                     return View("ErrorPage");
                 }
+            return View("ErrorPage");
+        }
+
+        [HttpPost]
+        public ActionResult CercaClientiConTrainer()
+        {
+            ///Questo metodo esegue una query cercando tutti i clienti associati
+            ///ad un determinato trainer. Si passa alla view una lista di oggetti
+            ///di tipo cliente e se ne stampano i dati.
+            List<UserDTO> risultato = new List<UserDTO>();
+            if(ModelState.IsValid)
+            {
+                try
+                {
+                    if ((risultato=wcfClient.CercaClientiAssociatiAlTrainer(loggedTrainer.Codice_fiscale).ToList()) != null)
+                    {
+                        return View("RiepilogoClienti", risultato);
+                    }
+                    else return View("MainPageTrainer");
+                }
+                catch(Exception ex)
+                {
+                    ViewData["ErrorMessage"] = ex.Message;
+                    return View("ErrorPage");
+                }
+            }
             return View("ErrorPage");
         }
     }

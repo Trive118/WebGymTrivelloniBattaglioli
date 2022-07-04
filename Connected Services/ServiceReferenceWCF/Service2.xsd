@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="CompositeType">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
-      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:58900/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ArrayOfContractDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ContractDTO" nillable="true" type="tns:ContractDTO" />
@@ -15,11 +9,78 @@
   <xs:element name="ArrayOfContractDTO" nillable="true" type="tns:ArrayOfContractDTO" />
   <xs:complexType name="ContractDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="descrizione" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="durata" type="xs:int" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="prezzo" type="xs:double" />
+      <xs:element minOccurs="0" name="Data_inizio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Durata" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Prezzo" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ContractDTO" nillable="true" type="tns:ContractDTO" />
+  <xs:complexType name="UserDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codice_fiscale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cognome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="data_nascita" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ruolo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sesso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDTO" nillable="true" type="tns:UserDTO" />
+  <xs:complexType name="ArrayOfUserDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDTO" nillable="true" type="tns:UserDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDTO" nillable="true" type="tns:ArrayOfUserDTO" />
+  <xs:complexType name="ArrayOfSchedaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SchedaDTO" nillable="true" type="tns:SchedaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSchedaDTO" nillable="true" type="tns:ArrayOfSchedaDTO" />
+  <xs:complexType name="SchedaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Caratteristica_esercizi" nillable="true" type="tns:ArrayOfCaratteristicaEsercizioDTO" />
+      <xs:element minOccurs="0" name="Cf_cliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cf_trainer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Durata" type="xs:int" />
+      <xs:element minOccurs="0" name="Esercizi" nillable="true" type="tns:ArrayOfEsercizioDTO" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="In_uso" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Titolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SchedaDTO" nillable="true" type="tns:SchedaDTO" />
+  <xs:complexType name="ArrayOfCaratteristicaEsercizioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaratteristicaEsercizioDTO" nillable="true" type="tns:CaratteristicaEsercizioDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaratteristicaEsercizioDTO" nillable="true" type="tns:ArrayOfCaratteristicaEsercizioDTO" />
+  <xs:complexType name="CaratteristicaEsercizioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Commento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Num_ripetizioni" type="xs:int" />
+      <xs:element minOccurs="0" name="Recupero" type="ser:duration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaratteristicaEsercizioDTO" nillable="true" type="tns:CaratteristicaEsercizioDTO" />
+  <xs:complexType name="ArrayOfEsercizioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EsercizioDTO" nillable="true" type="tns:EsercizioDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEsercizioDTO" nillable="true" type="tns:ArrayOfEsercizioDTO" />
+  <xs:complexType name="EsercizioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Immagine" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EsercizioDTO" nillable="true" type="tns:EsercizioDTO" />
 </xs:schema>

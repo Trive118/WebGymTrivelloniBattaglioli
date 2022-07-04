@@ -12,6 +12,7 @@ namespace WebGymTrivelloniBattaglioli.Models
         int id;
         string titolo;
         int durata; ///in mesi
+        bool in_uso; /// ci dice se la scheda è quella attualmete utilizzata dal cliente o meno
         TrainerModel trainer;  /// creatore della scheda
         ClienteModel cliente;   /// cliente che sta usufruendo di quella scheda
         List<EsercizioModel> esercizi;   //lista di esercizi contenuti nella scheda
@@ -19,13 +20,14 @@ namespace WebGymTrivelloniBattaglioli.Models
                                                                       //si trovano le caratteristiche che descrivono l'i-esimo
                                                                       //esercizio della lista 'esercizi'
 
-        public SchedaModel(int id, string titolo, int durata, TrainerModel trainer, ClienteModel cliente)
+        public SchedaModel(int id, string titolo, int durata, bool in_uso, TrainerModel trainer, ClienteModel cliente)
         {
             this.id = id;
             this.titolo = titolo;
             this.durata = durata;
             this.trainer = trainer;
             this.cliente = cliente;
+            this.in_uso = in_uso;
         }
 
         public int Id { get => id; set => id = value; }
@@ -41,5 +43,6 @@ namespace WebGymTrivelloniBattaglioli.Models
         public int Durata { get => durata; set => durata = value; }
         public TrainerModel Trainer { get => trainer; set => trainer = value; }
         public ClienteModel Cliente { get => cliente; set => cliente = value; }
+        public bool In_uso { get => in_uso; set => in_uso = value; }
     }
 }

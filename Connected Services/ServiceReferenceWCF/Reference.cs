@@ -15,18 +15,27 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ContractDTO", Namespace="http://schemas.datacontract.org/2004/07/")]
     [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ContractDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
+        private System.DateTime Data_inizioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
+        private string DescrizioneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DurataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double PrezzoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,27 +48,66 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
+        public System.DateTime Data_inizio {
             get {
-                return this.BoolValueField;
+                return this.Data_inizioField;
             }
             set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
+                if ((this.Data_inizioField.Equals(value) != true)) {
+                    this.Data_inizioField = value;
+                    this.RaisePropertyChanged("Data_inizio");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
+        public string Descrizione {
             get {
-                return this.StringValueField;
+                return this.DescrizioneField;
             }
             set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
+                if ((object.ReferenceEquals(this.DescrizioneField, value) != true)) {
+                    this.DescrizioneField = value;
+                    this.RaisePropertyChanged("Descrizione");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Durata {
+            get {
+                return this.DurataField;
+            }
+            set {
+                if ((this.DurataField.Equals(value) != true)) {
+                    this.DurataField = value;
+                    this.RaisePropertyChanged("Durata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Prezzo {
+            get {
+                return this.PrezzoField;
+            }
+            set {
+                if ((this.PrezzoField.Equals(value) != true)) {
+                    this.PrezzoField = value;
+                    this.RaisePropertyChanged("Prezzo");
                 }
             }
         }
@@ -76,24 +124,39 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ContractDTO", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDTO", Namespace="http://schemas.datacontract.org/2004/07/")]
     [System.SerializableAttribute()]
-    public partial class ContractDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class UserDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descrizioneField;
+        private string codice_fiscaleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int durataField;
+        private string cognomeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
+        private System.DateTime data_nascitaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double prezzoField;
+        private string mailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nomeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ruoloField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string sessoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string telefonoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -106,53 +169,413 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string descrizione {
+        public string codice_fiscale {
             get {
-                return this.descrizioneField;
+                return this.codice_fiscaleField;
             }
             set {
-                if ((object.ReferenceEquals(this.descrizioneField, value) != true)) {
-                    this.descrizioneField = value;
-                    this.RaisePropertyChanged("descrizione");
+                if ((object.ReferenceEquals(this.codice_fiscaleField, value) != true)) {
+                    this.codice_fiscaleField = value;
+                    this.RaisePropertyChanged("codice_fiscale");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int durata {
+        public string cognome {
             get {
-                return this.durataField;
+                return this.cognomeField;
             }
             set {
-                if ((this.durataField.Equals(value) != true)) {
-                    this.durataField = value;
-                    this.RaisePropertyChanged("durata");
+                if ((object.ReferenceEquals(this.cognomeField, value) != true)) {
+                    this.cognomeField = value;
+                    this.RaisePropertyChanged("cognome");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
+        public System.DateTime data_nascita {
             get {
-                return this.idField;
+                return this.data_nascitaField;
             }
             set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
+                if ((this.data_nascitaField.Equals(value) != true)) {
+                    this.data_nascitaField = value;
+                    this.RaisePropertyChanged("data_nascita");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double prezzo {
+        public string mail {
             get {
-                return this.prezzoField;
+                return this.mailField;
             }
             set {
-                if ((this.prezzoField.Equals(value) != true)) {
-                    this.prezzoField = value;
-                    this.RaisePropertyChanged("prezzo");
+                if ((object.ReferenceEquals(this.mailField, value) != true)) {
+                    this.mailField = value;
+                    this.RaisePropertyChanged("mail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nomeField, value) != true)) {
+                    this.nomeField = value;
+                    this.RaisePropertyChanged("nome");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
+                    this.passwordField = value;
+                    this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ruolo {
+            get {
+                return this.ruoloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ruoloField, value) != true)) {
+                    this.ruoloField = value;
+                    this.RaisePropertyChanged("ruolo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string sesso {
+            get {
+                return this.sessoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.sessoField, value) != true)) {
+                    this.sessoField = value;
+                    this.RaisePropertyChanged("sesso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.telefonoField, value) != true)) {
+                    this.telefonoField = value;
+                    this.RaisePropertyChanged("telefono");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SchedaDTO", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class SchedaDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO[] Caratteristica_eserciziField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Cf_clienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Cf_trainerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DurataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[] EserciziField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool In_usoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitoloField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO[] Caratteristica_esercizi {
+            get {
+                return this.Caratteristica_eserciziField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Caratteristica_eserciziField, value) != true)) {
+                    this.Caratteristica_eserciziField = value;
+                    this.RaisePropertyChanged("Caratteristica_esercizi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Cf_cliente {
+            get {
+                return this.Cf_clienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Cf_clienteField, value) != true)) {
+                    this.Cf_clienteField = value;
+                    this.RaisePropertyChanged("Cf_cliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Cf_trainer {
+            get {
+                return this.Cf_trainerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Cf_trainerField, value) != true)) {
+                    this.Cf_trainerField = value;
+                    this.RaisePropertyChanged("Cf_trainer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Durata {
+            get {
+                return this.DurataField;
+            }
+            set {
+                if ((this.DurataField.Equals(value) != true)) {
+                    this.DurataField = value;
+                    this.RaisePropertyChanged("Durata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[] Esercizi {
+            get {
+                return this.EserciziField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EserciziField, value) != true)) {
+                    this.EserciziField = value;
+                    this.RaisePropertyChanged("Esercizi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool In_uso {
+            get {
+                return this.In_usoField;
+            }
+            set {
+                if ((this.In_usoField.Equals(value) != true)) {
+                    this.In_usoField = value;
+                    this.RaisePropertyChanged("In_uso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Titolo {
+            get {
+                return this.TitoloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitoloField, value) != true)) {
+                    this.TitoloField = value;
+                    this.RaisePropertyChanged("Titolo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CaratteristicaEsercizioDTO", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class CaratteristicaEsercizioDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CommentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Num_ripetizioniField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.TimeSpan RecuperoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Commento {
+            get {
+                return this.CommentoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommentoField, value) != true)) {
+                    this.CommentoField = value;
+                    this.RaisePropertyChanged("Commento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Num_ripetizioni {
+            get {
+                return this.Num_ripetizioniField;
+            }
+            set {
+                if ((this.Num_ripetizioniField.Equals(value) != true)) {
+                    this.Num_ripetizioniField = value;
+                    this.RaisePropertyChanged("Num_ripetizioni");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan Recupero {
+            get {
+                return this.RecuperoField;
+            }
+            set {
+                if ((this.RecuperoField.Equals(value) != true)) {
+                    this.RecuperoField = value;
+                    this.RaisePropertyChanged("Recupero");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EsercizioDTO", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class EsercizioDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescrizioneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImmagineField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descrizione {
+            get {
+                return this.DescrizioneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescrizioneField, value) != true)) {
+                    this.DescrizioneField = value;
+                    this.RaisePropertyChanged("Descrizione");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Immagine {
+            get {
+                return this.ImmagineField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImmagineField, value) != true)) {
+                    this.ImmagineField = value;
+                    this.RaisePropertyChanged("Immagine");
                 }
             }
         }
@@ -170,12 +593,6 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceWCF.IService")]
     public interface IService {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType GetDataUsingDataContract(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType> GetDataUsingDataContractAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InserisciCliente", ReplyAction="http://tempuri.org/IService/InserisciClienteResponse")]
         bool InserisciCliente(string codice_fiscale, string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso);
@@ -212,6 +629,30 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ConvalidLogIn", ReplyAction="http://tempuri.org/IService/ConvalidLogInResponse")]
         System.Threading.Tasks.Task<bool> ConvalidLogInAsync(string mail, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByEmail", ReplyAction="http://tempuri.org/IService/GetUserByEmailResponse")]
+        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO GetUserByEmail(string mail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByEmail", ReplyAction="http://tempuri.org/IService/GetUserByEmailResponse")]
+        System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO> GetUserByEmailAsync(string mail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserActiveContract", ReplyAction="http://tempuri.org/IService/GetUserActiveContractResponse")]
+        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO GetUserActiveContract(string codice_fiscale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserActiveContract", ReplyAction="http://tempuri.org/IService/GetUserActiveContractResponse")]
+        System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO> GetUserActiveContractAsync(string codice_fiscale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CercaClientiAssociatiAlTrainer", ReplyAction="http://tempuri.org/IService/CercaClientiAssociatiAlTrainerResponse")]
+        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO[] CercaClientiAssociatiAlTrainer(string cod_fiscale_trainer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CercaClientiAssociatiAlTrainer", ReplyAction="http://tempuri.org/IService/CercaClientiAssociatiAlTrainerResponse")]
+        System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO[]> CercaClientiAssociatiAlTrainerAsync(string cod_fiscale_trainer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSchedeUtente", ReplyAction="http://tempuri.org/IService/GetSchedeUtenteResponse")]
+        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.SchedaDTO[] GetSchedeUtente(string cod_fiscale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSchedeUtente", ReplyAction="http://tempuri.org/IService/GetSchedeUtenteResponse")]
+        System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.SchedaDTO[]> GetSchedeUtenteAsync(string cod_fiscale);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -239,14 +680,6 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public ServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType GetDataUsingDataContract(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
-        }
-        
-        public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType> GetDataUsingDataContractAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
         public bool InserisciCliente(string codice_fiscale, string nome, string cognome, string mail, string data_nascita, string telefono, string password, string sesso) {
@@ -295,6 +728,38 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public System.Threading.Tasks.Task<bool> ConvalidLogInAsync(string mail, string password) {
             return base.Channel.ConvalidLogInAsync(mail, password);
+        }
+        
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO GetUserByEmail(string mail) {
+            return base.Channel.GetUserByEmail(mail);
+        }
+        
+        public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO> GetUserByEmailAsync(string mail) {
+            return base.Channel.GetUserByEmailAsync(mail);
+        }
+        
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO GetUserActiveContract(string codice_fiscale) {
+            return base.Channel.GetUserActiveContract(codice_fiscale);
+        }
+        
+        public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO> GetUserActiveContractAsync(string codice_fiscale) {
+            return base.Channel.GetUserActiveContractAsync(codice_fiscale);
+        }
+        
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO[] CercaClientiAssociatiAlTrainer(string cod_fiscale_trainer) {
+            return base.Channel.CercaClientiAssociatiAlTrainer(cod_fiscale_trainer);
+        }
+        
+        public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO[]> CercaClientiAssociatiAlTrainerAsync(string cod_fiscale_trainer) {
+            return base.Channel.CercaClientiAssociatiAlTrainerAsync(cod_fiscale_trainer);
+        }
+        
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.SchedaDTO[] GetSchedeUtente(string cod_fiscale) {
+            return base.Channel.GetSchedeUtente(cod_fiscale);
+        }
+        
+        public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.SchedaDTO[]> GetSchedeUtenteAsync(string cod_fiscale) {
+            return base.Channel.GetSchedeUtenteAsync(cod_fiscale);
         }
     }
 }

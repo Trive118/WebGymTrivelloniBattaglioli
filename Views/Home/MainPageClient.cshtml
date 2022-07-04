@@ -1,0 +1,113 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Benvenuto</title>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+</head>
+<body>
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h2>Area<em> Cliente</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <table style="text-align: left; border-style: groove; margin-bottom: 3%; margin-top: 3%; margin-left: auto; margin-right: auto; ">
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Codice Fiscale</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{string codice = Model.Cliente.Codice_fiscale; @codice}</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Nome</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{string nome = Model.Cliente.Nome; @nome}</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Cognome</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{string cognome = Model.Cliente.Cognome; @cognome}</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Email</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{string email = Model.Cliente.Email; @email}</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Telefono</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{string telefono = Model.Cliente.Telefono; @telefono}</td>
+        </tr>
+    </table>
+
+    <center><h2>Contratto attivo</h2></center>
+    <table style="text-align: left; border-style: groove; margin-bottom: 0.5%; margin-left: auto; margin-right: auto; ">
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Descrizione</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{string descrizione = Model.Contratto.Descrizione; @descrizione}</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Prezzo</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{double prezzo = Model.Contratto.Prezzo; @prezzo} €</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Data iscrizione</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{DateTime data = Model.DataInizio; @data}</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Durata</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{int durata = Model.Contratto.Durata; @durata}</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">Data scadenza</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{DateTime scadenza = Model.DataScadenza; @scadenza}</td>
+        </tr>
+    </table>
+    <center style="margin-bottom: 5%">
+        <img src="~/Images/attenzione.png" style="width:20px;height:20px;" />Il tuo abbonamento scadra' tra @{int giorni = Model.GiorniScadenza; @giorni} giorni
+    </center>
+    <center>
+        <table border="0" margin-left:auto; margin-right:auto;>
+            <tr>
+                <td>
+                    @using (Html.BeginForm("ShowScheda", "Home"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" value="Scheda attuale" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("ShowAllSchede", "Home"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" value="Cronologia schede" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("ContactTrainer", "Home"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" value="Contatta il tuo allenatore" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("LogOut", "Home"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" value="LogOut" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    }
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>

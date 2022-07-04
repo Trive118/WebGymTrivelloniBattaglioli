@@ -1,0 +1,82 @@
+﻿@model WebGymTrivelloniBattaglioli.Models.TrainerModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+    <title>Area Privata Trainer</title>
+</head>
+<body>
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h2>Area<em> Trainer</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <table style="border-style: groove; text-align: left; margin-bottom: 5%; margin-top: 3%; margin-left:auto; margin-right:auto;">
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">@Html.DisplayNameFor(model => model.Codice_fiscale)</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@Html.DisplayFor(model => model.Codice_fiscale)</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">@Html.DisplayNameFor(model => model.Nome)</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@Html.DisplayFor(model => model.Nome)</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">@Html.DisplayNameFor(model => model.Cognome)</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@Html.DisplayFor(model => model.Cognome)</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">@Html.DisplayNameFor(model => model.Email)</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@Html.DisplayFor(model =>  model.Email)</td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">@Html.DisplayNameFor(model => model.Telefono)</td>
+            <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@Html.DisplayFor(model => model.Telefono)</td>
+        </tr>
+    </table>
+
+    <center>
+        <table border="0">
+            <tr>
+                <td>
+                    @using (Html.BeginForm("CercaClientiConTrainer", "Home"))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="I miei clienti" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                }
+                </td>
+                <td>
+                    @using (Html.BeginForm("NuovaScheda", "Home"))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Nuova Scheda" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Esci", "Index"))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Nuova Scheda" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                }
+                </td>
+            </tr>
+        </table>
+    </center>
+
+</body>
+</html>

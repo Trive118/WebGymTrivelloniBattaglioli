@@ -210,6 +210,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\attenzione.png" />
     <Content Include="Images\confirm.png" />
     <Content Include="Images\contact-bg.jpg" />
     <Content Include="Images\cta-bg.jpg" />
@@ -239,10 +240,13 @@
     <None Include="Connected Services\ServiceReferenceWCF\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CompositeType.datasource">
+    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.ContractDTO.datasource">
+    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.SchedaDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Properties\Settings.settings">
@@ -282,6 +286,10 @@
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Home\DatiErratiLogin.cshtml" />
     <Content Include="Views\Home\ErrorPage.cshtml" />
+    <Content Include="Views\Home\MainPageClient.cshtml" />
+    <Content Include="Views\Home\MainPageTrainer.cshtml" />
+    <Content Include="Views\Home\RiepilogoClienti.cshtml" />
+    <Content Include="Views\Home\ShowScheda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
