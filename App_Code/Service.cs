@@ -142,4 +142,19 @@ public class Service : IService
 		}
 		return composite;
 	}
+	
+	public int CercaPersonalTrainerNelDB(string email, string password)
+    {
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		connection.Open();
+		string query = "SELECT COUNT (*) AS NumTrainer FROM Persona WHERE email=" + email + " AND password=" + password;
+		MySqlCommand command = new MySqlCommand(query, connection);
+		int n=0;
+		using (MySqlDataReader reader = command.ExecuteReader())
+		while(reader.Read())
+        {
+			n = (int)reader["NumTrainer"];
+        }
+		return n;
+    }
 }
