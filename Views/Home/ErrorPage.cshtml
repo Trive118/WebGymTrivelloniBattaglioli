@@ -14,8 +14,11 @@
 </head>
 <body>
     <hgroup>
-        <h2 style="font-size: 23px; font-weight: 700; color: #ed563b; display: inline; ">ERRORE:</h2><h2 style="font-size: 23px; font-weight: 700; color: #232d39; display: inline;"> QUALCOSA E' ANDATO STORTO</h2>
+        <h2 style="font-size: 23px; font-weight: 700; color: #ed563b; display: inline; ">ERRORE:</h2>
+        <h2 style="font-size: 23px; font-weight: 700; color: #232d39; display: inline;"> QUALCOSA E' ANDATO STORTO</h2>
+        <h3 style="font-size: 13px">Dettagli errore: @ViewData["ErrorMessage"]</h3>
+        @Html.ActionLink("Torna alla home", "Index", "Home")
     </hgroup>
-    <img src="\Images\error.png" />
+    <center><img src="\Images\error.png" style="height:200px;width:300px"/></center>
 </body>
 </html>

@@ -196,10 +196,10 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         System.Threading.Tasks.Task<bool> AddContractToClientAsync(int id, string codice_fiscale, string startDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AlreadyRegistered", ReplyAction="http://tempuri.org/IService/AlreadyRegisteredResponse")]
-        bool AlreadyRegistered(string codice_fiscale);
+        bool AlreadyRegistered(string codice_fiscale, string mail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AlreadyRegistered", ReplyAction="http://tempuri.org/IService/AlreadyRegisteredResponse")]
-        System.Threading.Tasks.Task<bool> AlreadyRegisteredAsync(string codice_fiscale);
+        System.Threading.Tasks.Task<bool> AlreadyRegisteredAsync(string codice_fiscale, string mail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ConvalidLogIn", ReplyAction="http://tempuri.org/IService/ConvalidLogInResponse")]
         bool ConvalidLogIn(string mail, string password);
@@ -267,12 +267,12 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
             return base.Channel.AddContractToClientAsync(id, codice_fiscale, startDate);
         }
         
-        public bool AlreadyRegistered(string codice_fiscale) {
-            return base.Channel.AlreadyRegistered(codice_fiscale);
+        public bool AlreadyRegistered(string codice_fiscale, string mail) {
+            return base.Channel.AlreadyRegistered(codice_fiscale, mail);
         }
         
-        public System.Threading.Tasks.Task<bool> AlreadyRegisteredAsync(string codice_fiscale) {
-            return base.Channel.AlreadyRegisteredAsync(codice_fiscale);
+        public System.Threading.Tasks.Task<bool> AlreadyRegisteredAsync(string codice_fiscale, string mail) {
+            return base.Channel.AlreadyRegisteredAsync(codice_fiscale, mail);
         }
         
         public bool ConvalidLogIn(string mail, string password) {

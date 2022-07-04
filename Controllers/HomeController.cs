@@ -58,7 +58,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                         sesso = "F";
                     ///MessageBox.Show(sesso); DEBUG, MOSTRA FINESTRA DI WINDOWS CON OUTPUT
                     string telefono = Request["Telefono"];
-                    if (!wcfClient.AlreadyRegistered(codice_fiscale))
+                    if (!wcfClient.AlreadyRegistered(codice_fiscale,mail))
                     {
                         loggedClient = new ClienteModel(codice_fiscale, nome, cognome, mail, data_nascita, telefono, password, sesso);
                         return View("ConfirmUserDataView", loggedClient);  ///Lancio la vista ConfirmUserDataView, passando come oggetto model
@@ -68,6 +68,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 }
                 catch (Exception ex)
                 {
+                    ViewData["ErrorMessage"] = ex.Message;
                     return View("ErrorPage");
                 }
             }
@@ -92,7 +93,12 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 sesso = "F";
             try
             {
-                wcfClient.InserisciCliente(loggedClient.Codice_fiscale, loggedClient.Nome, loggedClient.Cognome, loggedClient.Email, generateStringByDateForMySql(loggedClient.Data_nascita), loggedClient.Telefono, loggedClient.Password, sesso);
+                bool success = wcfClient.InserisciCliente(loggedClient.Codice_fiscale, loggedClient.Nome, loggedClient.Cognome, loggedClient.Email, generateStringByDateForMySql(loggedClient.Data_nascita), loggedClient.Telefono, loggedClient.Password, sesso);
+                if(!success)
+                {
+                    ViewData["ErrorMessage"] = "Errore nell'inserimento dei tuoi dati nel server, la preghiamo di riprovare!";
+                    return View("ErrorPage");
+                }
                 ///FINE DELL'INSERIMENTO DEI DATI DELL'UTENTE NEL DATABSE
                 ///------------------------------------------------------
                 ///DOWLOAD DI TUTTI I CONTRATTI DISPONIBILI DA MOSTRARE ALL'UTENTE NELLA SEZIONE SUCCESSIVA
@@ -104,6 +110,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             }
             catch (Exception ex)
             {
+                ViewData["ErrorMessage"] = ex.Message;
                 return View("ErrorPage");
             }
         }
@@ -118,11 +125,17 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             {
                 int id = Convert.ToInt32(Request["Id"]);
                 string data_iscrizione = generateStringByDateForMySql(DateTime.Now);
-                wcfClient.AddContractToClient(id, loggedClient.Codice_fiscale, data_iscrizione);
+                bool succes = wcfClient.AddContractToClient(id, loggedClient.Codice_fiscale, data_iscrizione);
+                if(!succes)
+                {
+                    ViewData["ErrorMessage"] = "Errore nella selezione del contratto, la preghiamo di tornare indietro e riprovare!";
+                    return View("ErrorPage");
+                }
                 return View();
             }
             catch(Exception ex)
             {
+                ViewData["ErrorMessage"] = ex.Message;
                 return View("ErrorPage");
             }
         }
@@ -143,6 +156,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             }
             catch(Exception ex)
             {
+                ViewData["ErrorMessage"] = ex.Message;
                 return View("ErrorPage");
             }
         }
@@ -166,6 +180,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 }
                 catch(Exception ex)
                 {
+                    ViewData["ErrorMessage"] = ex.Message;
                     return View("ErrorPage");
                 }
             return View("ErrorPage");
