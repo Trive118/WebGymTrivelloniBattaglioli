@@ -28,6 +28,9 @@ public interface IService
 
 	[OperationContract]
 	bool ConvalidLogIn(string mail,string password);
+	
+	[OperationContract]
+	int CercaPersonalTrainerNelDB(string email, string password);
 }
 
 // Per aggiungere tipi compositi alle operazioni del servizio utilizzare un contratto di dati come descritto nell'esempio seguente.
@@ -71,6 +74,5 @@ public class ContractDTO
 	public double prezzo { get; set; }
 	[DataMember]
 	public int durata { get; set; }
-
-
 }
+
