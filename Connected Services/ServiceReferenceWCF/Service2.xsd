@@ -46,12 +46,12 @@
   <xs:complexType name="SchedaDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Caratteristica_esercizi" nillable="true" type="tns:ArrayOfCaratteristicaEsercizioDTO" />
-      <xs:element minOccurs="0" name="Cf_cliente" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Cf_trainer" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Durata" type="xs:int" />
       <xs:element minOccurs="0" name="Esercizi" nillable="true" type="tns:ArrayOfEsercizioDTO" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="In_uso" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Mail_cliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mail_trainer" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Titolo" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

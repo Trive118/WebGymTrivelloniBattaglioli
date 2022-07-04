@@ -308,12 +308,6 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         private WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO[] Caratteristica_eserciziField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Cf_clienteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Cf_trainerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int DurataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -324,6 +318,12 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool In_usoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Mail_clienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Mail_trainerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitoloField;
@@ -347,32 +347,6 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
                 if ((object.ReferenceEquals(this.Caratteristica_eserciziField, value) != true)) {
                     this.Caratteristica_eserciziField = value;
                     this.RaisePropertyChanged("Caratteristica_esercizi");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Cf_cliente {
-            get {
-                return this.Cf_clienteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Cf_clienteField, value) != true)) {
-                    this.Cf_clienteField = value;
-                    this.RaisePropertyChanged("Cf_cliente");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Cf_trainer {
-            get {
-                return this.Cf_trainerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Cf_trainerField, value) != true)) {
-                    this.Cf_trainerField = value;
-                    this.RaisePropertyChanged("Cf_trainer");
                 }
             }
         }
@@ -425,6 +399,32 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
                 if ((this.In_usoField.Equals(value) != true)) {
                     this.In_usoField = value;
                     this.RaisePropertyChanged("In_uso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mail_cliente {
+            get {
+                return this.Mail_clienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Mail_clienteField, value) != true)) {
+                    this.Mail_clienteField = value;
+                    this.RaisePropertyChanged("Mail_cliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mail_trainer {
+            get {
+                return this.Mail_trainerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Mail_trainerField, value) != true)) {
+                    this.Mail_trainerField = value;
+                    this.RaisePropertyChanged("Mail_trainer");
                 }
             }
         }

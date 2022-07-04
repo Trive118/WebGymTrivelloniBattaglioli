@@ -30,6 +30,18 @@ namespace WebGymTrivelloniBattaglioli.Models
             this.in_uso = in_uso;
         }
 
+        public SchedaModel(int id, string titolo, int durata, bool in_uso, TrainerModel trainer, ClienteModel cliente, List<EsercizioModel> esercizi, List<CaratteristicaEsercizioModel> caratteristiche_esercizi)
+        {
+            this.id = id;
+            this.titolo = titolo;
+            this.durata = durata;
+            this.in_uso = in_uso;
+            this.trainer = trainer;
+            this.cliente = cliente;
+            this.esercizi = esercizi;
+            this.caratteristiche_esercizi = caratteristiche_esercizi;
+        }
+
         public int Id { get => id; set => id = value; }
 
         [DataMember]
@@ -44,5 +56,7 @@ namespace WebGymTrivelloniBattaglioli.Models
         public TrainerModel Trainer { get => trainer; set => trainer = value; }
         public ClienteModel Cliente { get => cliente; set => cliente = value; }
         public bool In_uso { get => in_uso; set => in_uso = value; }
+        public List<EsercizioModel> Esercizi { get => esercizi; set => esercizi = value; }
+        public List<CaratteristicaEsercizioModel> Caratteristiche_esercizi { get => caratteristiche_esercizi; set => caratteristiche_esercizi = value; }
     }
 }

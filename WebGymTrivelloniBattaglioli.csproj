@@ -290,6 +290,7 @@
     <Content Include="Views\Home\MainPageTrainer.cshtml" />
     <Content Include="Views\Home\RiepilogoClienti.cshtml" />
     <Content Include="Views\Home\ShowScheda.cshtml" />
+    <Content Include="Views\Home\CreazioneScheda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

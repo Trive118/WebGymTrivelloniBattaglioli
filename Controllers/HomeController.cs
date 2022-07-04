@@ -184,9 +184,14 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             try
             {
                 SchedaDTO schedaAttivaDTO = wcfClient.GetSchedeUtente(loggedClient.Codice_fiscale).ToList().FirstOrDefault(scheda => scheda.In_uso == true); ///torna la prima scheda che viene trovata come attiva
-                //SchedaModel scheda_attiva = new SchedaModel(schedaAttivaDTO.Id,schedaAttivaDTO.Titolo,schedaAttivaDTO.Durata,schedaAttivaDTO.In_uso,//getuserbymail)
-                EsercizioModel esercizio;
-                return null;
+                UserDTO trainerDTO = wcfClient.GetUserByEmail(schedaAttivaDTO.Mail_trainer);
+                TrainerModel trainer = new TrainerModel(trainerDTO.codice_fiscale,trainerDTO.nome,trainerDTO.cognome,trainerDTO.mail,trainerDTO.data_nascita,trainerDTO.telefono,trainerDTO.password,trainerDTO.sesso);
+                SchedaModel scheda_attiva = new SchedaModel(schedaAttivaDTO.Id, schedaAttivaDTO.Titolo, schedaAttivaDTO.Durata, schedaAttivaDTO.In_uso, trainer, loggedClient,new List<EsercizioModel>(),new List<CaratteristicaEsercizioModel>());
+                foreach(EsercizioDTO ese in schedaAttivaDTO.Esercizi)
+                    scheda_attiva.Esercizi.Add(new EsercizioModel(ese.Descrizione, ese.Immagine));
+                foreach (CaratteristicaEsercizioDTO cara in schedaAttivaDTO.Caratteristica_esercizi)
+                    scheda_attiva.Caratteristiche_esercizi.Add(new CaratteristicaEsercizioModel(cara.Num_ripetizioni, cara.Recupero, cara.Commento));
+                return View(scheda_attiva);
             }
             catch (Exception ex)
             {
@@ -229,13 +234,20 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             ///ad un determinato trainer. Si passa alla view una lista di oggetti
             ///di tipo cliente e se ne stampano i dati.
             List<UserDTO> risultato = new List<UserDTO>();
+            List<ClienteModel> clienti = new List<ClienteModel>();
             if(ModelState.IsValid)
             {
                 try
                 {
                     if ((risultato=wcfClient.CercaClientiAssociatiAlTrainer(loggedTrainer.Codice_fiscale).ToList()) != null)
                     {
-                        return View("RiepilogoClienti", risultato);
+                        foreach (UserDTO user in risultato)
+                            clienti.Add(new ClienteModel(user.codice_fiscale, user.nome, user.cognome, user.mail, user.data_nascita, user.telefono, user.password, user.sesso));
+                        List<ClienteModel> clientiNonDoppioni = new List<ClienteModel>();
+                        foreach(ClienteModel cliente in clienti)
+                            if (clientiNonDoppioni.Count(c => c.Codice_fiscale == cliente.Codice_fiscale) == 0)
+                                clientiNonDoppioni.Add(cliente);
+                        return View("RiepilogoClienti", clientiNonDoppioni);
                     }
                     else return View("MainPageTrainer");
                 }

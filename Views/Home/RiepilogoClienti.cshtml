@@ -1,37 +1,62 @@
-﻿@model WebGymTrivelloniBattaglioli.Models.ClienteModel
+﻿@model IEnumerable<WebGymTrivelloniBattaglioli.Models.ClienteModel>
 
-@{
-    Layout = null;
-}
+    @{Layout = null;}
+    <html>
+    <head>
 
-<!DOCTYPE html>
+        <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+        <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+        <title>Riepilogo Clienti</title>
+    </head>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
-    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
-    <title>Riepilogo Clienti</title>
-</head>
-<body>
-    <section class="section" id="call-to-action">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="cta-content">
-                        <h2>Riepilogo<em> Clienti</em></h2>
+    <body>
+        <section class="section" id="call-to-action">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="cta-content">
+                            <h2>Riepilogo<em> Clienti</em></h2>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <center>
-
-
-
-
-    </center>
-</body>
+        <center>
+        @using (Html.BeginForm("CreazioneSche", "Home"))
+        {
+            <table style="margin-bottom: 5%; margin-top: 3%; margin-left: auto; margin-right: auto; border-spacing: 30px; border-collapse: separate;">
+                <tr>
+                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Nome</td>
+                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Cognome</td>
+                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Email</td>
+                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Telefono</td>
+                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Aggiungi scheda</td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
+                            @Html.DisplayFor(modelItem => item.Cognome)
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
+                            @Html.DisplayFor(modelItem => item.Telefono)
+                        </td>
+                        <td>
+                            <button type="submit" style="margin-left:40%"><img src="../Images/plusButton.png" style="height:20px;width:20px;" /></button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+            
+        </center>
+    </body>
 </html>
