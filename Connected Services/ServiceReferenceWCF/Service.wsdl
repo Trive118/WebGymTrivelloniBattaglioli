@@ -31,6 +31,12 @@
   <wsdl:message name="IService_AddContractToClient_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddContractToClientResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_CercaPersonalTrainerNelDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:CercaPersonalTrainerNelDB" />
+  </wsdl:message>
+  <wsdl:message name="IService_CercaPersonalTrainerNelDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CercaPersonalTrainerNelDBResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_AlreadyRegistered_InputMessage">
     <wsdl:part name="parameters" element="tns:AlreadyRegistered" />
   </wsdl:message>
@@ -59,6 +65,10 @@
     <wsdl:operation name="AddContractToClient">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AddContractToClient" message="tns:IService_AddContractToClient_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/AddContractToClientResponse" message="tns:IService_AddContractToClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CercaPersonalTrainerNelDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CercaPersonalTrainerNelDB" message="tns:IService_CercaPersonalTrainerNelDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CercaPersonalTrainerNelDBResponse" message="tns:IService_CercaPersonalTrainerNelDB_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AlreadyRegistered">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AlreadyRegistered" message="tns:IService_AlreadyRegistered_InputMessage" />
@@ -100,6 +110,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddContractToClient">
       <soap:operation soapAction="http://tempuri.org/IService/AddContractToClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CercaPersonalTrainerNelDB">
+      <soap:operation soapAction="http://tempuri.org/IService/CercaPersonalTrainerNelDB" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

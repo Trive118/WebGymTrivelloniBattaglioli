@@ -195,6 +195,12 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddContractToClient", ReplyAction="http://tempuri.org/IService/AddContractToClientResponse")]
         System.Threading.Tasks.Task<bool> AddContractToClientAsync(int id, string codice_fiscale, string startDate);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CercaPersonalTrainerNelDB", ReplyAction="http://tempuri.org/IService/CercaPersonalTrainerNelDBResponse")]
+        bool CercaPersonalTrainerNelDB(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CercaPersonalTrainerNelDB", ReplyAction="http://tempuri.org/IService/CercaPersonalTrainerNelDBResponse")]
+        System.Threading.Tasks.Task<bool> CercaPersonalTrainerNelDBAsync(string email, string password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AlreadyRegistered", ReplyAction="http://tempuri.org/IService/AlreadyRegisteredResponse")]
         bool AlreadyRegistered(string codice_fiscale, string mail);
         
@@ -267,6 +273,14 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
             return base.Channel.AddContractToClientAsync(id, codice_fiscale, startDate);
         }
         
+        public bool CercaPersonalTrainerNelDB(string email, string password) {
+            return base.Channel.CercaPersonalTrainerNelDB(email, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CercaPersonalTrainerNelDBAsync(string email, string password) {
+            return base.Channel.CercaPersonalTrainerNelDBAsync(email, password);
+        }
+        
         public bool AlreadyRegistered(string codice_fiscale, string mail) {
             return base.Channel.AlreadyRegistered(codice_fiscale, mail);
         }
@@ -281,11 +295,6 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public System.Threading.Tasks.Task<bool> ConvalidLogInAsync(string mail, string password) {
             return base.Channel.ConvalidLogInAsync(mail, password);
-        }
-
-        internal bool CercaPersonalTrainerNelDB(string email, string password)
-        {
-            throw new NotImplementedException();
         }
     }
 }
