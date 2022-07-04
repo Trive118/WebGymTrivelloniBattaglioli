@@ -9,6 +9,7 @@ using WebGymTrivelloniBattaglioli.ServiceReferenceWCF;
 
 namespace WebGymTrivelloniBattaglioli.Controllers
 {
+    //Commento 04/07/2022 dani
     public class HomeController : Controller
     {
         static ClienteModel loggedClient;
@@ -172,7 +173,6 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 {
                     string email = Request["Email"];
                     string password = Request["Password"];
-                    //MessageBox.Show(email+","+password);
                     if (wcfClient.CercaPersonalTrainerNelDB(email, password))
                     {
                         return View("Index"); //PER ORA LO REINDIRIZZO IN HOME PAGE
@@ -186,8 +186,5 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 }
             return View("ErrorPage");
         }
-
-        ///cxoisdfowi
-        ///iblcdciubve
     }
 }
