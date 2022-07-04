@@ -138,13 +138,37 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 string mail = Request["Email"];
                 string password = Request["Password"];
                 if (wcfClient.ConvalidLogIn(mail, password))
-                    return View("MainPageClient"); ///PAGINA DA CREARE!!
+                    return View("MainPageClient"); ///PAGINA DA CREARE!! MainPageClient
                 return View("DatiErratiLogin");
             }
             catch(Exception ex)
             {
                 return View("ErrorPage");
             }
+        }
+
+        /// METODO PER CONSENTIRE L'AUTENTICAZIONE DEL PERSONAL TRAINER
+
+        [HttpPost]
+        public ActionResult CercaTrainer()
+        {
+            //verifica se il trainer è nel database
+            if(ModelState.IsValid)
+                try
+                {
+                    string email = Request["Email"];
+                    string password = Request["Password"];
+                    if (wcfClient.CercaPersonalTrainerNelDB(email, password))
+                    {
+                        return View("Index"); //PER ORA LO REINDIRIZZO IN HOME PAGE
+                    }
+                    else return View("DatiErratiLogin");
+                }
+                catch(Exception ex)
+                {
+                    return View("ErrorPage");
+                }
+            return View("ErrorPage");
         }
     }
 }

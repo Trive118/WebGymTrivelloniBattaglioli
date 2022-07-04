@@ -282,5 +282,10 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         public System.Threading.Tasks.Task<bool> ConvalidLogInAsync(string mail, string password) {
             return base.Channel.ConvalidLogInAsync(mail, password);
         }
+
+        internal bool CercaPersonalTrainerNelDB(string email, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
