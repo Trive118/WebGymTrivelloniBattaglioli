@@ -184,7 +184,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             try
             {
                 SchedaDTO schedaAttivaDTO = wcfClient.GetSchedeUtente(loggedClient.Codice_fiscale).ToList().FirstOrDefault(scheda => scheda.In_uso == true); ///torna la prima scheda che viene trovata come attiva
-                //SchedaModel scheda_attiva = new SchedaModel(schedaAttivaDTO.Id,schedaAttivaDTO.Titolo,schedaAttivaDTO.Durata,schedaAttivaDTO.In_uso,)
+                //SchedaModel scheda_attiva = new SchedaModel(schedaAttivaDTO.Id,schedaAttivaDTO.Titolo,schedaAttivaDTO.Durata,schedaAttivaDTO.In_uso,//getuserbymail)
                 EsercizioModel esercizio;
                 return null;
             }
