@@ -248,7 +248,7 @@ public class Service : IService
 					if (i == 1) ///primo giro
 					{
 						segnaposto = id_scheda;
-						scheda = new SchedaDTO(id_scheda, reader.GetString("titolo"),reader.GetInt32("durata"), reader.GetString("mail_cliente"), reader.GetString("mail_trainer"), reader.GetBoolean("inUso"),new List<EsercizioDTO>(),new List<CaratteristicaEsercizioDTO>());
+						scheda = new SchedaDTO(id_scheda, reader.GetString("titolo"),reader.GetInt32("durata"),reader.GetDateTime("data_assegnazione"), reader.GetString("mail_cliente"), reader.GetString("mail_trainer"), reader.GetBoolean("inUso"),new List<EsercizioDTO>(),new List<CaratteristicaEsercizioDTO>());
 					}
 					EsercizioDTO esercizio = new EsercizioDTO(reader.GetString("descrizione"), reader.GetString("immagine"));
 					CaratteristicaEsercizioDTO caratteristiche = new CaratteristicaEsercizioDTO(reader.GetInt32("numeroRipetizioni"), reader.GetTimeSpan("recupero"), reader.GetString("commento"));
@@ -261,7 +261,7 @@ public class Service : IService
                     {
 						segnaposto = id_scheda;
 						schede.Add(scheda);
-						scheda = new SchedaDTO(id_scheda, reader.GetString("titolo"), reader.GetInt32("durata"), reader.GetString("mail_cliente"), reader.GetString("mail_trainer"), reader.GetBoolean("inUso"), new List<EsercizioDTO>(), new List<CaratteristicaEsercizioDTO>());
+						scheda = new SchedaDTO(id_scheda, reader.GetString("titolo"), reader.GetInt32("durata"), reader.GetDateTime("data_assegnazione"), reader.GetString("mail_cliente"), reader.GetString("mail_trainer"), reader.GetBoolean("inUso"), new List<EsercizioDTO>(), new List<CaratteristicaEsercizioDTO>());
 						scheda.Esercizi.Add(esercizio);
 						scheda.Caratteristica_esercizi.Add(caratteristiche);
 					}
@@ -314,4 +314,92 @@ public class Service : IService
 			return null;
 		}
 	}
+
+	public bool InserisciSchedaNelDB(string titolo, int durata)
+	{
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		try
+		{
+			connection.Open();
+			string durataString = durata.ToString();
+			string query = "INSERT INTO Scheda VALUES(NULL,'" + titolo + "'," + durataString +")";
+
+			//settare inUso=0 nella tabella Assegnazione per tutte le schede assegnate dal trainer al cliente
+
+			MySqlCommand comando = new MySqlCommand(query, connection);
+			comando.ExecuteNonQuery();
+			connection.Close();
+			return true;
+		}
+		catch (Exception ex)
+		{
+			return false;
+		}
+
+		return false;
+	}
+
+	public bool AggiornaUtilizzoSchede(string cod_fiscale_trainer, string cod_fiscale_cliente)
+    {
+		//settare inUso=0 nella tabella Assegnazione per tutte le schede assegnate dal trainer al cliente
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		try
+		{
+			connection.Open();
+			string query = "UPDATE Assegnazione SET inUso = 0 WHERE cod_cliente ='" + cod_fiscale_cliente + "' AND cod_trainer='" + cod_fiscale_trainer + "'";
+			MySqlCommand comando = new MySqlCommand(query, connection);
+			comando.ExecuteNonQuery();
+			connection.Close();
+			return true;
+		}
+		catch (Exception ex)
+		{
+			return false;
+		}
+		return false;
+	}
+
+	public int OttieniIdUtimaSchedaInserita()
+	{
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		try
+		{
+			connection.Open();
+			int v = -1;
+			string query = "SELECT MAX(Scheda.id) FROM Scheda";
+			MySqlCommand command = new MySqlCommand(query, connection);
+			using (MySqlDataReader reader = command.ExecuteReader())
+			while(reader.Read())
+			{
+				v = reader.GetInt32("MAX(Scheda.id)");
+			}
+			return v;
+		}
+		catch (Exception ex)
+		{
+			return -1;
+		}
+		return -1;
+	}
+
+	public bool AggiungiNuovaAssegnazione(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda,string data)
+    {
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		try
+		{
+			connection.Open();
+			string idSchedaStringa = idScheda.ToString();
+			string query = "INSERT INTO Assegnazione VALUES(NULL, '" + data + "',1, '" + cod_fiscale_cliente + "','" + cod_fiscale_trainer + "'," + idSchedaStringa + ")";
+			MySqlCommand command = new MySqlCommand(query, connection);
+			command.ExecuteNonQuery();
+			connection.Close();
+			return true;
+		}
+		catch (Exception ex)
+		{
+			return false;
+		}
+		return false;
+
+    }
 }
