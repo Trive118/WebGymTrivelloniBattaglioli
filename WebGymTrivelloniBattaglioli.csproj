@@ -291,6 +291,10 @@
     <Content Include="Views\Home\RiepilogoClienti.cshtml" />
     <Content Include="Views\Home\ShowScheda.cshtml" />
     <Content Include="Views\Home\CreazioneScheda.cshtml" />
+    <Content Include="Views\Home\ShowAllSchede.cshtml" />
+    <Content Include="Views\Home\SchedaMancante.cshtml" />
+    <Content Include="Views\Home\ContattaAllenatore.cshtml" />
+    <Content Include="Views\Home\CreazioneSchedaEsercizi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

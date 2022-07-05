@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WebGymTrivelloniBattaglioli.Models.ClienteModel
+
+@{
     Layout = null;
 }
 
@@ -6,12 +8,45 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+    <title>Creazione scheda</title>
 </head>
 <body>
-    <div>
-    
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h2>Preparazione<em> nuova scheda</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @using (Html.BeginForm("AggiungiNuovaScheda", "Home"))
+    {
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Titolo">Titolo</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire il titolo" id="Titolo" name="Titolo" type="text" value="">
+        </div>
     </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Titolo">Durata (mesi)</label>
+        <select name="Durata" id="durata">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+    <input type="submit" value="Avanti" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+</div>
+    }
 </body>
 </html>

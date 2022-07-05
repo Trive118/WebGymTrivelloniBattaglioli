@@ -1,0 +1,26 @@
+﻿@model dynamic
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contatta il tuo Allenatore</title>
+</head>
+<body>
+    <div>
+        <center><h1>Contatta il tuo Allenatore</h1></center>
+        <h3>Corpo della mail</h3>
+        @using (Html.BeginForm("InviaMessaggioTrainer", "Home"))
+        {
+            @Html.AntiForgeryToken()
+            <textarea name="messaggio"></textarea>
+            <input style="display:none" value="@Model.Mail_trainer" name="mail_trainer"/>
+            <input type="submit" value="Invia mail" />
+        }
+    </div>
+</body>
+</html>

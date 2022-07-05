@@ -46,6 +46,7 @@
   <xs:complexType name="SchedaDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Caratteristica_esercizi" nillable="true" type="tns:ArrayOfCaratteristicaEsercizioDTO" />
+      <xs:element minOccurs="0" name="Data_inizio" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Durata" type="xs:int" />
       <xs:element minOccurs="0" name="Esercizi" nillable="true" type="tns:ArrayOfEsercizioDTO" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />

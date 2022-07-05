@@ -48,7 +48,8 @@
             <td style="font-size: 20px; font-weight: 700; color: #ed563b;">@{string telefono = Model.Cliente.Telefono; @telefono}</td>
         </tr>
     </table>
-
+    @if (Model.Contratto != null)
+    {
     <center><h2>Contratto attivo</h2></center>
     <table style="text-align: left; border-style: groove; margin-bottom: 0.5%; margin-left: auto; margin-right: auto; ">
         <tr>
@@ -75,35 +76,40 @@
     <center style="margin-bottom: 5%">
         <img src="~/Images/attenzione.png" style="width:20px;height:20px;" />Il tuo abbonamento scadra' tra @{int giorni = Model.GiorniScadenza; @giorni} giorni
     </center>
+    }
+    else
+    {
+<center>
+    <h2 style="margin-bottom:5%">ATTENZIONE IL TUO CONTRATTO E' SCADUTO</h2>
+    @using (Html.BeginForm("ReindirizzamentoCreazioneContratto", "Home"))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Sottiscrivi nuovo contratto" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8%; " />
+        }
+</center>
+    }
     <center>
         <table border="0" margin-left:auto; margin-right:auto;>
             <tr>
                 <td>
                     @using (Html.BeginForm("ShowScheda", "Home"))
                     {
-                        @Html.AntiForgeryToken()
-                        <input type="submit" value="Scheda attuale" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Scheda attuale" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
                     }
                 </td>
                 <td>
                     @using (Html.BeginForm("ShowAllSchede", "Home"))
                     {
-                        @Html.AntiForgeryToken()
-                        <input type="submit" value="Cronologia schede" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Cronologia schede" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
                     }
                 </td>
                 <td>
-                    @using (Html.BeginForm("ContactTrainer", "Home"))
+                    @using (Html.BeginForm("Index", "Home"))
                     {
-                        @Html.AntiForgeryToken()
-                        <input type="submit" value="Contatta il tuo allenatore" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
-                    }
-                </td>
-                <td>
-                    @using (Html.BeginForm("LogOut", "Home"))
-                    {
-                        @Html.AntiForgeryToken()
-                        <input type="submit" value="LogOut" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="LogOut" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
                     }
                 </td>
             </tr>

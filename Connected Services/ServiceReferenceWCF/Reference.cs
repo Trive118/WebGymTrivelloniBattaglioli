@@ -308,6 +308,9 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         private WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO[] Caratteristica_eserciziField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime Data_inizioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int DurataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -347,6 +350,19 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
                 if ((object.ReferenceEquals(this.Caratteristica_eserciziField, value) != true)) {
                     this.Caratteristica_eserciziField = value;
                     this.RaisePropertyChanged("Caratteristica_esercizi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Data_inizio {
+            get {
+                return this.Data_inizioField;
+            }
+            set {
+                if ((this.Data_inizioField.Equals(value) != true)) {
+                    this.Data_inizioField = value;
+                    this.RaisePropertyChanged("Data_inizio");
                 }
             }
         }
@@ -653,6 +669,30 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSchedeUtente", ReplyAction="http://tempuri.org/IService/GetSchedeUtenteResponse")]
         System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.SchedaDTO[]> GetSchedeUtenteAsync(string cod_fiscale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InserisciSchedaNelDB", ReplyAction="http://tempuri.org/IService/InserisciSchedaNelDBResponse")]
+        bool InserisciSchedaNelDB(string titolo, int durata);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InserisciSchedaNelDB", ReplyAction="http://tempuri.org/IService/InserisciSchedaNelDBResponse")]
+        System.Threading.Tasks.Task<bool> InserisciSchedaNelDBAsync(string titolo, int durata);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AggiornaUtilizzoSchede", ReplyAction="http://tempuri.org/IService/AggiornaUtilizzoSchedeResponse")]
+        bool AggiornaUtilizzoSchede(string cod_fiscale_trainer, string cod_fiscale_cliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AggiornaUtilizzoSchede", ReplyAction="http://tempuri.org/IService/AggiornaUtilizzoSchedeResponse")]
+        System.Threading.Tasks.Task<bool> AggiornaUtilizzoSchedeAsync(string cod_fiscale_trainer, string cod_fiscale_cliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/OttieniIdUtimaSchedaInserita", ReplyAction="http://tempuri.org/IService/OttieniIdUtimaSchedaInseritaResponse")]
+        int OttieniIdUtimaSchedaInserita();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/OttieniIdUtimaSchedaInserita", ReplyAction="http://tempuri.org/IService/OttieniIdUtimaSchedaInseritaResponse")]
+        System.Threading.Tasks.Task<int> OttieniIdUtimaSchedaInseritaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AggiungiNuovaAssegnazione", ReplyAction="http://tempuri.org/IService/AggiungiNuovaAssegnazioneResponse")]
+        bool AggiungiNuovaAssegnazione(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda, string data);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AggiungiNuovaAssegnazione", ReplyAction="http://tempuri.org/IService/AggiungiNuovaAssegnazioneResponse")]
+        System.Threading.Tasks.Task<bool> AggiungiNuovaAssegnazioneAsync(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda, string data);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -760,6 +800,38 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.SchedaDTO[]> GetSchedeUtenteAsync(string cod_fiscale) {
             return base.Channel.GetSchedeUtenteAsync(cod_fiscale);
+        }
+        
+        public bool InserisciSchedaNelDB(string titolo, int durata) {
+            return base.Channel.InserisciSchedaNelDB(titolo, durata);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InserisciSchedaNelDBAsync(string titolo, int durata) {
+            return base.Channel.InserisciSchedaNelDBAsync(titolo, durata);
+        }
+        
+        public bool AggiornaUtilizzoSchede(string cod_fiscale_trainer, string cod_fiscale_cliente) {
+            return base.Channel.AggiornaUtilizzoSchede(cod_fiscale_trainer, cod_fiscale_cliente);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AggiornaUtilizzoSchedeAsync(string cod_fiscale_trainer, string cod_fiscale_cliente) {
+            return base.Channel.AggiornaUtilizzoSchedeAsync(cod_fiscale_trainer, cod_fiscale_cliente);
+        }
+        
+        public int OttieniIdUtimaSchedaInserita() {
+            return base.Channel.OttieniIdUtimaSchedaInserita();
+        }
+        
+        public System.Threading.Tasks.Task<int> OttieniIdUtimaSchedaInseritaAsync() {
+            return base.Channel.OttieniIdUtimaSchedaInseritaAsync();
+        }
+        
+        public bool AggiungiNuovaAssegnazione(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda, string data) {
+            return base.Channel.AggiungiNuovaAssegnazione(cod_fiscale_trainer, cod_fiscale_cliente, idScheda, data);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AggiungiNuovaAssegnazioneAsync(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda, string data) {
+            return base.Channel.AggiungiNuovaAssegnazioneAsync(cod_fiscale_trainer, cod_fiscale_cliente, idScheda, data);
         }
     }
 }

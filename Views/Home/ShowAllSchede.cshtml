@@ -1,0 +1,110 @@
+﻿@model IEnumerable<WebGymTrivelloniBattaglioli.Models.SchedaModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Visualizzazione schede</title>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+</head>
+<body>
+    @if(Model != null)
+    {
+    <table class="table" style="margin-top:3%;">
+        <tr>
+            <th style="font-size: 20px; font-weight: 700; color: #232d39;">
+                Titolo scheda
+            </th>
+            <th style="font-size: 20px; font-weight: 700; color: #232d39;">
+                Durata scheda
+            </th>
+            <th style="font-size: 20px; font-weight: 700; color: #232d39;">
+                Scheda attualmente in uso
+            </th>
+            <th style="font-size: 20px; font-weight: 700; color: #232d39;">
+                Dati allenatore
+            </th>
+        </tr>
+
+        @foreach (var item in Model) {
+        <tr>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                @Html.DisplayFor(modelItem => item.Titolo)
+            </td>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                @Html.DisplayFor(modelItem => item.Durata)
+            </td>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                @Html.DisplayFor(modelItem => item.In_uso)
+            </td>
+            <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                @Html.DisplayFor(modelItem => item.Trainer.Nome)
+                @Html.DisplayFor(modelItem => item.Trainer.Cognome)
+                Mail: @Html.DisplayFor(modelItem => item.Trainer.Email)
+            </td>
+            <!--aggiungere nella tabella dati ogni esercizio, tabelle nidificate-->
+            <td>
+                <table class="table">
+                    <h2 align="center">Dettagli esercizi</h2>
+                    <tr>
+                        <th style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            Descrizione
+                        </th>
+                        <th style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            Numero ripetizioni
+                        </th>
+                        <th style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            Tempo di recupero
+                        </th>
+                        <th style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            Commenti sull'esecuzione dell'esercizio
+                        </th>
+                        <th style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            Vedi esecuzione
+                        </th>
+                    </tr>
+                    @{
+                        int @i = 0;
+                    }
+                    @foreach (var ese in item.Esercizi)
+                    {
+                    <tr>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            @Html.DisplayFor(modelItem => ese.Descrizione)
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            @item.Caratteristiche_esercizi[@i].Numero_ripetizioni
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            @item.Caratteristiche_esercizi[@i].Recupero
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            @item.Caratteristiche_esercizi[@i].Commento
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                            <img src="@Html.DisplayFor(modelItem => ese.Immagine)" style="height:100px;width:100px" />
+                        </td>
+                    </tr>
+                        i++;
+                    }
+                </table>
+            </td>
+        </tr>
+        }
+
+    </table>
+    }
+    else
+    {
+        <h1>Non ti sono ancora state assegnata schede dai nostri personal trainer</h1>
+        @Html.ActionLink("Indietro","Index","Home")
+    }
+</body>
+</html>

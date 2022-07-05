@@ -151,4 +151,63 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="InserisciSchedaNelDB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="titolo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="durata" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InserisciSchedaNelDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InserisciSchedaNelDBResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AggiornaUtilizzoSchede">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cod_fiscale_trainer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cod_fiscale_cliente" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AggiornaUtilizzoSchedeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AggiornaUtilizzoSchedeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OttieniIdUtimaSchedaInserita">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OttieniIdUtimaSchedaInseritaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OttieniIdUtimaSchedaInseritaResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AggiungiNuovaAssegnazione">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cod_fiscale_trainer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cod_fiscale_cliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idScheda" type="xs:int" />
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AggiungiNuovaAssegnazioneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AggiungiNuovaAssegnazioneResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

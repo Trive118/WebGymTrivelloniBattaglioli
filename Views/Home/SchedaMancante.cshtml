@@ -1,0 +1,24 @@
+﻿@model WebGymTrivelloniBattaglioli.Models.TrainerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SchedaMancante</title>
+</head>
+<body>
+    <div>
+        <h2>Ci dispiace ma al momento non ha schede attive presso la nostra palestra!</h2>
+        @using (Html.BeginForm("ContattaAllenatore", "Home"))
+        {
+            @Html.AntiForgeryToken()
+            <input style="display:none" name="trainerMail" value="@Model.Email" />
+            <input type="submit" value="Contatta il tuo allenatore per richiedere una nuova scheda" />
+        }
+        </div>
+</body>
+</html>

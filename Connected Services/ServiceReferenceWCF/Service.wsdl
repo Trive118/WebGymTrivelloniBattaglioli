@@ -67,6 +67,30 @@
   <wsdl:message name="IService_GetSchedeUtente_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSchedeUtenteResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_InserisciSchedaNelDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:InserisciSchedaNelDB" />
+  </wsdl:message>
+  <wsdl:message name="IService_InserisciSchedaNelDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InserisciSchedaNelDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AggiornaUtilizzoSchede_InputMessage">
+    <wsdl:part name="parameters" element="tns:AggiornaUtilizzoSchede" />
+  </wsdl:message>
+  <wsdl:message name="IService_AggiornaUtilizzoSchede_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AggiornaUtilizzoSchedeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_OttieniIdUtimaSchedaInserita_InputMessage">
+    <wsdl:part name="parameters" element="tns:OttieniIdUtimaSchedaInserita" />
+  </wsdl:message>
+  <wsdl:message name="IService_OttieniIdUtimaSchedaInserita_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OttieniIdUtimaSchedaInseritaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AggiungiNuovaAssegnazione_InputMessage">
+    <wsdl:part name="parameters" element="tns:AggiungiNuovaAssegnazione" />
+  </wsdl:message>
+  <wsdl:message name="IService_AggiungiNuovaAssegnazione_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AggiungiNuovaAssegnazioneResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="InserisciCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/InserisciCliente" message="tns:IService_InserisciCliente_InputMessage" />
@@ -107,6 +131,22 @@
     <wsdl:operation name="GetSchedeUtente">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetSchedeUtente" message="tns:IService_GetSchedeUtente_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetSchedeUtenteResponse" message="tns:IService_GetSchedeUtente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InserisciSchedaNelDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/InserisciSchedaNelDB" message="tns:IService_InserisciSchedaNelDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/InserisciSchedaNelDBResponse" message="tns:IService_InserisciSchedaNelDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaUtilizzoSchede">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AggiornaUtilizzoSchede" message="tns:IService_AggiornaUtilizzoSchede_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AggiornaUtilizzoSchedeResponse" message="tns:IService_AggiornaUtilizzoSchede_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OttieniIdUtimaSchedaInserita">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/OttieniIdUtimaSchedaInserita" message="tns:IService_OttieniIdUtimaSchedaInserita_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/OttieniIdUtimaSchedaInseritaResponse" message="tns:IService_OttieniIdUtimaSchedaInserita_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AggiungiNuovaAssegnazione">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AggiungiNuovaAssegnazione" message="tns:IService_AggiungiNuovaAssegnazione_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AggiungiNuovaAssegnazioneResponse" message="tns:IService_AggiungiNuovaAssegnazione_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -194,6 +234,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetSchedeUtente">
       <soap:operation soapAction="http://tempuri.org/IService/GetSchedeUtente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserisciSchedaNelDB">
+      <soap:operation soapAction="http://tempuri.org/IService/InserisciSchedaNelDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaUtilizzoSchede">
+      <soap:operation soapAction="http://tempuri.org/IService/AggiornaUtilizzoSchede" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OttieniIdUtimaSchedaInserita">
+      <soap:operation soapAction="http://tempuri.org/IService/OttieniIdUtimaSchedaInserita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiungiNuovaAssegnazione">
+      <soap:operation soapAction="http://tempuri.org/IService/AggiungiNuovaAssegnazione" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
