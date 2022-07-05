@@ -4,10 +4,15 @@
     ViewBag.Title = "ConfirmUserData";
 }
 
-<h2>ConfirmUserData</h2>
+<head>
+    <title>Conferma i tuoi dati</title>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+</head>
 
 <div>
-    <h4>DATI INSERITI</h4>
+    <h4 style="font-size: 24px; font-weight: 700; color: #232d39; display: inline;">DATI</h4><h4 style="font-size: 24px; font-weight: 700; color: #ed563b; display: inline;"> INSERITI</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -60,7 +65,8 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Avanti", "InserisciClientedb", "Home") |
-    @Html.ActionLink("Back", "Registrati","Home")
-</p>
+<hr />
+
+    <button style=" color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; ">@Html.ActionLink("Back", "Registrati", "Home")</button>
+    <button style=" color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; ">@Html.ActionLink("Avanti", "InserisciClientedb", "Home")</button>
+

@@ -4,23 +4,25 @@
     ViewBag.Title = "ChooseContract";
 }
 
-<h2>ChooseContract</h2>
+<head>
+    <title>Conferma i tuoi dati</title>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+</head>
 
-<p>
-    @Html.ActionLink("back", "Registrati","Home")
-</p>
 <table class="table">
     <tr>
-        <th>
+        <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center;">
             @Html.DisplayNameFor(model => model.Descrizione)
         </th>
-        <th>
+        <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center;">
             @Html.DisplayNameFor(model => model.Prezzo)
         </th>
-        <th>
+        <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center;">
             @Html.DisplayNameFor(model => model.Durata)
         </th>
-        <th>Scelata</th>
+        <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center;">Scelta</th>
     </tr>
 
     @foreach (var item in Model)
@@ -29,19 +31,19 @@
         {
             @Html.AntiForgeryToken()
             <tr>
-                <td>
+                <td style="font-size: 14px; font-weight: 400; color: #232d39;">
                     <!--INPUT NASCOTI PER PRELEVARI I VALORI NECESSARI CHE POI VERRANNO MANDATI AL CLICK DELL'IMMAGINE AL CONTROLLER'-->
                     <input value="@item.Id" name="Id" style="display:none" />
                     @Html.DisplayFor(modelItem => item.Descrizione)
                 </td>
-                <td>
+                <td style="font-size: 14px; font-weight: 400; color: #232d39; text-align: center;">
                     @Html.DisplayFor(modelItem => item.Prezzo)
                 </td>
-                <td>
+                <td style="font-size: 14px; font-weight: 400; color: #232d39; text-align: center;">
                     @Html.DisplayFor(modelItem => item.Durata)
                 </td>
                 <!--METTERE MAGARI UNA PICCOLA IMMAGINE CON LA SPUNTA O CHECK BUTTON PER EFFETTUARE LA SCELTA-->
-                <td>
+                <td style="font-size: 14px; font-weight: 400; color: #232d39; text-align: center; ">
                     <button type="submit"><img src="\Images\confirm.png" style="height:20px;width:20px;" /></button>
                 </td>
             </tr>
@@ -49,3 +51,7 @@
     }
 
 </table>
+
+<p>
+    @Html.ActionLink("back", "Registrati", "Home")
+</p>
