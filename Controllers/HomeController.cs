@@ -442,5 +442,39 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             }
             return null;
         }
+
+        [HttpPost]
+        public ActionResult LogOutCliente()
+        {
+            try
+            {
+                UserDTO clienteVuoto = new UserDTO(); //istanzio un UserDTO
+                loggedClient = new ClienteModel(clienteVuoto.codice_fiscale, clienteVuoto.nome, clienteVuoto.cognome, clienteVuoto.mail, clienteVuoto.data_nascita, clienteVuoto.telefono, clienteVuoto.password, clienteVuoto.sesso);
+                //setto il loggedClient usando i parametri (vuoti) del clienteVuoto;
+                return View("LogIn", loggedClient);
+            }
+            catch (Exception ex)
+            {
+                ViewData["ErrorMessage"] = ex.Message;
+                return View("ErrorPage");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult LogOutTrainer()
+        {
+            try
+            {
+                UserDTO trainerVuoto = new UserDTO();
+                loggedTrainer = new TrainerModel(trainerVuoto.codice_fiscale, trainerVuoto.nome, trainerVuoto.cognome, trainerVuoto.mail, trainerVuoto.data_nascita, trainerVuoto.telefono, trainerVuoto.password, trainerVuoto.sesso);
+                return View("Contact", loggedTrainer);
+            }
+            catch (Exception ex)
+            {
+                ViewData["ErrorMessage"] = ex.Message;
+                return View("ErrorPage");
+            }
+        }
+
     }
 }
