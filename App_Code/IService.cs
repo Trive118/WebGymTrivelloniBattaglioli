@@ -40,9 +40,20 @@ public interface IService
 
 	[OperationContract]
 	List<SchedaDTO> GetSchedeUtente(string cod_fiscale);
+
+	[OperationContract]
+	bool InserisciSchedaNelDB(string titolo, int durata);
+
+	[OperationContract]
+	bool AggiornaUtilizzoSchede(string cod_fiscale_trainer, string cod_fiscale_cliente);
+
+	[OperationContract]
+	int OttieniIdUtimaSchedaInserita();
+
+	[OperationContract]
+	bool AggiungiNuovaAssegnazione(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda,string data);
 }
 
-// Per aggiungere tipi compositi alle operazioni del servizio utilizzare un contratto di dati come descritto nell'esempio seguente.
 [DataContract]
 public class SchedaDTO
 {
@@ -58,6 +69,19 @@ public class SchedaDTO
         Caratteristica_esercizi = caratteristica_esercizi;
     }
 
+	public SchedaDTO(int id, string titolo, int durata, DateTime data_inizio, string mail_cliente, string mail_trainer, bool in_uso, List<EsercizioDTO> esercizi, List<CaratteristicaEsercizioDTO> caratteristica_esercizi)
+	{
+		Id = id;
+		Titolo = titolo;
+		Durata = durata;
+		Data_inizio = data_inizio;
+		Mail_cliente = mail_cliente;
+		Mail_trainer = mail_trainer;
+		In_uso = in_uso;
+		Esercizi = esercizi;
+		Caratteristica_esercizi = caratteristica_esercizi;
+	}
+
 	public SchedaDTO()
     {
     }
@@ -66,6 +90,8 @@ public class SchedaDTO
 	public int Id { get; set; }
 	[DataMember]
 	public string Titolo { get; set; }
+	[DataMember]
+	public DateTime Data_inizio { get; set; }
 	[DataMember]
 	public int Durata { get; set; }
 	[DataMember]
