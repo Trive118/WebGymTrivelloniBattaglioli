@@ -83,7 +83,6 @@ public class Service : IService
         }
     }
 
-	/// DANI STASERA QUANDO FAI LA SELECT COUNT USA QUESTO METODO COME ESEMPIO!!!!
 	public bool AlreadyRegistered(string codice_fiscale, string mail)
     {
 		bool returned = true;
@@ -115,7 +114,7 @@ public class Service : IService
 		try
         {
 			connection.Open();
-			string query = "SELECT COUNT(*) FROM Persona WHERE email = '" + mail + "' AND password = '" + password + "'";
+			string query = "SELECT COUNT(*) FROM Persona WHERE email = '" + mail + "' AND password = '" + password + "' AND ruolo = 'cliente'";
 			MySqlCommand comando = new MySqlCommand(query, connection);
 			int result = Convert.ToInt32(comando.ExecuteScalar());
 			connection.Close();
@@ -130,31 +129,189 @@ public class Service : IService
 		
     }
 
-	public CompositeType GetDataUsingDataContract(CompositeType composite)
+	public bool CercaPersonalTrainerNelDB(string email, string password)
 	{
-		if (composite == null)
-		{
-			throw new ArgumentNullException("composite");
-		}
-		if (composite.BoolValue)
-		{
-			composite.StringValue += "Suffix";
-		}
-		return composite;
-	}
-	
-	public int CercaPersonalTrainerNelDB(string email, string password)
-    {
+		bool exist = false;
 		MySqlConnection connection = new MySqlConnection(stringConnection);
-		connection.Open();
-		string query = "SELECT COUNT (*) AS NumTrainer FROM Persona WHERE email=" + email + " AND password=" + password;
-		MySqlCommand command = new MySqlCommand(query, connection);
-		int n=0;
-		using (MySqlDataReader reader = command.ExecuteReader())
-		while(reader.Read())
+        try
         {
-			n = (int)reader["NumTrainer"];
+			connection.Open();
+			string query = "SELECT COUNT(*) FROM Persona WHERE email='" + email + "' AND password='" + password + "' AND ruolo = 'trainer'";
+			MySqlCommand command = new MySqlCommand(query, connection);
+			int result = Convert.ToInt32(command.ExecuteScalar());
+			connection.Close();
+			if (result == 1)
+				exist = true;
+			return exist;
+		}
+		catch(Exception ex)
+        {
+			return false;
         }
-		return n;
-    }
+		
+	}
+
+	public UserDTO GetUserByEmail(string mail)
+    {
+		UserDTO user = new UserDTO();
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		try
+		{
+			connection.Open();
+			string query = "SELECT * FROM Persona WHERE email = '"+mail+"'";
+			MySqlCommand command = new MySqlCommand(query, connection);
+			using (MySqlDataReader reader = command.ExecuteReader()) ///USATO PER LEGGERE UN FLUSSO DI DATI (SELECT)
+			{
+				while (reader.Read())
+				{
+					string codice_fiscale = reader.GetString("codice_fiscale");
+					string nome = reader.GetString("nome");
+					string cognome = reader.GetString("cognome");
+					string email = reader.GetString("email");
+					DateTime data_nascita = reader.GetDateTime("data_nascita");
+					string telefono = reader.GetString("telefono");
+					string sesso = reader.GetString("sesso");
+					string ruolo = reader.GetString("ruolo");
+					string password = reader.GetString("password");
+					user = new UserDTO(codice_fiscale,nome,cognome,email,data_nascita,telefono,sesso,ruolo,password); 
+				}
+			}
+			connection.Close();
+			return user;
+		}
+		catch (Exception ex)
+		{
+			return null;
+		}
+	}
+
+	public ContractDTO GetUserActiveContract(string codice_fiscale)
+    {
+		List<ContractDTO> contracts = new List<ContractDTO>();
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		try
+		{
+			connection.Open();
+			string query = "SELECT Contratto.id,Contratto.descrizione,Contratto.prezzo,Contratto.durata,Iscrizione.data_inizio FROM Contratto JOIN Iscrizione ON (Contratto.id = Iscrizione.idContratto) JOIN Persona ON (Persona.codice_fiscale = Iscrizione.codiceFiscale) WHERE Persona.codice_fiscale = '"+codice_fiscale+"'";
+			MySqlCommand command = new MySqlCommand(query, connection);
+			using (MySqlDataReader reader = command.ExecuteReader()) ///USATO PER LEGGERE UN FLUSSO DI DATI (SELECT)
+			{
+				while (reader.Read())
+				{
+					int id = reader.GetInt32("id");
+					string descrizione = reader.GetString("descrizione");
+					double prezzo = reader.GetDouble("prezzo");
+					int durata = reader.GetInt32("durata");
+					DateTime data_inizio = reader.GetDateTime("data_inizio");
+					ContractDTO contract = new ContractDTO(id,descrizione,prezzo,durata,data_inizio);
+					contracts.Add(contract);
+				}
+			}
+			connection.Close();
+			int index = -1;
+			int i = 0;
+			foreach(ContractDTO contract in contracts)
+            {
+				if(contract.Data_inizio.AddMonths(contract.Durata).CompareTo(DateTime.Now) >= 0)
+                {
+					index = i;
+					break;
+                }
+				i++;
+            }
+			if(index != -1)
+				return contracts[index];
+			return null;
+		}
+		catch (Exception ex)
+		{
+			return null;
+		}
+	}
+
+	public List<SchedaDTO> GetSchedeUtente(string cod_fiscale)
+    {
+		List<SchedaDTO> schede = new List<SchedaDTO>();
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		try
+		{
+			connection.Open();
+			string query = "SELECT Assegnazione.data_assegnazione,Assegnazione.inUso,Associazione.commento,Associazione.numeroRipetizioni,Associazione.recupero, Scheda.durata,Scheda.titolo,Scheda.id,cliente.email AS mail_cliente,trainer.email AS mail_trainer,Esercizio.descrizione,Esercizio.immagine FROM Assegnazione JOIN Persona AS cliente ON cliente.codice_fiscale = Assegnazione.cod_cliente JOIN Persona AS trainer ON trainer.codice_fiscale = Assegnazione.cod_trainer JOIN Scheda ON Scheda.id = Assegnazione.id_scheda JOIN Associazione ON Associazione.idScheda = Assegnazione.id_scheda JOIN Esercizio ON Esercizio.id = Associazione.idEsercizio WHERE cliente.codice_fiscale = '" + cod_fiscale+"' ORDER BY Scheda.id";
+			MySqlCommand command = new MySqlCommand(query, connection);
+			using (MySqlDataReader reader = command.ExecuteReader()) ///USATO PER LEGGERE UN FLUSSO DI DATI (SELECT)
+			{
+				int segnaposto=-1;
+				SchedaDTO scheda = new SchedaDTO();
+				for (int i = 1; reader.Read(); i++)
+				{
+					int id_scheda = reader.GetInt32("id");
+					if (i == 1) ///primo giro
+					{
+						segnaposto = id_scheda;
+						scheda = new SchedaDTO(id_scheda, reader.GetString("titolo"),reader.GetInt32("durata"), reader.GetString("mail_cliente"), reader.GetString("mail_trainer"), reader.GetBoolean("inUso"),new List<EsercizioDTO>(),new List<CaratteristicaEsercizioDTO>());
+					}
+					EsercizioDTO esercizio = new EsercizioDTO(reader.GetString("descrizione"), reader.GetString("immagine"));
+					CaratteristicaEsercizioDTO caratteristiche = new CaratteristicaEsercizioDTO(reader.GetInt32("numeroRipetizioni"), reader.GetTimeSpan("recupero"), reader.GetString("commento"));
+					if (segnaposto == id_scheda)
+                    {
+						scheda.Esercizi.Add(esercizio);
+						scheda.Caratteristica_esercizi.Add(caratteristiche);
+                    }
+					else
+                    {
+						segnaposto = id_scheda;
+						schede.Add(scheda);
+						scheda = new SchedaDTO(id_scheda, reader.GetString("titolo"), reader.GetInt32("durata"), reader.GetString("mail_cliente"), reader.GetString("mail_trainer"), reader.GetBoolean("inUso"), new List<EsercizioDTO>(), new List<CaratteristicaEsercizioDTO>());
+						scheda.Esercizi.Add(esercizio);
+						scheda.Caratteristica_esercizi.Add(caratteristiche);
+					}
+				}
+				schede.Add(scheda); ///per prendere anche l'ultima scheda
+			}
+			connection.Close();
+			return schede;
+		}
+		catch (Exception ex)
+		{
+			return null;
+		}
+	}
+
+	/// Il metodo restituisce una lista di UserDTO contenente tutti i clienti
+	/// ai quali il trainer ha assegnato, almeno una volta, la scheda.
+	public List<UserDTO> CercaClientiAssociatiAlTrainer(string cod_fiscale_trainer)
+    {
+		List<UserDTO> Clienti = new List<UserDTO>();
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		
+		try
+		{
+			connection.Open();
+			string query = "SELECT * FROM Persona JOIN Assegnazione ON(Persona.codice_fiscale = Assegnazione.cod_cliente) WHERE Assegnazione.cod_trainer ='" + cod_fiscale_trainer +"'";
+			MySqlCommand command = new MySqlCommand(query, connection);
+			using (MySqlDataReader reader = command.ExecuteReader()) ///USATO PER LEGGERE UN FLUSSO DI DATI (SELECT)
+			{
+				while (reader.Read())
+				{
+					string codice_fiscale = reader.GetString("codice_fiscale");
+					string nome = reader.GetString("nome");
+					string cognome = reader.GetString("cognome");
+					string email = reader.GetString("email");
+					DateTime data_nascita = reader.GetDateTime("data_nascita");
+					string telefono = reader.GetString("telefono");
+					string sesso = reader.GetString("sesso");
+					string ruolo = reader.GetString("ruolo");
+					string password = reader.GetString("password");
+					UserDTO c = new UserDTO(codice_fiscale, nome, cognome, email, data_nascita, telefono, sesso, ruolo, password);
+					Clienti.Add(c);
+				}
+			}
+			connection.Close();
+			return Clienti;
+		}
+		catch (Exception ex)
+		{
+			return null;
+		}
+	}
 }
