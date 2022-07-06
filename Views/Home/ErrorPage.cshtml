@@ -3,22 +3,84 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
     <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
     <meta name="viewport" content="width=device-width" />
-    <title>Errore</title>
+    <title>Error Page</title>
 </head>
 <body>
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h2><em>Attenzione</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <hgroup>
         <h2 style="font-size: 23px; font-weight: 700; color: #ed563b; display: inline; ">ERRORE:</h2>
         <h2 style="font-size: 23px; font-weight: 700; color: #232d39; display: inline;"> QUALCOSA E' ANDATO STORTO</h2>
         <h3 style="font-size: 13px">Dettagli errore: @ViewData["ErrorMessage"]</h3>
         @Html.ActionLink("Torna alla home", "Index", "Home")
     </hgroup>
-    <center><img src="\Images\error.png" style="height:200px;width:300px"/></center>
+
+    <section class="section" id="trainers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Azioni <em> Consigliate</em></h2>
+                        <img src="../Images/line-dec.png" alt="">
+                        <p>Ops! Qualcosa è andato storto: potrebbero aiutarti i seguenti consigli.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="../Images/trainer-webgym.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>@Html.ActionLink("Clicca qui", "Contact", "Home")</span>
+                            <h4>Sei un Trainer?</h4>
+                            <p>Accedi nell'Area a te riservata.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="../Images/cliente-webgym.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>@Html.ActionLink("Clicca qui", "LogIn", "Home")</span>
+                            <h4>Sei un Cliente?</h4>
+                            <p>C'è un Area tutta per te! Inserisci le credenziali e goditi il servizio.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="../Images/webgym.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>@Html.ActionLink("Clicca qui", "Index", "Home")</span>
+                            <h4>Torna alla Home</h4>
+                            <p>Torna in Home Page e ricomincia da zero la procedura.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

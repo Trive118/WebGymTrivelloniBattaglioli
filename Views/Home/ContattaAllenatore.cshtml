@@ -3,24 +3,51 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
     <title>Contatta il tuo Allenatore</title>
 </head>
 <body>
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h2>Contatta il tuo<em> Allenatore</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="trainers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Compila il seguente <em> Form</em></h2>
+                        <img src="../Images/line-dec.png" alt="">
+                        <p>Vuoi mandare un messaggio al tuo allenatore? Necessiti di un nuovo piano di allenamento? Contattalo per mezzo del seguente form. Verrai contattato telefonicamente nei prossimi giorni.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div>
-        <center><h1>Contatta il tuo Allenatore</h1></center>
-        <h3>Corpo della mail</h3>
+        <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">Corpo della mail</h4>
         @using (Html.BeginForm("InviaMessaggioTrainer", "Home"))
         {
-            @Html.AntiForgeryToken()
-            <textarea name="messaggio"></textarea>
-            <input style="display:none" value="@Model.Mail_trainer" name="mail_trainer"/>
-            <input type="submit" value="Invia mail" />
+        @Html.AntiForgeryToken()
+        <textarea name="messaggio" required="" placeholder="Il tuo messaggio*"></textarea>
+        <input style="display:none" value="@Model.Mail_trainer" name="mail_trainer" />
+        <input type="submit" value="Invia Messaggio" />
         }
     </div>
+
+
 </body>
 </html>

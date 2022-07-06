@@ -212,6 +212,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\attenzione.png" />
     <Content Include="Images\barra_spaziatrice.png" />
+    <Content Include="Images\cliente-webgym.png" />
     <Content Include="Images\confirm.png" />
     <Content Include="Images\contact-bg.jpg" />
     <Content Include="Images\servizi-webgym.png" />
@@ -228,10 +229,12 @@
     <Content Include="Images\slide-01.jpg" />
     <Content Include="Images\tabs-first-icon.png" />
     <Content Include="Images\third-trainer.jpg" />
+    <Content Include="Images\trainer-webgym.png" />
     <Content Include="Images\training-image-01.jpg" />
     <Content Include="Images\training-image-02.jpg" />
     <Content Include="Images\training-image-03.jpg" />
     <Content Include="Images\training-image-04.jpg" />
+    <Content Include="Images\webgym.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Connected Services\ServiceReferenceWCF\Service.wsdl" />
@@ -251,6 +254,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.SchedaDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReferenceWCF\WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Properties\Settings.settings">

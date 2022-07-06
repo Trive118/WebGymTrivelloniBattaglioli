@@ -3,7 +3,78 @@
     ViewBag.Title = "DatiErratiLogin";
 }
 
-<h2>Attenzione hai inserito delle credenziali errate!!</h2>
-@Html.ActionLink("Riprova ad effettuare l'accesso", "LogIn", "home")<p></p>
-@Html.ActionLink("Torna alla home", "Index", "home")
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+    <title>Errore!</title>
+</head>
+
+<body>
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h2><em>Attenzione</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="trainers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Azioni <em> Consigliate</em></h2>
+                        <img src="../Images/line-dec.png" alt="">
+                        <p>Ops! Qualcosa è andato storto: sembra che ci sia stato qualche errore durante il login.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="../Images/trainer-webgym.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>@Html.ActionLink("Clicca qui", "Contact", "Home")</span>
+                            <h4>Sei un Trainer?</h4>
+                            <p>Accedi nell'Area a te riservata.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="../Images/cliente-webgym.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>@Html.ActionLink("Clicca qui", "LogIn", "Home")</span>
+                            <h4>Sei un Cliente?</h4>
+                            <p>C'è un Area tutta per te! Inserisci le credenziali e goditi il servizio.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="../Images/webgym.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>@Html.ActionLink("Clicca qui", "Index", "Home")</span>
+                            <h4>Torna alla Home</h4>
+                            <p>Torna in Home Page e ricomincia da zero la procedura.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
 

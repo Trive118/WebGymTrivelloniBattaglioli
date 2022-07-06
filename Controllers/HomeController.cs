@@ -300,7 +300,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             try
             {
                 client.Send(message);
-                return null;
+                return View("Index");
             }
             catch (Exception ex)
             {
@@ -434,6 +434,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                     }
                     dynamic mymodel = new ExpandoObject();
                     mymodel.Id_scheda = idScheda;
+                    mymodel.Esercizi = null;
                     return View("CreazioneSchedaEsercizi",mymodel); 
                 }
                 catch (Exception ex)
@@ -482,12 +483,35 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             string descrizione = Request["Descrizione"];
             int num_ripetizioni = Convert.ToInt32(Request["Num_ripetizioni"]);
             int tempo_recupero_app = Convert.ToInt32(Request["Recupero"]);
-            TimeSpan tempo_recuper = TimeSpan.FromSeconds(tempo_recupero_app);
+            TimeSpan tempo_recupero = TimeSpan.FromSeconds(tempo_recupero_app);
             string commento = Request["Commento"];
             string immagine = Request["Immagine"];
             int id_scheda = Convert.ToInt32(Request["id_scheda"]);
-            ///create method addNewExercise in wcf
-            return null;
+            try
+            {
+                bool result = wcfClient.AddNewExerciseToCardGym(id_scheda, descrizione, num_ripetizioni, tempo_recupero, commento, immagine);
+                List<EsercizioModel> lista_esercizi = new List<EsercizioModel>();
+                List<CaratteristicaEsercizioModel> lista_caratteristicheEsercizi = new List<CaratteristicaEsercizioModel>();
+                EsercizioDTO[] eserciziDTO = null;
+                CaratteristicaEsercizioDTO[] caratteristicheDTO = null;
+                wcfClient.OttieniEserciziAssociatiAllaScheda(id_scheda, ref eserciziDTO, ref caratteristicheDTO);
+                int i = 0;
+                foreach(EsercizioDTO es in eserciziDTO.ToList())
+                {
+                    lista_esercizi.Add(new EsercizioModel(es.Descrizione, es.Immagine));
+                    lista_caratteristicheEsercizi.Add(new CaratteristicaEsercizioModel(caratteristicheDTO[i].Num_ripetizioni, caratteristicheDTO[i].Recupero, caratteristicheDTO[i].Commento));
+                }
+                dynamic mymodel = new ExpandoObject();
+                mymodel.Id_scheda = id_scheda;
+                mymodel.Esercizi = lista_esercizi;
+                mymodel.CaratteristicheEsercizi = lista_caratteristicheEsercizi;
+                return View("CreazioneSchedaEsercizi", mymodel);
+            }
+            catch(Exception ex)
+            {
+                ViewData["ErrorMessage"] = ex.Message;
+                return View("ErrorPage");
+            }
         }
 
     }

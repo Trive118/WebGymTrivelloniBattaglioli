@@ -694,11 +694,66 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AggiungiNuovaAssegnazione", ReplyAction="http://tempuri.org/IService/AggiungiNuovaAssegnazioneResponse")]
         System.Threading.Tasks.Task<bool> AggiungiNuovaAssegnazioneAsync(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda, string data);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddNewContractToCardGym", ReplyAction="http://tempuri.org/IService/AddNewContractToCardGymResponse")]
-        bool AddNewContractToCardGym(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddNewExerciseToCardGym", ReplyAction="http://tempuri.org/IService/AddNewExerciseToCardGymResponse")]
+        bool AddNewExerciseToCardGym(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddNewContractToCardGym", ReplyAction="http://tempuri.org/IService/AddNewContractToCardGymResponse")]
-        System.Threading.Tasks.Task<bool> AddNewContractToCardGymAsync(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddNewExerciseToCardGym", ReplyAction="http://tempuri.org/IService/AddNewExerciseToCardGymResponse")]
+        System.Threading.Tasks.Task<bool> AddNewExerciseToCardGymAsync(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/OttieniEserciziAssociatiAllaScheda", ReplyAction="http://tempuri.org/IService/OttieniEserciziAssociatiAllaSchedaResponse")]
+        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaResponse OttieniEserciziAssociatiAllaScheda(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaRequest request);
+        
+        // CODEGEN: Verrà generato un contratto di messaggio perché l'operazione presenta più valori restituiti.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/OttieniEserciziAssociatiAllaScheda", ReplyAction="http://tempuri.org/IService/OttieniEserciziAssociatiAllaSchedaResponse")]
+        System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaResponse> OttieniEserciziAssociatiAllaSchedaAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="OttieniEserciziAssociatiAllaScheda", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class OttieniEserciziAssociatiAllaSchedaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int id_scheda;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[] lista_esercizi;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO[] lista_caratteristiche;
+        
+        public OttieniEserciziAssociatiAllaSchedaRequest() {
+        }
+        
+        public OttieniEserciziAssociatiAllaSchedaRequest(int id_scheda, WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[] lista_esercizi, WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO[] lista_caratteristiche) {
+            this.id_scheda = id_scheda;
+            this.lista_esercizi = lista_esercizi;
+            this.lista_caratteristiche = lista_caratteristiche;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="OttieniEserciziAssociatiAllaSchedaResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class OttieniEserciziAssociatiAllaSchedaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool OttieniEserciziAssociatiAllaSchedaResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[] lista_esercizi;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO[] lista_caratteristiche;
+        
+        public OttieniEserciziAssociatiAllaSchedaResponse() {
+        }
+        
+        public OttieniEserciziAssociatiAllaSchedaResponse(bool OttieniEserciziAssociatiAllaSchedaResult, WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[] lista_esercizi, WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO[] lista_caratteristiche) {
+            this.OttieniEserciziAssociatiAllaSchedaResult = OttieniEserciziAssociatiAllaSchedaResult;
+            this.lista_esercizi = lista_esercizi;
+            this.lista_caratteristiche = lista_caratteristiche;
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -840,12 +895,32 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
             return base.Channel.AggiungiNuovaAssegnazioneAsync(cod_fiscale_trainer, cod_fiscale_cliente, idScheda, data);
         }
         
-        public bool AddNewContractToCardGym(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine) {
-            return base.Channel.AddNewContractToCardGym(id_scheda, descrizione, num_ripetizioni, tempo_recupero, commento, immagine);
+        public bool AddNewExerciseToCardGym(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine) {
+            return base.Channel.AddNewExerciseToCardGym(id_scheda, descrizione, num_ripetizioni, tempo_recupero, commento, immagine);
         }
         
-        public System.Threading.Tasks.Task<bool> AddNewContractToCardGymAsync(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine) {
-            return base.Channel.AddNewContractToCardGymAsync(id_scheda, descrizione, num_ripetizioni, tempo_recupero, commento, immagine);
+        public System.Threading.Tasks.Task<bool> AddNewExerciseToCardGymAsync(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine) {
+            return base.Channel.AddNewExerciseToCardGymAsync(id_scheda, descrizione, num_ripetizioni, tempo_recupero, commento, immagine);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaResponse WebGymTrivelloniBattaglioli.ServiceReferenceWCF.IService.OttieniEserciziAssociatiAllaScheda(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaRequest request) {
+            return base.Channel.OttieniEserciziAssociatiAllaScheda(request);
+        }
+        
+        public bool OttieniEserciziAssociatiAllaScheda(int id_scheda, ref WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[] lista_esercizi, ref WebGymTrivelloniBattaglioli.ServiceReferenceWCF.CaratteristicaEsercizioDTO[] lista_caratteristiche) {
+            WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaRequest inValue = new WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaRequest();
+            inValue.id_scheda = id_scheda;
+            inValue.lista_esercizi = lista_esercizi;
+            inValue.lista_caratteristiche = lista_caratteristiche;
+            WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaResponse retVal = ((WebGymTrivelloniBattaglioli.ServiceReferenceWCF.IService)(this)).OttieniEserciziAssociatiAllaScheda(inValue);
+            lista_esercizi = retVal.lista_esercizi;
+            lista_caratteristiche = retVal.lista_caratteristiche;
+            return retVal.OttieniEserciziAssociatiAllaSchedaResult;
+        }
+        
+        public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaResponse> OttieniEserciziAssociatiAllaSchedaAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaRequest request) {
+            return base.Channel.OttieniEserciziAssociatiAllaSchedaAsync(request);
         }
     }
 }

@@ -211,7 +211,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddNewContractToCardGym">
+  <xs:element name="AddNewExerciseToCardGym">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id_scheda" type="xs:int" />
@@ -223,10 +223,28 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddNewContractToCardGymResponse">
+  <xs:element name="AddNewExerciseToCardGymResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddNewContractToCardGymResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="AddNewExerciseToCardGymResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OttieniEserciziAssociatiAllaScheda">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_scheda" type="xs:int" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="lista_esercizi" nillable="true" type="q7:ArrayOfEsercizioDTO" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="lista_caratteristiche" nillable="true" type="q8:ArrayOfCaratteristicaEsercizioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OttieniEserciziAssociatiAllaSchedaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OttieniEserciziAssociatiAllaSchedaResult" type="xs:boolean" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="lista_esercizi" nillable="true" type="q9:ArrayOfEsercizioDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="lista_caratteristiche" nillable="true" type="q10:ArrayOfCaratteristicaEsercizioDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
