@@ -52,6 +52,12 @@ public interface IService
 
 	[OperationContract]
 	bool AggiungiNuovaAssegnazione(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda,string data);
+
+	[OperationContract]
+	bool AddNewExerciseToCardGym(int id_scheda, string descrizione, int num_ripetizioni, TimeSpan tempo_recupero, string commento, string immagine);
+
+	[OperationContract]
+	bool OttieniEserciziAssociatiAllaScheda(int id_scheda,ref List<EsercizioDTO> lista_esercizi,ref List<CaratteristicaEsercizioDTO> lista_caratteristiche);
 }
 
 [DataContract]
