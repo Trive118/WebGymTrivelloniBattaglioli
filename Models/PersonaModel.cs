@@ -62,6 +62,7 @@ namespace WebGymTrivelloniBattaglioli.Models
 
         [DataMember]
         [Display(Name = "Numero di telefono")]
+        [MaxLength(10, ErrorMessage = "Il numero di telefono e' composto da 10 numeri!")]
         [DataType(DataType.PhoneNumber)]
         public string Telefono { get => telefono; set => telefono = value; }
 
@@ -82,7 +83,7 @@ namespace WebGymTrivelloniBattaglioli.Models
 
         [DataMember]
         [Required(ErrorMessage = "Devi immettere il tuo codice fiscale!")]
-        //[RegularExpression(@"/^(?:[B-DF-HJ-NP-TV-Z](?:[AEIOU]{2}|[AEIOU]X)|[AEIOU]{2}X|[B-DF-HJ-NP-TV-Z]{2}[A-Z]){2}[\dLMNP-V]{2}(?:[A-EHLMPR-T](?:[04LQ][1-9MNP-V]|[1256LMRS][\dLMNP-V])|[DHPS][37PT][0L]|[ACELMRT][37PT][01LM])(?:[A-MZ][1-9MNP-V][\dLMNP-V]{2}|[A-M][0L](?:[\dLMNP-V][1-9MNP-V]|[1-9MNP-V][0L]))[A-Z]$/i", ErrorMessage = "Formato codice fiscale non valido!!")]
+        [RegularExpression(@"^([A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1})$|([0-9]{11})$", ErrorMessage = "Formato codice fiscale non valido!!")]
         [MaxLength(16,ErrorMessage = "Il codice fiscale deve avere 16 caratteri!!")]
         [Display(Name = "Codice fiscale")]
         public string Codice_fiscale { get => codice_fiscale; set => codice_fiscale = value; }

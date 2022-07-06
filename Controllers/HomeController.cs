@@ -448,8 +448,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
         {
             try
             {
-                UserDTO clienteVuoto = new UserDTO(); //istanzio un UserDTO
-                loggedClient = new ClienteModel(clienteVuoto.codice_fiscale, clienteVuoto.nome, clienteVuoto.cognome, clienteVuoto.mail, clienteVuoto.data_nascita, clienteVuoto.telefono, clienteVuoto.password, clienteVuoto.sesso);
+                loggedClient = null;
                 //setto il loggedClient usando i parametri (vuoti) del clienteVuoto;
                 return View("LogIn", loggedClient);
             }
@@ -465,8 +464,7 @@ namespace WebGymTrivelloniBattaglioli.Controllers
         {
             try
             {
-                UserDTO trainerVuoto = new UserDTO();
-                loggedTrainer = new TrainerModel(trainerVuoto.codice_fiscale, trainerVuoto.nome, trainerVuoto.cognome, trainerVuoto.mail, trainerVuoto.data_nascita, trainerVuoto.telefono, trainerVuoto.password, trainerVuoto.sesso);
+                loggedTrainer = null;
                 return View("Contact", loggedTrainer);
             }
             catch (Exception ex)
