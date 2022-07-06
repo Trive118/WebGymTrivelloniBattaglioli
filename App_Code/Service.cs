@@ -368,11 +368,8 @@ public class Service : IService
 			int v = -1;
 			string query = "SELECT MAX(Scheda.id) FROM Scheda";
 			MySqlCommand command = new MySqlCommand(query, connection);
-			using (MySqlDataReader reader = command.ExecuteReader())
-			while(reader.Read())
-			{
-				v = reader.GetInt32("MAX(Scheda.id)");
-			}
+			v = Convert.ToInt32(command.ExecuteScalar());
+			connection.Close();
 			return v;
 		}
 		catch (Exception ex)
@@ -399,7 +396,111 @@ public class Service : IService
 		{
 			return false;
 		}
-		return false;
-
     }
+
+	private int OttieniIdUtimoEsercizioInserito()
+	{
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+		try
+		{
+			connection.Open();
+			int v = -1;
+			string query = "SELECT MAX(Esercizio.id) FROM Esercizio";
+			MySqlCommand command = new MySqlCommand(query, connection);
+			v = Convert.ToInt32(command.ExecuteScalar());
+			connection.Close();
+			return v;
+		}
+		catch (Exception ex)
+		{
+			return -1;
+		}
+	}
+
+	public bool AddNewExerciseToCardGym(int id_scheda, string descrizione, int num_ripetizioni, TimeSpan tempo_recupero, string commento, string immagine)
+	{
+		string tempo = tempo_recupero.ToString(@"hh\:mm\:ss");
+		int last_id = OttieniIdUtimoEsercizioInserito();
+		if (last_id != -1)
+		{
+			int new_id = last_id + 1;
+			using (MySqlConnection connection = new MySqlConnection(stringConnection))
+			{
+				connection.Open();
+				MySqlCommand command = connection.CreateCommand();
+				MySqlTransaction transaction;
+				// Start a local transaction.
+				transaction = connection.BeginTransaction();
+				command.Connection = connection;
+				command.Transaction = transaction;
+				try
+				{
+					///per avere la certezza che il nuovo elemento sia inserito con id = new_id
+					command.CommandText = "ALTER TABLE Esercizio AUTO_INCREMENT = "+new_id.ToString()+";";
+					command.ExecuteNonQuery();
+					
+					command.CommandText = "INSERT INTO Esercizio VALUES (NULL,'" + immagine + "','" + descrizione + "');";
+					command.ExecuteNonQuery();
+				
+					command.CommandText = "INSERT INTO Associazione VALUES ("+ id_scheda.ToString() + ","+new_id.ToString()+","+num_ripetizioni.ToString()+",'"+tempo+"','"+commento+"');";
+					command.ExecuteNonQuery();
+					
+					// Attempt to commit the transaction.
+					transaction.Commit();
+					connection.Close();
+					return true;
+				}
+				catch (Exception ex)
+				{
+					// Attempt to roll back the transaction.
+					try
+					{
+						transaction.Rollback();
+						return false;
+					}
+					catch (Exception ex2)
+					{
+						return false;
+					}
+				}
+			}
+		}
+		else
+			return false;
+		
+	}
+
+	public bool OttieniEserciziAssociatiAllaScheda(int id_scheda, ref List<EsercizioDTO> lista_esercizi, ref List<CaratteristicaEsercizioDTO> lista_caratteristiche)
+    {
+		MySqlConnection connection = new MySqlConnection(stringConnection);
+
+		try
+		{
+			connection.Open();
+			string query = "SELECT Esercizio.immagine, Esercizio.descrizione, Associazione.numeroRipetizioni, Associazione.recupero, Associazione.commento FROM Esercizio, Associazione,Scheda WHERE Associazione.idEsercizio = Esercizio.id AND Associazione.idScheda = Scheda.id AND Scheda.id = " + id_scheda.ToString();
+			MySqlCommand command = new MySqlCommand(query, connection);
+			using (MySqlDataReader reader = command.ExecuteReader()) ///USATO PER LEGGERE UN FLUSSO DI DATI (SELECT)
+			{
+				while (reader.Read())
+				{
+					string descrizione = reader.GetString("descrizione");
+					string immagine = reader.GetString("immagine");
+					int ripetizioni = reader.GetInt32("numeroRipetizioni");
+					TimeSpan recupero = reader.GetTimeSpan("recupero");
+					string commento = reader.GetString("commento");
+					EsercizioDTO esercizio = new EsercizioDTO(descrizione, immagine);
+					CaratteristicaEsercizioDTO caratteristicha = new CaratteristicaEsercizioDTO(ripetizioni, recupero, commento);
+					lista_esercizi.Add(esercizio);
+					lista_caratteristiche.Add(caratteristicha);
+				}
+			}
+			connection.Close();
+			return true;
+		}
+		catch (Exception ex)
+		{
+			return false;
+		}
+	}
+
 }
