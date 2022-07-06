@@ -91,6 +91,12 @@
   <wsdl:message name="IService_AggiungiNuovaAssegnazione_OutputMessage">
     <wsdl:part name="parameters" element="tns:AggiungiNuovaAssegnazioneResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_AddNewContractToCardGym_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewContractToCardGym" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddNewContractToCardGym_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewContractToCardGymResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="InserisciCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/InserisciCliente" message="tns:IService_InserisciCliente_InputMessage" />
@@ -147,6 +153,10 @@
     <wsdl:operation name="AggiungiNuovaAssegnazione">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AggiungiNuovaAssegnazione" message="tns:IService_AggiungiNuovaAssegnazione_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/AggiungiNuovaAssegnazioneResponse" message="tns:IService_AggiungiNuovaAssegnazione_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewContractToCardGym">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddNewContractToCardGym" message="tns:IService_AddNewContractToCardGym_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddNewContractToCardGymResponse" message="tns:IService_AddNewContractToCardGym_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -270,6 +280,15 @@
     </wsdl:operation>
     <wsdl:operation name="AggiungiNuovaAssegnazione">
       <soap:operation soapAction="http://tempuri.org/IService/AggiungiNuovaAssegnazione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewContractToCardGym">
+      <soap:operation soapAction="http://tempuri.org/IService/AddNewContractToCardGym" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

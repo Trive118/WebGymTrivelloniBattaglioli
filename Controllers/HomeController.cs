@@ -432,7 +432,9 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                         ViewData["ErrorMessage"] = "Errore nell'aggiornare l'assegnazione della scheda, la preghiamo di tornare indietro e riprovare!";
                         return View("ErrorPage");
                     }
-                    return View("Index"); //sistemare il riferimento alla pagina 
+                    dynamic mymodel = new ExpandoObject();
+                    mymodel.Id_scheda = idScheda;
+                    return View("CreazioneSchedaEsercizi",mymodel); 
                 }
                 catch (Exception ex)
                 {
@@ -472,6 +474,20 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 ViewData["ErrorMessage"] = ex.Message;
                 return View("ErrorPage");
             }
+        }
+
+        [HttpPost]
+        public ActionResult AddEsercizioScheda()
+        {
+            string descrizione = Request["Descrizione"];
+            int num_ripetizioni = Convert.ToInt32(Request["Num_ripetizioni"]);
+            int tempo_recupero_app = Convert.ToInt32(Request["Recupero"]);
+            TimeSpan tempo_recuper = TimeSpan.FromSeconds(tempo_recupero_app);
+            string commento = Request["Commento"];
+            string immagine = Request["Immagine"];
+            int id_scheda = Convert.ToInt32(Request["id_scheda"]);
+            ///create method addNewExercise in wcf
+            return null;
         }
 
     }

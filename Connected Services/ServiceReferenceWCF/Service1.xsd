@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:58900/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:import schemaLocation="http://localhost:58900/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="InserisciCliente">
     <xs:complexType>
       <xs:sequence>
@@ -207,6 +208,25 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="AggiungiNuovaAssegnazioneResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewContractToCardGym">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_scheda" type="xs:int" />
+        <xs:element minOccurs="0" name="descrizione" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="num_ripetizioni" type="xs:int" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="tempo_recupero" type="q6:duration" />
+        <xs:element minOccurs="0" name="commento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="immagine" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewContractToCardGymResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddNewContractToCardGymResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

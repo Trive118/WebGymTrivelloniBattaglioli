@@ -1,4 +1,4 @@
-﻿@model WebGymTrivelloniBattaglioli.Models.EsercizioModel
+﻿@model dynamic
 
 @{
     Layout = null;
@@ -10,46 +10,63 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>CreazioneSchedaEsercizi</title>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    
-    
-    @using (Html.BeginForm()) 
+
+
+    @using (Html.BeginForm("AddEsercizioScheda", "Home"))
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
-            <h4>EsercizioModel</h4>
+            <h4>Aggiunta degli esercizi alla scheda</h4>
             <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.Descrizione, htmlAttributes: new { @class = "control-label col-md-2" })
+                Descrizione
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Descrizione, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Descrizione, "", new { @class = "text-danger" })
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire la descrizione dell'esercizio" id="Descrizione" name="Descrizione" type="text" value="">
                 </div>
             </div>
-    
             <div class="form-group">
-                @Html.LabelFor(model => model.Immagine, htmlAttributes: new { @class = "control-label col-md-2" })
+                Numero ripetizioni
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Immagine, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Immagine, "", new { @class = "text-danger" })
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire il numero di ripetizioni" id="Num_ripetizioni" name="Num_ripetizioni" type="number" value="">
                 </div>
             </div>
-    
+            <div class="form-group">
+                Tempo di recupero(secondi)
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire il tempo di recupero" id="Recupero" name="Recupero" type="number" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                Commento esecuzione esercizio
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="Commento" name="Commento" type="text" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                URL immagine
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire l'URL dell'immagine" id="Immagine" name="Immagine" type="text" value="">
+                </div>
+            </div>
+            <input style="display:none;" value="@Model.Id_scheda" name="id_scheda" />
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Aggiungi" class="btn btn-default" />
                 </div>
             </div>
         </div>
     }
-    
+
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Conferma", "Index")
     </div>
 </body>
 </html>

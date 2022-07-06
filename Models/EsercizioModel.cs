@@ -27,6 +27,11 @@ namespace WebGymTrivelloniBattaglioli.Models
             this.immagine = immagine;
         }
 
+        public EsercizioModel()
+        {
+            
+        }
+
         public int Id { get => id; set => id = value; }
 
         [DataMember]

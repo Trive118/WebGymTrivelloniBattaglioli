@@ -2,10 +2,77 @@
 @{
     ViewBag.Title = "GiaRegistrato";
 }
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+    <title>La Tua Scheda</title>
+</head>
+<body>
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h2><em>Attenzione</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Due schede con le sezioni consigliate-->
+    <section class="section" id="trainers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Azioni <em> Consigliate</em></h2>
+                        <img src="../Images/line-dec.png" alt="">
+                        <p>Ops! Qualcosa è andato storto: sembra che queste credenziali siano già state utilizzate. Lascia che ti guidiamo nella procedura di registrazione.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="../Images/iscrizione-webgym.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>@Html.ActionLink("Clicca qui", "Registrati", "Home")</span>
+                            <h4>Nuova Iscrizione</h4>
+                            <p>Ricomincia la procedura di iscrizione con nuove credenziali</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="../Images/area-personale-webgym.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>@Html.ActionLink("Clicca qui", "LogIn", "Home")</span>
+                            <h4>Vai all'Area Riservata</h4>
+                            <p>Ritenta ad effettuare il login. Chiedi le credenziali alla segreteria.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="../Images/servizi-webgym.png" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>@Html.ActionLink("Clicca qui", "Contact", "Home")</span>
+                            <h4>I Nostri Servizi</h4>
+                            <p>Scopri di più sui servizi che offriamo come palestra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<h2>Attenzione!! ha già effettuato la registrazione al nostro sito oppure ha immesso dati già utilizzati da un'altra persona!!</h2>
-<h3>La preghiamo di tornare indietro e riprovare!</h3>
-@Html.ActionLink("Per tornare alla registrazione clicca qui", "Registrati", "Home")
-@Html.ActionLink("Per accedere alla tua area riservata clicca qui", "LogIn", "Home")
-
-
+</body>
+</html>

@@ -693,6 +693,12 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AggiungiNuovaAssegnazione", ReplyAction="http://tempuri.org/IService/AggiungiNuovaAssegnazioneResponse")]
         System.Threading.Tasks.Task<bool> AggiungiNuovaAssegnazioneAsync(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda, string data);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddNewContractToCardGym", ReplyAction="http://tempuri.org/IService/AddNewContractToCardGymResponse")]
+        bool AddNewContractToCardGym(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddNewContractToCardGym", ReplyAction="http://tempuri.org/IService/AddNewContractToCardGymResponse")]
+        System.Threading.Tasks.Task<bool> AddNewContractToCardGymAsync(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -832,6 +838,14 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public System.Threading.Tasks.Task<bool> AggiungiNuovaAssegnazioneAsync(string cod_fiscale_trainer, string cod_fiscale_cliente, int idScheda, string data) {
             return base.Channel.AggiungiNuovaAssegnazioneAsync(cod_fiscale_trainer, cod_fiscale_cliente, idScheda, data);
+        }
+        
+        public bool AddNewContractToCardGym(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine) {
+            return base.Channel.AddNewContractToCardGym(id_scheda, descrizione, num_ripetizioni, tempo_recupero, commento, immagine);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddNewContractToCardGymAsync(int id_scheda, string descrizione, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento, string immagine) {
+            return base.Channel.AddNewContractToCardGymAsync(id_scheda, descrizione, num_ripetizioni, tempo_recupero, commento, immagine);
         }
     }
 }

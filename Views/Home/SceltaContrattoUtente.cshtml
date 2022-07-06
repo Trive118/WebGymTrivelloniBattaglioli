@@ -3,7 +3,45 @@
     ViewBag.Title = "SceltaContrattoUtente";
 }
 
-<h2>Complimenti ti sei registrato correttamente alla nostra palestra!</h2>
-<div>
-    @Html.ActionLink("Torna alla home", "Index","Home")
-</div>
+<html>
+<head>
+    <script language="javascript">
+        setTimeout(function () {
+            window.location.href = 'https://localhost:44363/Home/LogIn';
+            
+        }, 3000);
+    </script>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+    <title>Benvenuto</title>
+</head>
+<body>
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h2><em>Benvenuto!</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="trainers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2> <em>Aspetta</em></h2>
+                        <img src="../Images/line-dec.png" alt="">
+                        <p>Verrai reindirizzato entro 3 secondi alla tua Area Riservata. Non condividere le tue credenziali con nessuno!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
