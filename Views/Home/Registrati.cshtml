@@ -3,22 +3,23 @@
 @{
     ViewBag.Title = "Registrati";
 }
-
+<html>
 <head>
     <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
     <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
 </head>
-
-<!--in questo modod creo l'evento HandleConfirmClick che si occupeà
- di gestire la pressione del bottone di submit del form, e il
- secondo parametro specifica il controller associato dove andare a cercare
-questo metodo-->
+<body>
+    <!--in questo modod creo l'evento HandleConfirmClick che si occupeà
+     di gestire la pressione del bottone di submit del form, e il
+     secondo parametro specifica il controller associato dove andare a cercare
+    questo metodo-->
 @using (Html.BeginForm("HandleConfirmClick", "Home"))
 {
     @Html.AntiForgeryToken()
 
-    <h2 style="font-size: 23px; font-weight: 700; color: #232d39; display: inline;">INIZIA LA</h2><h2 style="font-size: 23px; font-weight: 700; color: #ed563b; display: inline; "> REGISTRAZIONE</h2>
+    <h2 style="font-size: 23px; font-weight: 700; color: #232d39; display: inline;">INIZIA LA</h2>
+    <h2 style="font-size: 23px; font-weight: 700; color: #ed563b; display: inline; "> REGISTRAZIONE</h2>
 
     <div class="form-horizontal">
         <hr />
@@ -92,13 +93,13 @@ questo metodo-->
             </div>
         </div>
     </div>
-
 }
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Home")
+    </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index", "Home")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

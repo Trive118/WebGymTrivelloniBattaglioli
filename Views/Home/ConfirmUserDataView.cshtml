@@ -3,70 +3,71 @@
 @{
     ViewBag.Title = "ConfirmUserData";
 }
-
+<html>
 <head>
     <title>Conferma i tuoi dati</title>
     <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
     <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
 </head>
+<body>
+    <div>
+        <h4 style="font-size: 24px; font-weight: 700; color: #232d39; display: inline;">DATI</h4><h4 style="font-size: 24px; font-weight: 700; color: #ed563b; display: inline;"> INSERITI</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Codice_fiscale) <!--LABEL CON SCRITTO 'CODICE FISCALE'-->
+            </dt>
 
-<div>
-    <h4 style="font-size: 24px; font-weight: 700; color: #232d39; display: inline;">DATI</h4><h4 style="font-size: 24px; font-weight: 700; color: #ed563b; display: inline;"> INSERITI</h4>
+            <dd>
+                @Html.DisplayFor(model => model.Codice_fiscale)<!--CAMPO CON SCRITTO IL VALORE DEL CODICE FISCALE-->
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Cognome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Cognome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Data_nascita)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Data_nascita)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
+
+        </dl>
+    </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Codice_fiscale) <!--LABEL CON SCRITTO 'CODICE FISCALE'-->
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Codice_fiscale)<!--CAMPO CON SCRITTO IL VALORE DEL CODICE FISCALE-->
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cognome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cognome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Data_nascita)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Data_nascita)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-
-    </dl>
-</div>
-<hr />
 
     <button style=" color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; ">@Html.ActionLink("Back", "Registrati", "Home")</button>
     <button style=" color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; ">@Html.ActionLink("Avanti", "InserisciClientedb", "Home")</button>
-
+</body>
+</html>

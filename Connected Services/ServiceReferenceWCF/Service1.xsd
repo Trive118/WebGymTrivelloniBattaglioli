@@ -248,4 +248,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllExercise">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllExerciseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="GetAllExerciseResult" nillable="true" type="q11:ArrayOfEsercizioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddExerciseToCardGym">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="descrizione_esercizio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id_scheda" type="xs:int" />
+        <xs:element minOccurs="0" name="num_ripetizioni" type="xs:int" />
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="tempo_recupero" type="q12:duration" />
+        <xs:element minOccurs="0" name="commento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddExerciseToCardGymResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddExerciseToCardGymResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

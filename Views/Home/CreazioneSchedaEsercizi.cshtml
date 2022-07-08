@@ -4,15 +4,40 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
     <title>Inserisci Esercizi nella Scheda</title>
     <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
     <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+    <script language="javascript">
+        class Esercizio {
+            constructor(descrizione, immagine) {
+                this.descrizione = descrizione;
+                this.immagine = immagine;
+            }
+        }
+        function disableInput() {
+            var select = document.getElementById("esercizio_select");
+            var select_image = document.getElementById("immagine_select");
+            console.log(select.value);
+            if (select.value != "NULL") {
+                select_image.selectedIndex = select.selectedIndex;
+                var input_descrizione = document.getElementById("Descrizione");
+                input_descrizione.setAttribute("readonly", "");
+                input_descrizione.value = select.value;
+                var input_immagine = document.getElementById("Immagine");
+                input_immagine.setAttribute("readonly", "");
+                input_immagine.value = select_image.value;
+            }
+            else {
+                var input_descrizione = document.getElementById("Descrizione");
+                input_descrizione.removeAttribute("readonly");
+                var input_immagine = document.getElementById("Immagine");
+                input_immagine.removeAttribute("readonly");
+            }
+        }
+    </script>
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")
@@ -29,91 +54,128 @@
             </div>
         </div>
     </section>
-
-
     @using (Html.BeginForm("AddEsercizioScheda", "Home"))
     {
         @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <th style="font-size: 20px; font-weight: 700; color: #232d39;">Crea un nuovo esercizio</th>
+            <th style="font-size: 20px; font-weight: 700; color: #232d39;">Scegli tra esercizi gia' presenti</th>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-horizontal">
+                    <div class="form-group" style="margin-left:2%">
+                        <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">Descrizione</h4>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire la descrizione dell'esercizio" id="Descrizione" name="Descrizione" type="text" value="" style="width:40%">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left:2%">
+                        <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">Numero Ripetizioni</h4>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" min="1" data-val-required="Devi inserire il numero di ripetizioni" id="Num_ripetizioni" name="Num_ripetizioni" type="number" value="" style="width:40%">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left:2%">
+                        <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">Tempo di recupero (secondi)</h4>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" min="30" data-val-required="Devi inserire il tempo di recupero" id="Recupero" name="Recupero" type="number" value="" style="width:40%">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left:2%">
+                        <h4 style="font-size: 20px; font-weight: 700; color: #232d39; ">Commento esecuzione esercizio</h4>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="Commento" name="Commento" type="text" value="" style="width:40%">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left:2%">
+                        <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">URL Immagine</h4>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire l'URL dell'immagine" id="Immagine" name="Immagine" type="text" value="" style="width:40%">
+                        </div>
+                    </div>
+                    <input style="display:none;" value="@Model.Id_scheda" name="id_scheda" />
+                    <div class="form-group" style="margin-left:2%">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Aggiungi" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
 
-        <div class="form-horizontal">
-            <div class="form-group" style="margin-left:2%">
-                <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">Descrizione</h4>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire la descrizione dell'esercizio" id="Descrizione" name="Descrizione" type="text" value="" style="width:40%">
-                </div>
-            </div>
-            <div class="form-group" style="margin-left:2%">
-                <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">Numero Ripetizioni</h4>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire il numero di ripetizioni" id="Num_ripetizioni" name="Num_ripetizioni" type="number" value="" style="width:40%">
-                </div>
-            </div>
-            <div class="form-group" style="margin-left:2%">
-                <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">Tempo di recupero (secondi)</h4>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire il tempo di recupero" id="Recupero" name="Recupero" type="number" value="" style="width:40%">
-                </div>
-            </div>
-            <div class="form-group" style="margin-left:2%">
-                <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">Commento esecuzione esercizio</h4>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="Commento" name="Commento" type="text" value="" style="width:40%">
-                </div>
-            </div>
-            <div class="form-group" style="margin-left:2%">
-                <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">URL Immagine</h4>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" data-val="true" data-val-required="Devi inserire l'URL dell'immagine" id="Immagine" name="Immagine" type="text" value="" style="width:40%">
-                </div>
-            </div>
-            <input style="display:none;" value="@Model.Id_scheda" name="id_scheda" />
-            <div class="form-group" style="margin-left:2%">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Aggiungi" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
-                </div>
+                <!--<h2>Seleziona nome esercizio</h2>-->
+                <select name="esercizio_select" id="esercizio_select" onChange="disableInput()">
+                    <option value="NULL">none</option>
+                    @foreach (var esercizio in Model.EserciziDisponibili)
+                    {
+                        <option value="@esercizio.Descrizione">@esercizio.Descrizione</option>
+                    }
+                </select>
+                <select name="immagine_select" id="immagine_select" style="display:none">
+                    <option value="NULL">none</option>
+                    @foreach (var esercizio in Model.EserciziDisponibili)
+                    {
+                        <option value="@esercizio.Immagine">@esercizio.Immagine</option>
+                    }
+                </select>
+            </td>
+        </tr>
+    </table>
+    }
+    @using (Html.BeginForm("ConfirmScheda", "Home"))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group" style="margin-left:2%">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Conferma" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
             </div>
         </div>
     }
     @if (Model.Esercizi != null)
     {
         int i = 0;
-<table class="table" style="margin-top:3%;">
-    <tr>
-        <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align:center;">
-            Titolo scheda
-        </th>
-        <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-            Durata scheda
-        </th>
-        <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-            Scheda attualmente in uso
-        </th>
-        <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-            Commento
-        </th>
-    </tr>
-    @foreach (var esercizio in Model.Esercizi)
-    {
-        <tr>
-            <td style="font-size: 20px; font-weight: 700; color: #232d39;">
-                @esercizio.Descrizione
-            </td>
-            <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align:center;">
-                @Model.CaratteristicheEsercizi[@i].Numero_ripetizioni
-            </td>
-            <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-                @Model.CaratteristicheEsercizi[@i].Recupero
-            </td>
-            <td style="font-size: 20px; font-weight: 700; color: #232d39;">
-                @Model.CaratteristicheEsercizi[@i].Commento
-            </td>
-            <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-                <img src="@esercizio.Immagine" style="height:100px;width:100px" />
-            </td>
-        </tr>
-        i++;
-    }
-</table>
+        <table class="table" style="margin-top:3%;">
+            <tr>
+                <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align:center;">
+                    Titolo scheda
+                </th>
+                <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                    Durata scheda
+                </th>
+                <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                    Scheda attualmente in uso
+                </th>
+                <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                    Commento
+                </th>
+                <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                    Immagine
+                </th>
+            </tr>
+            @foreach (var esercizio in Model.Esercizi)
+            {
+                <tr>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                        @esercizio.Descrizione
+                    </td>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align:center;">
+                        @Model.CaratteristicheEsercizi[@i].Numero_ripetizioni
+                    </td>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                        @Model.CaratteristicheEsercizi[@i].Recupero
+                    </td>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                        @Model.CaratteristicheEsercizi[@i].Commento
+                    </td>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                        <img src="@esercizio.Immagine" style="height:100px;width:100px" />
+                    </td>
+                </tr>
+                i++;
+            }
+        </table>
     }
 </body>
 </html>

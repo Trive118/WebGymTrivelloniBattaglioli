@@ -706,6 +706,18 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         // CODEGEN: Verrà generato un contratto di messaggio perché l'operazione presenta più valori restituiti.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/OttieniEserciziAssociatiAllaScheda", ReplyAction="http://tempuri.org/IService/OttieniEserciziAssociatiAllaSchedaResponse")]
         System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaResponse> OttieniEserciziAssociatiAllaSchedaAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllExercise", ReplyAction="http://tempuri.org/IService/GetAllExerciseResponse")]
+        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[] GetAllExercise();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllExercise", ReplyAction="http://tempuri.org/IService/GetAllExerciseResponse")]
+        System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[]> GetAllExerciseAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddExerciseToCardGym", ReplyAction="http://tempuri.org/IService/AddExerciseToCardGymResponse")]
+        bool AddExerciseToCardGym(string descrizione_esercizio, int id_scheda, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddExerciseToCardGym", ReplyAction="http://tempuri.org/IService/AddExerciseToCardGymResponse")]
+        System.Threading.Tasks.Task<bool> AddExerciseToCardGymAsync(string descrizione_esercizio, int id_scheda, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -921,6 +933,22 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaResponse> OttieniEserciziAssociatiAllaSchedaAsync(WebGymTrivelloniBattaglioli.ServiceReferenceWCF.OttieniEserciziAssociatiAllaSchedaRequest request) {
             return base.Channel.OttieniEserciziAssociatiAllaSchedaAsync(request);
+        }
+        
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[] GetAllExercise() {
+            return base.Channel.GetAllExercise();
+        }
+        
+        public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.EsercizioDTO[]> GetAllExerciseAsync() {
+            return base.Channel.GetAllExerciseAsync();
+        }
+        
+        public bool AddExerciseToCardGym(string descrizione_esercizio, int id_scheda, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento) {
+            return base.Channel.AddExerciseToCardGym(descrizione_esercizio, id_scheda, num_ripetizioni, tempo_recupero, commento);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddExerciseToCardGymAsync(string descrizione_esercizio, int id_scheda, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento) {
+            return base.Channel.AddExerciseToCardGymAsync(descrizione_esercizio, id_scheda, num_ripetizioni, tempo_recupero, commento);
         }
     }
 }

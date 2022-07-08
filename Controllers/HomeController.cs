@@ -432,9 +432,15 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                         ViewData["ErrorMessage"] = "Errore nell'aggiornare l'assegnazione della scheda, la preghiamo di tornare indietro e riprovare!";
                         return View("ErrorPage");
                     }
+                    List<EsercizioModel> TuttiEsercizi = new List<EsercizioModel>();
+                    List<EsercizioDTO> TuttiEserciziDTO = new List<EsercizioDTO>();
+                    TuttiEserciziDTO = wcfClient.GetAllExercise().ToList();
+                    foreach (EsercizioDTO es in TuttiEserciziDTO)
+                        TuttiEsercizi.Add(new EsercizioModel(es.Descrizione, es.Immagine));
                     dynamic mymodel = new ExpandoObject();
                     mymodel.Id_scheda = idScheda;
                     mymodel.Esercizi = null;
+                    mymodel.EserciziDisponibili = TuttiEsercizi;
                     return View("CreazioneSchedaEsercizi",mymodel); 
                 }
                 catch (Exception ex)
@@ -486,25 +492,37 @@ namespace WebGymTrivelloniBattaglioli.Controllers
             TimeSpan tempo_recupero = TimeSpan.FromSeconds(tempo_recupero_app);
             string commento = Request["Commento"];
             string immagine = Request["Immagine"];
+            string select_value = Request["esercizio_select"];
             int id_scheda = Convert.ToInt32(Request["id_scheda"]);
             try
             {
-                bool result = wcfClient.AddNewExerciseToCardGym(id_scheda, descrizione, num_ripetizioni, tempo_recupero, commento, immagine);
+                bool result;
+                if(select_value != "NULL")
+                    result = wcfClient.AddExerciseToCardGym(descrizione, id_scheda, num_ripetizioni, tempo_recupero, commento);
+                else
+                    result = wcfClient.AddNewExerciseToCardGym(id_scheda, descrizione, num_ripetizioni, tempo_recupero, commento, immagine);
                 List<EsercizioModel> lista_esercizi = new List<EsercizioModel>();
+                List<EsercizioModel> TuttiEsercizi = new List<EsercizioModel>();
+                List<EsercizioDTO> TuttiEserciziDTO = new List<EsercizioDTO>();
                 List<CaratteristicaEsercizioModel> lista_caratteristicheEsercizi = new List<CaratteristicaEsercizioModel>();
-                EsercizioDTO[] eserciziDTO = null;
-                CaratteristicaEsercizioDTO[] caratteristicheDTO = null;
+                EsercizioDTO[] eserciziDTO = Array.Empty<EsercizioDTO>();
+                CaratteristicaEsercizioDTO[] caratteristicheDTO = Array.Empty<CaratteristicaEsercizioDTO>();
                 wcfClient.OttieniEserciziAssociatiAllaScheda(id_scheda, ref eserciziDTO, ref caratteristicheDTO);
                 int i = 0;
                 foreach(EsercizioDTO es in eserciziDTO.ToList())
                 {
                     lista_esercizi.Add(new EsercizioModel(es.Descrizione, es.Immagine));
                     lista_caratteristicheEsercizi.Add(new CaratteristicaEsercizioModel(caratteristicheDTO[i].Num_ripetizioni, caratteristicheDTO[i].Recupero, caratteristicheDTO[i].Commento));
+                    i++;
                 }
+                TuttiEserciziDTO = wcfClient.GetAllExercise().ToList();
+                foreach (EsercizioDTO es in TuttiEserciziDTO)
+                    TuttiEsercizi.Add(new EsercizioModel(es.Descrizione, es.Immagine));
                 dynamic mymodel = new ExpandoObject();
                 mymodel.Id_scheda = id_scheda;
                 mymodel.Esercizi = lista_esercizi;
                 mymodel.CaratteristicheEsercizi = lista_caratteristicheEsercizi;
+                mymodel.EserciziDisponibili = TuttiEsercizi;
                 return View("CreazioneSchedaEsercizi", mymodel);
             }
             catch(Exception ex)
@@ -512,6 +530,12 @@ namespace WebGymTrivelloniBattaglioli.Controllers
                 ViewData["ErrorMessage"] = ex.Message;
                 return View("ErrorPage");
             }
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmScheda()
+        {
+            return View("MainPageTrainer", loggedTrainer);
         }
 
     }

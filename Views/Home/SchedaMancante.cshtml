@@ -3,22 +3,48 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>SchedaMancante</title>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+    <title>Scheda Assente!</title>
 </head>
 <body>
-    <div>
-        <h2>Ci dispiace ma al momento non ha schede attive presso la nostra palestra!</h2>
-        @using (Html.BeginForm("ContattaAllenatore", "Home"))
-        {
-            @Html.AntiForgeryToken()
-            <input style="display:none" name="trainerMail" value="@Model.Email" />
-            <input type="submit" value="Contatta il tuo allenatore per richiedere una nuova scheda" />
-        }
+    <section class="section" id="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h2>Richiedi la tua<em> scheda</em></h2>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <section class="section" id="trainers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Contatta <em> Allenatore</em></h2>
+                        <img src="../Images/line-dec.png" alt="">
+                        <p>Ops! Qualcosa è andato storto: sembra che non ti sia stata ancora assegnata una scheda oppure quest'ultima è assente. Compila il seguente form e richiedi al trainer una scheda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <div>
+                <h2 style="font-size: 16px; font-weight: 800; color: #232d39;">Ci dispiace ma al momento non hai schede attive presso la nostra palestra!</h2>
+                @using (Html.BeginForm("ContattaAllenatore", "Home"))
+                {
+                @Html.AntiForgeryToken()
+                <input style="display:none" name="trainerMail" value="@Model.Email" />
+                <input type="submit" value="Contatta il tuo allenatore per richiedere una nuova scheda" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; "/>
+                }
+            </div>
 </body>
 </html>
