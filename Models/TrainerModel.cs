@@ -12,5 +12,10 @@ namespace WebGymTrivelloniBattaglioli.Models
         {
 
         }
+
+        public TrainerModel(string codice_fiscale, string nome, string cognome) : base(codice_fiscale, nome, cognome)
+        {
+
+        }
     }
 }

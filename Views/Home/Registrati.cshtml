@@ -101,5 +101,16 @@
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }
+
+    <script type="text/javascript">
+        var date = document.getElementById("Data_nascita");
+        var dataOggi = new Date();
+        var anno = dataOggi.getFullYear();
+        anno = anno - 14; //obbligatorio aver compiuto almeno 14 anni per iscriversi
+        var mese = dataOggi.getMonth()+1; //Mese = 0 è interpretato come Gennaio, Mese = 1 corrisponde a febbraio e così via
+        var giorno = 1;
+        date.setAttribute("max", anno + "-" + mese + "-" + giorno);
+
+    </script>
 </body>
 </html>

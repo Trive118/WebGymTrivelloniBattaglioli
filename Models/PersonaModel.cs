@@ -22,6 +22,13 @@ namespace WebGymTrivelloniBattaglioli.Models
         string password;
         definizioneSesso sesso;
 
+        protected PersonaModel(string codice_fiscale, string nome, string cognome)
+        {
+            this.codice_fiscale = codice_fiscale;
+            this.nome = nome;
+            this.cognome = cognome;
+        }
+
         protected PersonaModel(string codice_fiscale, string nome, string cognome, string email, DateTime data_nascita, string telefono, string password, string sesso)
         {
             this.codice_fiscale = codice_fiscale;
@@ -51,7 +58,8 @@ namespace WebGymTrivelloniBattaglioli.Models
         [DataMember]
         [Required(ErrorMessage = "La mail non può essere lasciata vuota!!")]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Mail field not valid!!")]
+        //RegualExpression che verifica la correttezza dell'indirizzo email inserito
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Formato mail non corretto!!")]
         public string Email { get => email; set => email = value; }
 
         [DataMember]
@@ -74,6 +82,8 @@ namespace WebGymTrivelloniBattaglioli.Models
         [DataMember]
         [Required(ErrorMessage = "Devi immettere una password")]
         [DataType(DataType.Password)]
+        //RegularExpression che verifica la correttezza della password inserita. Almeno 8 caratteri di lunghezza con almeno un carattere maiuscolo.
+        ///(?=.*\d) significa che deve esserci almeno un carattere che rispetta la regola che lo precede
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,25}$", ErrorMessage = "La password deve contenere almeno 8 caratteri di cui almeno un numero, un carattere maiuscolo e uno minuscolo!!")]
         [Display(Name = "Password")]
         ///The conditions are string must be between 8 and 15 characters long. 
@@ -83,6 +93,7 @@ namespace WebGymTrivelloniBattaglioli.Models
 
         [DataMember]
         [Required(ErrorMessage = "Devi immettere il tuo codice fiscale!")]
+        //RegularExpression che verifica la correttezza del codice fiscale: si controlla che lettere e cifre siano ai posti giusti. Per il resto, la scelta di lettere e caratteri può essere totalmente casuale
         [RegularExpression(@"^([A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1})$|([0-9]{11})$", ErrorMessage = "Formato codice fiscale non valido!!")]
         [MaxLength(16,ErrorMessage = "Il codice fiscale deve avere 16 caratteri!!")]
         [Display(Name = "Codice fiscale")]

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebGymTrivelloniBattaglioli.Models.ClienteModel>
+﻿@model dynamic
 
     @{Layout = null;}
     <html>
@@ -24,40 +24,68 @@
         </section>
 
         <center>
-            @using (Html.BeginForm("IniziaCreazioneScheda", "Home"))
-        {
-            <table style="margin-bottom: 5%; margin-top: 3%; margin-left: auto; margin-right: auto; border-spacing: 30px; border-collapse: separate;">
-                <tr>
-                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Nome</td>
-                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Cognome</td>
-                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Email</td>
-                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Telefono</td>
-                    <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Aggiungi scheda</td>
-                </tr>
-                @foreach (var item in Model)
+            @{
+                if(Model.Clienti.Count != 0)
                 {
-                <tr>
-                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
-                        @Html.DisplayFor(modelItem => item.Cognome)
-                    </td>
-                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
-                        @Html.DisplayFor(modelItem => item.Email)
-                        <input style="display:none" name="email" value="@item.Email" />
-                    </td>
-                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
-                        @Html.DisplayFor(modelItem => item.Telefono)
-                    </td>
-                    <td>
-                        <button type="submit" style="margin-left:40%"><img src="../Images/plusButton.png" style="height:20px;width:20px;" /></button>
-                    </td>
-                </tr>
-                }
-            </table>
-        }
+                <table style="margin-bottom: 5%; margin-top: 3%; margin-left: auto; margin-right: auto; border-spacing: 30px; border-collapse: separate;">
+                    <tr>
+                        <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Nome</td>
+                        <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Cognome</td>
+                        <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Email</td>
+                        <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Telefono</td>
+                        <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Aggiungi scheda</td>
+                        <td style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">Scadenza Scheda</td>
+                    </tr>
 
+                    @{int i = 0;
+                    foreach (var item in Model.Clienti)
+                    {
+                    using (Html.BeginForm("IniziaCreazioneScheda", "Home"))
+                    {
+                    <tr>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
+                            @item.Nome
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center; ">
+                            @item.Cognome
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center; ">
+                            @item.Email
+                            <input style="display:none;" name="email" id="email" value="@item.Email" />
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center; ">
+                            @item.Telefono
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: left; ">
+                            <button type="submit" style="margin-left:40%"><img src="../Images/plusButton.png" style="height:20px;width:20px;" /></button>
+                        </td>
+                        <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center; ">
+                            @{if(Model.Scaduti[i])
+                                        {
+                                <img src="../Images/attenzione.png" style="width:40px; height:35px;" />
+                                        }
+                            }
+                        </td>
+                    </tr>
+                    }
+                    }
+                    }
+                </table>
+                    }
+            
+            else
+                {
+                    <h2 style="font-size: 20px; font-weight: 500; color: #232d39; display: inline;">Per il momento non hai clienti assegnati. Resta in attesa di nuove richieste!</h2>
+                }
+        }
+        </center>
+
+    <center>
+            @using (Html.BeginForm("TornaAllaHome", "Home"))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Torna alla home" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: 30px; " />
+            }
         </center>
     </body>
 </html>

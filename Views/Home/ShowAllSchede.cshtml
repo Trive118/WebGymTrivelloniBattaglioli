@@ -25,107 +25,105 @@
         </div>
     </section>
 
-    @if(Model != null)
+    @if (Model != null)
     {
-<table class="table" style="margin-top:3%;">
-    <!--
-    <tr>
-        <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align:center;">
-            Titolo scheda
-        </th>
-        <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-            Durata scheda
-        </th>
-        <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-            Scheda attualmente in uso
-        </th>
-        <th style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-            Dati allenatore
-        </th>
-    </tr>-->
-
-    @foreach (var item in Model) {
-    <tr>
-        <td style="font-size: 20px; font-weight: 700; color: #232d39;">
-            <p>Titolo scheda:</p>@Html.DisplayFor(modelItem => item.Titolo)
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 20px; font-weight: 700; color: #232d39;">
-            <p>Durata scheda(mesi):</p>@Html.DisplayFor(modelItem => item.Durata)
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 20px; font-weight: 700; color: #232d39;">
-            <p>Scheda attualmente in uso:</p>@Html.DisplayFor(modelItem => item.In_uso)
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 20px; font-weight: 700; color: #232d39;">
-            <p>Dati allenatore:</p>
-            @Html.DisplayFor(modelItem => item.Trainer.Nome)
-            @Html.DisplayFor(modelItem => item.Trainer.Cognome)<br />
-            Mail: @Html.DisplayFor(modelItem => item.Trainer.Email)
-        </td>
-    </tr>
-        <!--aggiungere nella tabella dati ogni esercizio, tabelle nidificate-->
-        <td>
-            <table class="table">
-                <h2 align="center">Dettagli esercizi</h2>
-                <tr>
-                    <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
-                        Descrizione
-                    </th>
-                    <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
-                        Numero ripetizioni
-                    </th>
-                    <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
-                        Tempo di recupero
-                    </th>
-                    <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
-                        Commenti sull'esecuzione dell'esercizio
-                    </th>
-                    <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
-                        Vedi esecuzione
-                    </th>
-                </tr>
-                @{
-                        int @i = 0;
-                }
-                @foreach (var ese in item.Esercizi)
-                    {
+        <table class="table" style="margin-top:3%;">
+            @foreach (var item in Model)
+            {
                 <tr>
                     <td style="font-size: 20px; font-weight: 700; color: #232d39;">
-                        @Html.DisplayFor(modelItem => ese.Descrizione)
-                    </td>
-                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align:center;">
-                        @item.Caratteristiche_esercizi[@i].Numero_ripetizioni
-                    </td>
-                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-                        @item.Caratteristiche_esercizi[@i].Recupero
-                    </td>
-                    <td style="font-size: 20px; font-weight: 700; color: #232d39;">
-                        @item.Caratteristiche_esercizi[@i].Commento
-                    </td>
-                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-                        <img src="@Html.DisplayFor(modelItem => ese.Immagine)" style="height:100px;width:100px" />
+                        <p>Titolo scheda:</p>@Html.DisplayFor(modelItem => item.Titolo)
                     </td>
                 </tr>
-                        i++;
+                <tr>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                        <p>Durata scheda(mesi):</p>@Html.DisplayFor(modelItem => item.Durata)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                        <p>Scheda attualmente in uso:</p>@Html.DisplayFor(modelItem => item.In_uso)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                        <p>Dati allenatore:</p>
+                        @Html.DisplayFor(modelItem => item.Trainer.Nome)
+                        @Html.DisplayFor(modelItem => item.Trainer.Cognome)<br />
+                        Mail: @Html.DisplayFor(modelItem => item.Trainer.Email)
+                    </td>
+                </tr>
+                <!--aggiungere nella tabella dati ogni esercizio, tabelle nidificate-->
+                <td>
+                    <table class="table">
+                        <h2 style="text-align:center;">Dettagli esercizi</h2>
+                        <tr>
+                            <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
+                                Descrizione
+                            </th>
+                            <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
+                                Numero ripetizioni
+                            </th>
+                            <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
+                                Tempo di recupero
+                            </th>
+                            <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
+                                Commenti sull'esecuzione dell'esercizio
+                            </th>
+                            <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; ">
+                                Vedi esecuzione
+                            </th>
+                        </tr>
+                        @{
+                            int @i = 0;
+                        }
+                        @foreach (var ese in item.Esercizi)
+                        {
+                            <tr>
+                                <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                                    @Html.DisplayFor(modelItem => ese.Descrizione)
+                                </td>
+                                <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align:center;">
+                                    @item.Caratteristiche_esercizi[@i].Numero_ripetizioni
+                                </td>
+                                <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                                    @item.Caratteristiche_esercizi[@i].Recupero
+                                </td>
+                                <td style="font-size: 20px; font-weight: 700; color: #232d39;">
+                                    @item.Caratteristiche_esercizi[@i].Commento
+                                </td>
+                                <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                                    <img src="@Html.DisplayFor(modelItem => ese.Immagine)" style="height:100px;width:100px" />
+                                </td>
+                            </tr>
+                            i++;
 
-                    }
-            </table>
-            <img src="../Images/barra_spaziatrice.png" width="100%" height="30px"/>
-        </td>
-  
-        }
+                        }
+                    </table>
+                    <img src="../Images/barra_spaziatrice.png" width="100%" height="30px" />
+                </td>
 
-</table>
+            }
+
+        </table>
+        <center>
+            @using (Html.BeginForm("BackToTheHomeClient", "Home"))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Torna alla home" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; "/>
+            }
+        </center>
     }
     else
     {
-    <h1>Non ti sono ancora state assegnata schede dai nostri personal trainer</h1>
-    @Html.ActionLink("Indietro","Index","Home")
+        <h1>Non ti sono ancora state assegnata schede dai nostri personal trainer</h1>
+        <center>
+            @using (Html.BeginForm("BackToTheHomeClient", "Home"))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Torna alla home" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+            }
+        </center>
     }
 </body>
 </html>

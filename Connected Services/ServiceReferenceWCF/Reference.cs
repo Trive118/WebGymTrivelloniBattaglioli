@@ -677,10 +677,10 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         System.Threading.Tasks.Task<bool> InserisciSchedaNelDBAsync(string titolo, int durata);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AggiornaUtilizzoSchede", ReplyAction="http://tempuri.org/IService/AggiornaUtilizzoSchedeResponse")]
-        bool AggiornaUtilizzoSchede(string cod_fiscale_trainer, string cod_fiscale_cliente);
+        bool AggiornaUtilizzoSchede(string cod_fiscale_cliente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AggiornaUtilizzoSchede", ReplyAction="http://tempuri.org/IService/AggiornaUtilizzoSchedeResponse")]
-        System.Threading.Tasks.Task<bool> AggiornaUtilizzoSchedeAsync(string cod_fiscale_trainer, string cod_fiscale_cliente);
+        System.Threading.Tasks.Task<bool> AggiornaUtilizzoSchedeAsync(string cod_fiscale_cliente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/OttieniIdUtimaSchedaInserita", ReplyAction="http://tempuri.org/IService/OttieniIdUtimaSchedaInseritaResponse")]
         int OttieniIdUtimaSchedaInserita();
@@ -718,6 +718,24 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddExerciseToCardGym", ReplyAction="http://tempuri.org/IService/AddExerciseToCardGymResponse")]
         System.Threading.Tasks.Task<bool> AddExerciseToCardGymAsync(string descrizione_esercizio, int id_scheda, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/OttieniListaTrainer", ReplyAction="http://tempuri.org/IService/OttieniListaTrainerResponse")]
+        WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO[] OttieniListaTrainer();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/OttieniListaTrainer", ReplyAction="http://tempuri.org/IService/OttieniListaTrainerResponse")]
+        System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO[]> OttieniListaTrainerAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AssegnaPrimaSchedaAlCliente", ReplyAction="http://tempuri.org/IService/AssegnaPrimaSchedaAlClienteResponse")]
+        bool AssegnaPrimaSchedaAlCliente(string cod_fiscale_cliente, string cod_fiscale_trainer, string nomeCognomeCliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AssegnaPrimaSchedaAlCliente", ReplyAction="http://tempuri.org/IService/AssegnaPrimaSchedaAlClienteResponse")]
+        System.Threading.Tasks.Task<bool> AssegnaPrimaSchedaAlClienteAsync(string cod_fiscale_cliente, string cod_fiscale_trainer, string nomeCognomeCliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ControlloSchedaScaduta", ReplyAction="http://tempuri.org/IService/ControlloSchedaScadutaResponse")]
+        bool ControlloSchedaScaduta(string cod_cliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ControlloSchedaScaduta", ReplyAction="http://tempuri.org/IService/ControlloSchedaScadutaResponse")]
+        System.Threading.Tasks.Task<bool> ControlloSchedaScadutaAsync(string cod_cliente);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -883,12 +901,12 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
             return base.Channel.InserisciSchedaNelDBAsync(titolo, durata);
         }
         
-        public bool AggiornaUtilizzoSchede(string cod_fiscale_trainer, string cod_fiscale_cliente) {
-            return base.Channel.AggiornaUtilizzoSchede(cod_fiscale_trainer, cod_fiscale_cliente);
+        public bool AggiornaUtilizzoSchede(string cod_fiscale_cliente) {
+            return base.Channel.AggiornaUtilizzoSchede(cod_fiscale_cliente);
         }
         
-        public System.Threading.Tasks.Task<bool> AggiornaUtilizzoSchedeAsync(string cod_fiscale_trainer, string cod_fiscale_cliente) {
-            return base.Channel.AggiornaUtilizzoSchedeAsync(cod_fiscale_trainer, cod_fiscale_cliente);
+        public System.Threading.Tasks.Task<bool> AggiornaUtilizzoSchedeAsync(string cod_fiscale_cliente) {
+            return base.Channel.AggiornaUtilizzoSchedeAsync(cod_fiscale_cliente);
         }
         
         public int OttieniIdUtimaSchedaInserita() {
@@ -949,6 +967,30 @@ namespace WebGymTrivelloniBattaglioli.ServiceReferenceWCF {
         
         public System.Threading.Tasks.Task<bool> AddExerciseToCardGymAsync(string descrizione_esercizio, int id_scheda, int num_ripetizioni, System.TimeSpan tempo_recupero, string commento) {
             return base.Channel.AddExerciseToCardGymAsync(descrizione_esercizio, id_scheda, num_ripetizioni, tempo_recupero, commento);
+        }
+        
+        public WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO[] OttieniListaTrainer() {
+            return base.Channel.OttieniListaTrainer();
+        }
+        
+        public System.Threading.Tasks.Task<WebGymTrivelloniBattaglioli.ServiceReferenceWCF.UserDTO[]> OttieniListaTrainerAsync() {
+            return base.Channel.OttieniListaTrainerAsync();
+        }
+        
+        public bool AssegnaPrimaSchedaAlCliente(string cod_fiscale_cliente, string cod_fiscale_trainer, string nomeCognomeCliente) {
+            return base.Channel.AssegnaPrimaSchedaAlCliente(cod_fiscale_cliente, cod_fiscale_trainer, nomeCognomeCliente);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AssegnaPrimaSchedaAlClienteAsync(string cod_fiscale_cliente, string cod_fiscale_trainer, string nomeCognomeCliente) {
+            return base.Channel.AssegnaPrimaSchedaAlClienteAsync(cod_fiscale_cliente, cod_fiscale_trainer, nomeCognomeCliente);
+        }
+        
+        public bool ControlloSchedaScaduta(string cod_cliente) {
+            return base.Channel.ControlloSchedaScaduta(cod_cliente);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ControlloSchedaScadutaAsync(string cod_cliente) {
+            return base.Channel.ControlloSchedaScadutaAsync(cod_cliente);
         }
     }
 }

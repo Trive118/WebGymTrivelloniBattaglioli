@@ -28,25 +28,21 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading">
-                        <h2>Compila il seguente <em> Form</em></h2>
+                        <h2>Trainer contattato <em> Correttamente</em></h2>
                         <img src="../Images/line-dec.png" alt="">
-                        <p>Vuoi mandare un messaggio al tuo allenatore? Necessiti di un nuovo piano di allenamento? Contattalo per mezzo del seguente form. Verrai contattato telefonicamente nei prossimi giorni.</p>
+                        <p>Il trainer è stato avvisato della tua richiesta, al più presto ti verrà assegnata una scheda per iniziare la tua esperienza!!</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <div>
-        <h4 style="font-size: 20px; font-weight: 700; color: #232d39;">Corpo della mail</h4>
-        @using (Html.BeginForm("InviaMessaggioTrainer", "Home"))
+    <center>
+        @using (Html.BeginForm("BackToTheHomeClient", "Home"))
         {
-        @Html.AntiForgeryToken()
-        <textarea name="messaggio" required="" placeholder="Il tuo messaggio*"></textarea>
-        <input style="display:none" value="@Model.Mail_trainer" name="mail_trainer" />
-        <input type="submit" value="Invia Messaggio" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Torna alla home" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; "/>
         }
-    </div>
+    </center>
 
 
 </body>

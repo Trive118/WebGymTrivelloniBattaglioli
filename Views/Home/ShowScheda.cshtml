@@ -39,11 +39,11 @@
     <center>
         <h4 style="font-size: 24px; font-weight: 700; color: #232d39; display: inline;">Dati allenatore che ti ha preparato la scheda</h4>
         <hr />
-        <h4 style="font-size: 20px; font-weight: 700; color: #ed563b; display:inline;">Nome: </h4><h4 style="font-size: 24px; font-weight: 700; color: #232d39; display: inline;">@Model.Trainer.Nome</h4>
+        <h4 style="font-size: 20px; font-weight: 700; color: #ed563b; display:inline;">Nome: </h4><h4 style="font-size: 20px; font-weight: 700; color: #232d39; display: inline;">@Model.Trainer.Nome</h4>
         <br />
-        <h4 style="font-size: 20px; font-weight: 700; color: #ed563b; display:inline;">Cognome: </h4><h4 style="font-size: 24px; font-weight: 700; color: #232d39; display: inline;">@Model.Trainer.Cognome</h4>
+        <h4 style="font-size: 20px; font-weight: 700; color: #ed563b; display:inline;">Cognome: </h4><h4 style="font-size: 20px; font-weight: 700; color: #232d39; display: inline;">@Model.Trainer.Cognome</h4>
         <br />
-        <h4 style="font-size: 20px; font-weight: 700; color: #ed563b; display:inline;">Email: </h4><h4 style="font-size: 24px; font-weight: 700; color: #232d39; display: inline;">@Model.Trainer.Email</h4>
+        <h4 style="font-size: 20px; font-weight: 700; color: #ed563b; display:inline;">Email: </h4><h4 style="font-size: 20px; font-weight: 700; color: #232d39; display: inline;">@Model.Trainer.Email</h4>
     </center>
     <hr />
 
@@ -52,19 +52,19 @@
         <hr />
         <table style="text-align: left; margin-bottom: 5%; margin-top: 3%; margin-left:auto; margin-right:auto;">
             <tr>
-                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center;">
+                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center;padding-left:1%;padding-right:1%">
                     Descrizione
                 </th>
-                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align:center;">
+                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; padding-left: 1%; padding-right: 1%">
                     Visualizzazione
                 </th>
-                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center;">
+                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; padding-left: 1%; padding-right: 1%">
                     Numero ripetizioni
                 </th>
-                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center;">
+                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; padding-left: 1%; padding-right: 1%">
                     Recupero
                 </th>
-                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center;">
+                <th style="font-size: 20px; font-weight: 700; color: #ed563b; text-align: center; padding-left: 1%; padding-right: 1%">
                     Commento dell'allenatore
                 </th>
             </tr>
@@ -73,29 +73,35 @@
             }
             @foreach (var item in Model.Esercizi)
             {
-            <tr>
-                <td style="font-size: 18px; font-weight: 700; color: #232d39;">
-                    @Html.DisplayFor(modelItem => item.Descrizione)
-                </td>
-                <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align:center;">
-                    <img src="@Html.DisplayFor(modelItem => item.Immagine)" style="height:100px;width:100px" />
-                </td>
-                <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-                    @Model.Caratteristiche_esercizi[@i].Numero_ripetizioni
-                </td>
-                <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
-                    @Model.Caratteristiche_esercizi[@i].Recupero
-                </td>
-                <td style="font-size: 18px; font-weight: 700; color: #232d39; text-align: center;">
-                    @Model.Caratteristiche_esercizi[@i].Commento
-                </td>
-            </tr>
+                <tr>
+                    <td style="font-size: 18px; font-weight: 700; color: #232d39;">
+                        @Html.DisplayFor(modelItem => item.Descrizione)
+                    </td>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align:center;">
+                        <img src="@Html.DisplayFor(modelItem => item.Immagine)" style="height:100px;width:100px" />
+                    </td>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                        @Model.Caratteristiche_esercizi[@i].Numero_ripetizioni
+                    </td>
+                    <td style="font-size: 20px; font-weight: 700; color: #232d39; text-align: center;">
+                        @Model.Caratteristiche_esercizi[@i].Recupero
+                    </td>
+                    <td style="font-size: 18px; font-weight: 700; color: #232d39; text-align: center;">
+                        @Model.Caratteristiche_esercizi[@i].Commento
+                    </td>
+                </tr>
                 i++;
 
 
             }
         </table>
     </center>
-
+    <center>
+        @using (Html.BeginForm("BackToTheHomeClient", "Home"))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Torna alla home" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+        }
+    </center>
 </body>
 </html>

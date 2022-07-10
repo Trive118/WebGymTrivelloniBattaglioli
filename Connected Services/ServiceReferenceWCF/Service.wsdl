@@ -115,6 +115,24 @@
   <wsdl:message name="IService_AddExerciseToCardGym_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddExerciseToCardGymResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_OttieniListaTrainer_InputMessage">
+    <wsdl:part name="parameters" element="tns:OttieniListaTrainer" />
+  </wsdl:message>
+  <wsdl:message name="IService_OttieniListaTrainer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OttieniListaTrainerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AssegnaPrimaSchedaAlCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssegnaPrimaSchedaAlCliente" />
+  </wsdl:message>
+  <wsdl:message name="IService_AssegnaPrimaSchedaAlCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssegnaPrimaSchedaAlClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_ControlloSchedaScaduta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ControlloSchedaScaduta" />
+  </wsdl:message>
+  <wsdl:message name="IService_ControlloSchedaScaduta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ControlloSchedaScadutaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="InserisciCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/InserisciCliente" message="tns:IService_InserisciCliente_InputMessage" />
@@ -187,6 +205,18 @@
     <wsdl:operation name="AddExerciseToCardGym">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AddExerciseToCardGym" message="tns:IService_AddExerciseToCardGym_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/AddExerciseToCardGymResponse" message="tns:IService_AddExerciseToCardGym_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OttieniListaTrainer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/OttieniListaTrainer" message="tns:IService_OttieniListaTrainer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/OttieniListaTrainerResponse" message="tns:IService_OttieniListaTrainer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssegnaPrimaSchedaAlCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AssegnaPrimaSchedaAlCliente" message="tns:IService_AssegnaPrimaSchedaAlCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AssegnaPrimaSchedaAlClienteResponse" message="tns:IService_AssegnaPrimaSchedaAlCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ControlloSchedaScaduta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/ControlloSchedaScaduta" message="tns:IService_ControlloSchedaScaduta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ControlloSchedaScadutaResponse" message="tns:IService_ControlloSchedaScaduta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -346,6 +376,33 @@
     </wsdl:operation>
     <wsdl:operation name="AddExerciseToCardGym">
       <soap:operation soapAction="http://tempuri.org/IService/AddExerciseToCardGym" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OttieniListaTrainer">
+      <soap:operation soapAction="http://tempuri.org/IService/OttieniListaTrainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssegnaPrimaSchedaAlCliente">
+      <soap:operation soapAction="http://tempuri.org/IService/AssegnaPrimaSchedaAlCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ControlloSchedaScaduta">
+      <soap:operation soapAction="http://tempuri.org/IService/ControlloSchedaScaduta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

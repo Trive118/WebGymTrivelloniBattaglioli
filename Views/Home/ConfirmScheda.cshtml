@@ -1,0 +1,51 @@
+﻿@model WebGymTrivelloniBattaglioli.Models.ClienteModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
+    <link rel="stylesheet" href="../Content/templatemo-training-studio.css">
+    <title>ConfirmScheda</title>
+</head>
+<body>
+    <section class="section" id="call-to-action">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="cta-content">
+                            <h2>Ottimo<em> Lavoro</em></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="section" id="trainers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Scheda <em> Aggiunta</em></h2>
+                        <img src="../Images/line-dec.png" alt="">
+                        <p>La nuova scheda è stata correttamente assegnata a @Model.Nome @Model.Cognome</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+    <div>
+        @using (Html.BeginForm("TornaAllaHome", "Home"))
+        {
+            @Html.AntiForgeryToken()
+            <center>
+            <input type="submit" value="Torna alla home" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+            </center>
+        }
+    </div>
+</body>
+</html>

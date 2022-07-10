@@ -7,7 +7,6 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
     <title>Benvenuto</title>
     <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../Content/font-awesome.css">
@@ -78,14 +77,14 @@
     }
     else
     {
-<center>
-    <h2 style="margin-bottom:5%">ATTENZIONE IL TUO CONTRATTO E' SCADUTO O NE DEVI ANCORA SOTTOSCRIVERE UNO!</h2>
-    @using (Html.BeginForm("ReindirizzamentoCreazioneContratto", "Home"))
+    <center>
+        <h2 style="margin-bottom:5%">ATTENZIONE IL TUO CONTRATTO E' SCADUTO O NE DEVI ANCORA SOTTOSCRIVERE UNO!</h2>
+        @using (Html.BeginForm("ReindirizzamentoCreazioneContratto", "Home"))
         {
-            @Html.AntiForgeryToken()
-            <input type="submit" value="Sottiscrivi nuovo contratto" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8%; " />
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Sottiscrivi nuovo contratto" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none;" />
         }
-</center>
+    </center>
     }
     <center>
         <table border="0" margin-left:auto; margin-right:auto;>
@@ -94,25 +93,41 @@
                     @using (Html.BeginForm("ShowScheda", "Home"))
                     {
                     @Html.AntiForgeryToken()
-                    <input type="submit" value="Scheda attuale" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    <input type="submit" value="Scheda attuale" id="scheda_attuale" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
                     }
                 </td>
                 <td>
                     @using (Html.BeginForm("ShowAllSchede", "Home"))
                     {
                     @Html.AntiForgeryToken()
-                    <input type="submit" value="Cronologia schede" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    <input type="submit" value="Cronologia schede" id="tutte_schede" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
                     }
                 </td>
                 <td>
                     @using (Html.BeginForm("LogOutCliente", "Home"))
                     {
                     @Html.AntiForgeryToken()
-                    <input type="submit" value="LogOut" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
+                    <input type="submit" value="LogOut" id="LogOut" class="btn btn-default" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; " />
                     }
                 </td>
             </tr>
         </table>
     </center>
-</body>
+
+    <!--Questo script permette di oscrurare i pulsanti per vedere la scheda attiva e l'archivio schede
+    qualora il cliente sia sprovvisto di contratto con la palestra-->
+    <script language="javascript">
+            var pulsante1 = document.getElementById("scheda_attuale");
+            var pulsante2 = document.getElementById("tutte_schede");
+            var pulsanteLogOut = document.getElementById("LogOut");
+            @{bool result = (Model.Contratto == null);}
+            var controllo = "@result";
+            if (controllo == "True") {
+                pulsante1.style.visibility = 'hidden';
+                pulsante2.style.visibility = 'hidden';
+                pulsanteLogOut.style.marginTop = "-95%";
+            }
+
+    </script>
+    </body>
 </html>

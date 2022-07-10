@@ -1,4 +1,4 @@
-﻿@model WebGymTrivelloniBattaglioli.Models.TrainerModel
+﻿@model IEnumerable<WebGymTrivelloniBattaglioli.Models.TrainerModel>
 @{
     Layout = null;
 }
@@ -37,14 +37,23 @@
         </div>
     </section>
 
-            <div>
-                <h2 style="font-size: 16px; font-weight: 800; color: #232d39;">Ci dispiace ma al momento non hai schede attive presso la nostra palestra!</h2>
-                @using (Html.BeginForm("ContattaAllenatore", "Home"))
-                {
+    <div>
+
+        @using (Html.BeginForm("ContattaAllenatore", "Home"))
+        {
+            <center>
                 @Html.AntiForgeryToken()
-                <input style="display:none" name="trainerMail" value="@Model.Email" />
-                <input type="submit" value="Contatta il tuo allenatore per richiedere una nuova scheda" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top: -8px; "/>
-                }
-            </div>
+                <select id="lista_trainer" name="lista_trainer" style="background-color:#ed563b; color:white; border-radius: 0.25rem; text-align:center; outline: none; height:40px">
+                    @foreach (var t in Model)
+                    {
+                        <option value="@t.Codice_fiscale">@t.Nome @t.Cognome</option>
+                    }
+                </select>
+            </center>
+            <center>
+                <input type="submit" value="Contatta il tuo allenatore per richiedere una nuova scheda" style="color: white; background-color: #ed563b; display: inline-block; font-size: 13px; padding: 11px 17px; text-align: center; font-weight: 400; border: none; outline: none; margin-top:3% " />
+            </center>
+        }
+    </div>
 </body>
 </html>

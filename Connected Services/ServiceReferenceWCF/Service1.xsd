@@ -170,7 +170,6 @@
   <xs:element name="AggiornaUtilizzoSchede">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="cod_fiscale_trainer" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="cod_fiscale_cliente" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -275,6 +274,48 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="AddExerciseToCardGymResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OttieniListaTrainer">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OttieniListaTrainerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="OttieniListaTrainerResult" nillable="true" type="q13:ArrayOfUserDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssegnaPrimaSchedaAlCliente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cod_fiscale_cliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cod_fiscale_trainer" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nomeCognomeCliente" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssegnaPrimaSchedaAlClienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AssegnaPrimaSchedaAlClienteResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ControlloSchedaScaduta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cod_cliente" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ControlloSchedaScadutaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ControlloSchedaScadutaResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
